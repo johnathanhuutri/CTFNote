@@ -1,0 +1,6 @@
+### gdb input ###########################################
+- "< <()" can pass null byte, "<<<$()" cannot
+
+### movaps xmm0,... #####################################
+- rsp (esp) address must end with byte 0x00, 0x10, 0x20, 0x30...
+- ex: if rsp address end with 0xe8 --> segfault

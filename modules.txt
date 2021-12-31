@@ -1,0 +1,9 @@
+### Module 1 ######################################################################
+	Arch:     amd64-64-little (64 bit)
+	RELRO:    Partial RELRO
+	Stack:    No canary found
+	NX:       NX enabled
+	PIE:      No PIE (0x400000)
+--> BOF
+--> Payload format (for 64 bit):
+	payload = <padding> + <func_to_get_input (main/vuln...)> + <flag_func>
