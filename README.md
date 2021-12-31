@@ -2,8 +2,6 @@
 
 This repo will contain modules, note and writeup.
 
-```
-https://cnsc.uit.edu.vn/ctf/
-```
+- **https://cnsc.uit.edu.vn/ctf/**
 
-Letwarnme - writeup: [https://github.com/nhtri2003gmail/writeup-cnsc.uit.edu.vn-letwarnup](https://github.com/nhtri2003gmail/writeup-cnsc.uit.edu.vn-letwarnup)
+	1. Letwarnme: [https://github.com/nhtri2003gmail/writeup-cnsc.uit.edu.vn-letwarnup](https://github.com/nhtri2003gmail/writeup-cnsc.uit.edu.vn-letwarnup)
