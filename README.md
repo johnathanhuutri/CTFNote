@@ -6,7 +6,7 @@ This repo will contain modules, note and writeup.
 
 1. Letwarnme: [https://github.com/nhtri2003gmail/writeup-cnsc.uit.edu.vn-letwarnup](https://github.com/nhtri2003gmail/writeup-cnsc.uit.edu.vn-letwarnup)
 
-2. 
+2. Feedback: [https://github.com/nhtri2003gmail/writeup-cnsc.uit.edu.vn-feedback](https://github.com/nhtri2003gmail/writeup-cnsc.uit.edu.vn-feedback)
 
 **https://pwn.tn/**
 
