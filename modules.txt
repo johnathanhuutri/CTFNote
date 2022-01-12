@@ -1,4 +1,4 @@
-### Module 1 ######################################################################
+###### Module 1 ######
 	Arch:     amd64-64-little (64 bit)
 	RELRO:    Partial RELRO
 	Stack:    No canary found

@@ -8,3 +8,5 @@
 ### format string #######################################
 - %p%p%p%n will write and access easily
 - %4$n will write but cannot access
+
+- %c instead %x to make sure it write a byte, not a random byte
