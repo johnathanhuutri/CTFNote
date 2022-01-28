@@ -21,7 +21,7 @@ payload = <padding> + <@plt> + <return address> + <arg1> + <arg2>...
 
 # Note
 
-### pwntools  
+#### pwntools  
 - Get child pid (way 1): 
 ```
 import os
@@ -39,21 +39,21 @@ p = process(<Some Program>)
 print(pidof(p))
 ```
 
-### assembly opcode
+#### assembly opcode
 ```
 objdump -d <Name of program>|grep '[0-9a-f]:'|grep -v 'file'|cut -f2 -d:|cut -f1-6 -d' '|tr -s ' '|tr '\t' ' '|sed 's/\ $//g'|sed 's/\ /\\x/g'|paste -d '' -s |sed 's/^/"/'|sed 's/$/"/g'
 ```
 
-### gdb
+#### gdb
 - `r < <()` can pass null byte, `r <<<$()` cannot.
 - `flag +/-ZERO` to set or remove flag.
 
-### movaps xmm0,... 
+#### movaps xmm0,... 
 - rsp (esp) address must end with byte 0x00, 0x10, 0x20, 0x30... or it will cause error.</br>
 Ex: if rsp address end with 0xe8 --> segfault.
 
-### format string 
+#### format string 
 - `%p%p%p%n` will write and access easily.
 - `%4$n` will write but cannot access.
 - Payload should have `%c` instead `%x` to make sure it write a byte, **not** a random byte on stack.
-- Enter `.` to skip input of `scanf("%lf", &var)`
+- Enter `.` to `scanf()` with number format (`%d`, `%u`, `%ld`...) won't enter new value to var. 
