@@ -14,27 +14,38 @@
 
 # Note
 
-# 
-
---- pwntools --- 
-- Get child pid: 
+### pwntools  
+- Get child pid (way 1): 
+```
 import os
 from pwn import *
 
-pwnlib.util.proc.children(os.getpid())
+p = process(<Some Program>)
+child_pid = pwnlib.util.proc.children(os.getpid())[0]
+print(child_pid)
+```
+- Get child pid (way 2):
+```
+from pwn import *
 
-##### assembly opcode #####
+p = process(<Some Program>)
+print(pidof(p))
+```
+
+### assembly opcode 
+```
 objdump -d "$1"|grep '[0-9a-f]:'|grep -v 'file'|cut -f2 -d:|cut -f1-6 -d' '|tr -s ' '|tr '\t' ' '|sed 's/\ $//g'|sed 's/\ /\\x/g'|paste -d '' -s |sed 's/^/"/'|sed 's/$/"/g'
+```
 
-### gdb  ###########################################
+### gdb  
 - "r < <()" can pass null byte, "r <<<$()" cannot
 - "flag +/-ZERO" to set or remove flag
  
-### movaps xmm0,... #####################################
+### movaps xmm0,... 
 - rsp (esp) address must end with byte 0x00, 0x10, 0x20, 0x30...
 - ex: if rsp address end with 0xe8 --> segfault
 
-### format string #######################################
+### format string 
 - %p%p%p%n will write and access easily
 - %4$n will write but cannot access
 
