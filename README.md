@@ -49,7 +49,8 @@ objdump -d <Name of program>|grep '[0-9a-f]:'|grep -v 'file'|cut -f2 -d:|cut -f1
 - `flag +/-ZERO` to set or remove flag
  
 ### movaps xmm0,... 
-- rsp (esp) address must end with byte 0x00, 0x10, 0x20, 0x30... Ex: if rsp address end with 0xe8 --> segfault
+- rsp (esp) address must end with byte 0x00, 0x10, 0x20, 0x30... or it will cause error.
+Ex: if rsp address end with 0xe8 --> segfault
 
 ### format string 
 - `%p%p%p%n` will write and access easily
