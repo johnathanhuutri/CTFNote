@@ -16,7 +16,7 @@
 
 ### Execute @plt on stack:
 ```
-payload = <padding> + <func_to_get_input (main/vuln...)> + <flag_func>
+payload = <padding> + <@plt> + <return address> + <arg1> + <arg2>...
 ```
 
 # Note
