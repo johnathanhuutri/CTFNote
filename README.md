@@ -45,15 +45,15 @@ objdump -d <Name of program>|grep '[0-9a-f]:'|grep -v 'file'|cut -f2 -d:|cut -f1
 ```
 
 ### gdb
-- `r < <()` can pass null byte, `r <<<$()` cannot
-- `flag +/-ZERO` to set or remove flag
- 
+- `r < <()` can pass null byte, `r <<<$()` cannot.
+- `flag +/-ZERO` to set or remove flag.
+
 ### movaps xmm0,... 
 - rsp (esp) address must end with byte 0x00, 0x10, 0x20, 0x30... or it will cause error.</br>
-Ex: if rsp address end with 0xe8 --> segfault
+Ex: if rsp address end with 0xe8 --> segfault.
 
 ### format string 
-- `%p%p%p%n` will write and access easily
-- `%4$n` will write but cannot access
-- Payload should have `%c` instead `%x` to make sure it write a byte, **not** a random byte on stack
+- `%p%p%p%n` will write and access easily.
+- `%4$n` will write but cannot access.
+- Payload should have `%c` instead `%x` to make sure it write a byte, **not** a random byte on stack.
 - Enter `.` to skip input of `scanf("%lf", &var)`
