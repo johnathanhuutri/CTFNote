@@ -12,6 +12,13 @@
 
 2. f_two: [https://github.com/nhtri2003gmail/writeup-pwn.tn-f_two](https://github.com/nhtri2003gmail/writeup-pwn.tn-f_two)
 
+# Modules
+
+### Execute @plt on stack:
+```
+payload = <padding> + <func_to_get_input (main/vuln...)> + <flag_func>
+```
+
 # Note
 
 ### pwntools  
@@ -38,15 +45,14 @@ objdump -d <Name of program>|grep '[0-9a-f]:'|grep -v 'file'|cut -f2 -d:|cut -f1
 ```
 
 ### gdb
-- ```r < <()``` can pass null byte, `r <<<$()` cannot
+- `r < <()` can pass null byte, `r <<<$()` cannot
 - `flag +/-ZERO` to set or remove flag
  
 ### movaps xmm0,... 
-- rsp (esp) address must end with byte 0x00, 0x10, 0x20, 0x30...
-- ex: if rsp address end with 0xe8 --> segfault
+- rsp (esp) address must end with byte 0x00, 0x10, 0x20, 0x30... Ex: if rsp address end with 0xe8 --> segfault
 
 ### format string 
 - %p%p%p%n will write and access easily
 - %4$n will write but cannot access
-
-- %c instead %x to make sure it write a byte, not a random byte
+- Payload should have %c instead %x to make sure it write a byte, not a random byte on stack
+- Enter `.` to skip input of `scanf("%lf", &var)`
