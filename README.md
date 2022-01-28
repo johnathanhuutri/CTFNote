@@ -38,7 +38,7 @@ objdump -d <Name of program>|grep '[0-9a-f]:'|grep -v 'file'|cut -f2 -d:|cut -f1
 ```
 
 ### gdb
-- `r < <()` can pass null byte, `r <<<$()` cannot
+- ```r < <()``` can pass null byte, `r <<<$()` cannot
 - `flag +/-ZERO` to set or remove flag
  
 ### movaps xmm0,... 
