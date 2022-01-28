@@ -32,14 +32,14 @@ p = process(<Some Program>)
 print(pidof(p))
 ```
 
-### assembly opcode 
+### assembly opcode
 ```
-objdump -d "$1"|grep '[0-9a-f]:'|grep -v 'file'|cut -f2 -d:|cut -f1-6 -d' '|tr -s ' '|tr '\t' ' '|sed 's/\ $//g'|sed 's/\ /\\x/g'|paste -d '' -s |sed 's/^/"/'|sed 's/$/"/g'
+objdump -d <Name of program>|grep '[0-9a-f]:'|grep -v 'file'|cut -f2 -d:|cut -f1-6 -d' '|tr -s ' '|tr '\t' ' '|sed 's/\ $//g'|sed 's/\ /\\x/g'|paste -d '' -s |sed 's/^/"/'|sed 's/$/"/g'
 ```
 
-### gdb  
-- "r < <()" can pass null byte, "r <<<$()" cannot
-- "flag +/-ZERO" to set or remove flag
+### gdb
+- `r < <()` can pass null byte, `r <<<$()` cannot
+- `flag +/-ZERO` to set or remove flag
  
 ### movaps xmm0,... 
 - rsp (esp) address must end with byte 0x00, 0x10, 0x20, 0x30...
