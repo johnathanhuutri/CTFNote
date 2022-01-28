@@ -14,7 +14,7 @@
 
 # Modules
 
-### Execute @plt on stack:
+### Execute @plt on stack (BOF):
 ```
 payload = <padding> + <@plt> + <return address> + <arg1> + <arg2>...
 ```
