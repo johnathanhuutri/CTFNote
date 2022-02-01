@@ -2,9 +2,15 @@
 
 **https://cnsc.uit.edu.vn/ctf/** (Connection closed)
 
-1. Letwarnme: [https://github.com/nhtri2003gmail/writeup-cnsc.uit.edu.vn-letwarnup](https://github.com/nhtri2003gmail/writeup-cnsc.uit.edu.vn-letwarnup)
+1. Letwarnu: [https://github.com/nhtri2003gmail/writeup-cnsc.uit.edu.vn-letwarnup]()
 
-2. Feedback: [https://github.com/nhtri2003gmail/writeup-cnsc.uit.edu.vn-feedback](https://github.com/nhtri2003gmail/writeup-cnsc.uit.edu.vn-feedback)
+2. Feedback: [https://github.com/nhtri2003gmail/writeup-cnsc.uit.edu.vn-feedback]()
+
+| Name | Type | Module |
+| :---: | :---: | :---: |
+| [Letwarnup](https://github.com/nhtri2003gmail/writeup-cnsc.uit.edu.vn-letwarnup) | pwn | `Format String` |
+| [Feedback](https://github.com/nhtri2003gmail/writeup-cnsc.uit.edu.vn-feedback) | pwn |  |
+| [note](https://github.com/nhtri2003gmail/writeup-cnsc.uit.edu.vn-note) | pwn | Unsorted bin attack |
 
 **https://pwn.tn/**
 
@@ -17,7 +23,7 @@
 | Name | Type | Module |
 | :---: | :---: | :---: |
 | [ArrayUnderFl0w](https://github.com/nhtri2003gmail/writeup-kcscctf.site-ArrayUnderFl0w) | pwn | Unchecked index |
-| [guessMe](https://github.com/nhtri2003gmail/writeup-kcscctf.site-guessMe) | pwn | Specific Seed rand |
+| [guessMe](https://github.com/nhtri2003gmail/writeup-kcscctf.site-guessMe) | pwn | Specific seed rand |
 | [Make Me Crash](https://github.com/nhtri2003gmail/writeup-kcscctf.site-Make_Me_Crash) | pwn | Buffer Overflow |
 | [Chall](https://github.com/nhtri2003gmail/writeup-kcscctf.site-Chall) | pwn | Format String |
 | [ret2win](https://github.com/nhtri2003gmail/writeup-kcscctf.site-ret2win) | pwn | Buffer Overflow |
