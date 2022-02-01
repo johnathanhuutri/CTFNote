@@ -14,26 +14,15 @@
 
 **https://www.kcscctf.site/** (Connection closed)
 
-| https://www.kcscctf.site/ |
-| Name | Type | Module | Writeup |
+| Name | Type | Module |
 | :---: | :---: | :---: | :---: |
-| ArrayUnderFl0w | pwn | Unknow | [Yes](https://github.com/nhtri2003gmail/writeup-kcscctf.site-ArrayUnderFl0w) |
-
-
-1.
-
-2.
-
-3.
-
-4.
-
-5.
-
-6.
-
-7.
-
+| [ArrayUnderFl0w](https://github.com/nhtri2003gmail/writeup-kcscctf.site-ArrayUnderFl0w) | pwn | Unknow |
+| [guessMe](https://github.com/nhtri2003gmail/writeup-kcscctf.site-guessMe) | pwn |  |
+| [Make Me Crash](https://github.com/nhtri2003gmail/writeup-kcscctf.site-Make_Me_Crash) | pwn ||
+| [Chall](https://github.com/nhtri2003gmail/writeup-kcscctf.site-Chall) | pwn |  |
+| [ret2win](https://github.com/nhtri2003gmail/writeup-kcscctf.site-ret2win) | pwn |  |
+| [get OVER InT](https://github.com/nhtri2003gmail/writeup-kcscctf.site-get_OVER_InT) | pwn |  |
+| [bof1](https://github.com/nhtri2003gmail/writeup-kcscctf.site-bof1) | pwn |  |
 # Modules
 
 #### Execute @plt on stack (BOF):
