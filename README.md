@@ -16,13 +16,13 @@
 
 | Name | Type | Module |
 | :---: | :---: | :---: |
-| [ArrayUnderFl0w](https://github.com/nhtri2003gmail/writeup-kcscctf.site-ArrayUnderFl0w) | pwn | Unknow |
-| [guessMe](https://github.com/nhtri2003gmail/writeup-kcscctf.site-guessMe) | pwn |  |
-| [Make Me Crash](https://github.com/nhtri2003gmail/writeup-kcscctf.site-Make_Me_Crash) | pwn ||
-| [Chall](https://github.com/nhtri2003gmail/writeup-kcscctf.site-Chall) | pwn |  |
-| [ret2win](https://github.com/nhtri2003gmail/writeup-kcscctf.site-ret2win) | pwn |  |
-| [get OVER InT](https://github.com/nhtri2003gmail/writeup-kcscctf.site-get_OVER_InT) | pwn |  |
-| [bof1](https://github.com/nhtri2003gmail/writeup-kcscctf.site-bof1) | pwn |  |
+| [ArrayUnderFl0w](https://github.com/nhtri2003gmail/writeup-kcscctf.site-ArrayUnderFl0w) | pwn | Unchecked index |
+| [guessMe](https://github.com/nhtri2003gmail/writeup-kcscctf.site-guessMe) | pwn | Specific Seed rand |
+| [Make Me Crash](https://github.com/nhtri2003gmail/writeup-kcscctf.site-Make_Me_Crash) | pwn | Buffer Overflow |
+| [Chall](https://github.com/nhtri2003gmail/writeup-kcscctf.site-Chall) | pwn | Format String |
+| [ret2win](https://github.com/nhtri2003gmail/writeup-kcscctf.site-ret2win) | pwn | Buffer Overflow |
+| [get OVER InT](https://github.com/nhtri2003gmail/writeup-kcscctf.site-get_OVER_InT) | pwn | Integer Overflow |
+| [bof1](https://github.com/nhtri2003gmail/writeup-kcscctf.site-bof1) | pwn | Buffer Overflow |
 # Modules
 
 #### Execute @plt on stack (BOF):
