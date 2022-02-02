@@ -21,7 +21,7 @@
 **https://www.kcscctf.site/** (Connection closed)
 
 | Name | Type | File Type | Technique |
-| :---: | :---: | :---: |
+| :---: | :---: | :---: | :---: |
 | [ArrayUnderFl0w](https://github.com/nhtri2003gmail/writeup-kcscctf.site-ArrayUnderFl0w) | pwn | c | `Unchecked Index` |
 | [guessMe](https://github.com/nhtri2003gmail/writeup-kcscctf.site-guessMe) | pwn | c | `Specific Seed Rand` |
 | [Make Me Crash](https://github.com/nhtri2003gmail/writeup-kcscctf.site-Make_Me_Crash) | pwn | c | `Buffer Overflow` |
@@ -52,7 +52,7 @@ payload = <padding> + <@plt> + <return address> + <arg1> + <arg2>...
 - Get child pid (way 1): 
 ```
 import os
-from <strong>pwn</strong> import *
+from pwn import *
 
 p = process(<Some Program>)
 child_pid = pwnlib.util.proc.children(os.getpid())[0]
