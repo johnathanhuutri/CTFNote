@@ -49,7 +49,7 @@ payload = <padding> + <@plt> + <return address> + <arg1> + <arg2>...
 # Note
 
 #### pwntools  
-- Get child pid (way 1): 
+- Get <strong>child</strong> pid (way 1): 
 ```
 import os
 from pwn import *
