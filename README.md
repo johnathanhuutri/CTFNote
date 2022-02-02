@@ -6,11 +6,11 @@
 
 2. Feedback: [https://github.com/nhtri2003gmail/writeup-cnsc.uit.edu.vn-feedback]()
 
-| Name | Type | Module |
-| :---: | :---: | :---: |
-| [Letwarnup](https://github.com/nhtri2003gmail/writeup-cnsc.uit.edu.vn-letwarnup) | pwn | `Format String` |
-| [Feedback](https://github.com/nhtri2003gmail/writeup-cnsc.uit.edu.vn-feedback) | pwn |  |
-| [note](https://github.com/nhtri2003gmail/writeup-cnsc.uit.edu.vn-note) | pwn | Unsorted bin attack |
+| Name | Type | File Type | Technique |
+| :---: | :---: | :---: | :---: |
+| [Letwarnup](https://github.com/nhtri2003gmail/writeup-cnsc.uit.edu.vn-letwarnup) | pwn | c | `Format String` `Overwrite GOT` |
+| [Feedback](https://github.com/nhtri2003gmail/writeup-cnsc.uit.edu.vn-feedback) | pwn | c | `Least Significant Byte` |
+| [note](https://github.com/nhtri2003gmail/writeup-cnsc.uit.edu.vn-note) | pwn | `Unsorted Bin Attack` |
 
 **https://pwn.tn/**
 
@@ -20,15 +20,17 @@
 
 **https://www.kcscctf.site/** (Connection closed)
 
-| Name | Type | Module |
+| Name | Type | File Type | Technique |
 | :---: | :---: | :---: |
-| [ArrayUnderFl0w](https://github.com/nhtri2003gmail/writeup-kcscctf.site-ArrayUnderFl0w) | pwn | Unchecked index |
-| [guessMe](https://github.com/nhtri2003gmail/writeup-kcscctf.site-guessMe) | pwn | Specific seed rand |
-| [Make Me Crash](https://github.com/nhtri2003gmail/writeup-kcscctf.site-Make_Me_Crash) | pwn | Buffer Overflow |
-| [Chall](https://github.com/nhtri2003gmail/writeup-kcscctf.site-Chall) | pwn | Format String |
-| [ret2win](https://github.com/nhtri2003gmail/writeup-kcscctf.site-ret2win) | pwn | Buffer Overflow |
-| [get OVER InT](https://github.com/nhtri2003gmail/writeup-kcscctf.site-get_OVER_InT) | pwn | Integer Overflow |
-| [bof1](https://github.com/nhtri2003gmail/writeup-kcscctf.site-bof1) | pwn | Buffer Overflow |
+| [ArrayUnderFl0w](https://github.com/nhtri2003gmail/writeup-kcscctf.site-ArrayUnderFl0w) | pwn | c | `Unchecked Index` |
+| [guessMe](https://github.com/nhtri2003gmail/writeup-kcscctf.site-guessMe) | pwn | c | `Specific Seed Rand` |
+| [Make Me Crash](https://github.com/nhtri2003gmail/writeup-kcscctf.site-Make_Me_Crash) | pwn | c | `Buffer Overflow` |
+| [Chall](https://github.com/nhtri2003gmail/writeup-kcscctf.site-Chall) | pwn | c | `Format String` |
+| [ret2win](https://github.com/nhtri2003gmail/writeup-kcscctf.site-ret2win) | pwn | c | `Buffer Overflow` |
+| [get OVER InT](https://github.com/nhtri2003gmail/writeup-kcscctf.site-get_OVER_InT) | pwn | c | `Integer Overflow` |
+| [bof1](https://github.com/nhtri2003gmail/writeup-kcscctf.site-bof1) | pwn | c | `Buffer Overflow` |
+
+
 # Modules
 
 #### Execute @plt on stack (BOF):
