@@ -49,10 +49,10 @@ payload = <padding> + <@plt> + <return address> + <arg1> + <arg2>...
 # Note
 
 #### pwntools  
-- Get <strong>child</strong> pid (way 1): 
+- Get child pid (way 1): 
 ```
 import os
-from pwn import *
+from <strong>pwn</strong> import *
 
 p = process(<Some Program>)
 child_pid = pwnlib.util.proc.children(os.getpid())[0]
