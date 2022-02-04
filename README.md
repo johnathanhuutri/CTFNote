@@ -49,14 +49,16 @@ payload = <padding> + <@plt> + <return address> + <arg1> + <arg2>...
 
 # Note
 
-#### Open gdb in another shell
+#### Another version for gdb.attach()
 
-Using [x-terminal-emulator](https://www.systutorials.com/docs/linux/man/1-x-terminal-emulator/) to create popup shell.
+Using [x-terminal-emulator](https://www.systutorials.com/docs/linux/man/1-x-terminal-emulator/) to create popup shell and pass command in a file:
 
 ```
 import subprocess
 
-subprocess.Popen(['/usr/bin/x-terminal-emulator', '-e', 'gdb', '-p', '<pid here>'])
+with open('/tmp/command.gdb', 'wt') as f:
+        f.write(command)
+subprocess.Popen(['/usr/bin/x-terminal-emulator', '-e', 'gdb', '-p', '<child pid here>', '-x', '/tmp/command.gdb'])
 ```
 
 #### pwntools  
