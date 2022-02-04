@@ -59,6 +59,7 @@ import subprocess
 with open('/tmp/command.gdb', 'wt') as f:
         f.write(command)
 subprocess.Popen(['/usr/bin/x-terminal-emulator', '-e', 'gdb', '-p', '<child pid here>', '-x', '/tmp/command.gdb'])
+input()         # input() to make program wait with gdb
 ```
 
 #### pwntools  
