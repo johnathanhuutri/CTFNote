@@ -10,7 +10,7 @@
 | :---: | :---: | :---: | :---: |
 | [Letwarnup](https://github.com/nhtri2003gmail/writeup-cnsc.uit.edu.vn-letwarnup) | pwn | c | `Format String` `Overwrite GOT` |
 | [Feedback](https://github.com/nhtri2003gmail/writeup-cnsc.uit.edu.vn-feedback) | pwn | c | `Least Significant Byte` |
-| [note](https://github.com/nhtri2003gmail/writeup-cnsc.uit.edu.vn-note) | pwn | c | `Unsorted Bin Attack` |
+| [note](https://github.com/nhtri2003gmail/writeup-cnsc.uit.edu.vn-note) | pwn | c | `Heap Attack` `Unsorted Bin Attack` |
 
 **https://pwn.tn/**
 
@@ -35,7 +35,7 @@
 | Name | Type | File Type | Technique |
 | :---: | :---: | :---: | :---: |
 | [tokenizer](https://github.com/nhtri2003gmail/writeup-ISITDTU2019-tokenizer) | pwn | cpp | `Least Significant Byte` |
-|  |  |  |  |
+| [iz_heap_lv1](https://github.com/nhtri2003gmail/writeup-ISITDTU2019-iz_heap_lv1) | pwn | c | `Heap Attack` `Tcache attack` |
 |  |  |  |  |
 |  |  |  |  |
 
