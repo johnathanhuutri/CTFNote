@@ -121,6 +121,7 @@ p = process('<File>')
 
 p.sendline(b'A'*500)
 p.wait()     # Wait until it crash. Core file will be made after crash.
+             # If it doesn't crash, check manually to make sure it crash
 
 core = Coredump('./core')
 
