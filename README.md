@@ -39,6 +39,10 @@
 |  |  |  |  |
 |  |  |  |  |
 
+**DiceCTF**
+| Name | Type | File Type | Technique |
+| :---: | :---: | :---: | :---: |
+| [baby-rop](https://github.com/nhtri2003gmail/writeup-ctf.dicega.ng-baby-rop) | pwn | c | `Heap Attack` `ROP chaining` |
 
 # Modules
 
@@ -80,6 +84,51 @@ from pwn import *
 
 p = process(<Some Program>)
 print(pidof(p))
+```
+
+- Get child pid (way 3):
+```
+from pwn import *
+
+p = process(<Some Program>)
+print(p.pid)
+```
+
+- ARGS:
+
+run.py:
+
+```
+from pwn import *
+
+# print(args.<ANY NAME IN CAPITAL>)
+print(args.MYNAME)
+print(args.MYAGE)
+```
+
+Command:
+
+```
+python run.py MYNAME=Johnathan MYAGE=20
+```
+
+- [Core File:](https://docs.pwntools.com/en/stable/elf/corefile.html)
+
+```
+from pwn import *
+
+p = process('<File>')
+
+p.sendline(b'A'*500)
+p.wait()     # Wait until it crash. Core file will be made after crash.
+
+core = Coredump('./core')
+
+# Read number of data from the specified address
+print(core.read(<some address>, <number of byte read>))     # Return byte
+
+# Read until null byte
+print(core.string(<some address>))
 ```
 
 #### assembly opcode
