@@ -41,11 +41,16 @@
 |  |  |  |  |
 |  |  |  |  |
 
-**DiceCTF**
+**https://ctf.dicega.ng/**
 | Name | Type | File Type | Technique |
 | :---: | :---: | :---: | :---: |
 | [baby-rop](https://github.com/nhtri2003gmail/writeup-ctf.dicega.ng-baby-rop) | pwn | c (64 bit) | `Heap Attack` `ROP chaining` |
 | [dataeater](https://github.com/nhtri2003gmail/writeup-ctf.dicega.ng-dataeater) | pwn | c (64 bit) | `ret2dlresolve` `Fake link_map` |
+
+**https://dctf21.cyberedu.ro/**
+| Name | Type | File Type | Technique |
+| :---: | :---: | :---: | :---: |
+| [blindsight](https://github.com/nhtri2003gmail/writeup-dctf21.cyberedu.ro-blindsight) | pwn | c (64 bit) | `Blind ROP` `Buffer Overflow` |
 
 
 # Modules
