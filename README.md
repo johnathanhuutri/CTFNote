@@ -52,7 +52,7 @@
 
 | Name | When |
 | :---: | :--- |
-| ret2dlresolve | Just input, no output and no output function |
+| [ret2dlresolve (64 bit)](https://github.com/nhtri2003gmail/ret2dlresolve-64bit) | Just input, no output and no output function |
 
 # Note
 
