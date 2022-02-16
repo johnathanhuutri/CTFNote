@@ -2,10 +2,6 @@
 
 **https://cnsc.uit.edu.vn/ctf/** (Connection closed)
 
-1. Letwarnu: [https://github.com/nhtri2003gmail/writeup-cnsc.uit.edu.vn-letwarnup]()
-
-2. Feedback: [https://github.com/nhtri2003gmail/writeup-cnsc.uit.edu.vn-feedback]()
-
 | Name | Type | File Type | Technique |
 | :---: | :---: | :---: | :---: |
 | [Letwarnup](https://github.com/nhtri2003gmail/writeup-cnsc.uit.edu.vn-letwarnup) | pwn | c (64 bit) | `Format String` `Overwrite GOT` |
@@ -38,8 +34,6 @@
 | :---: | :---: | :---: | :---: |
 | [tokenizer](https://github.com/nhtri2003gmail/writeup-ISITDTU2019-tokenizer) | pwn | cpp (64 bit) | `Least Significant Byte` |
 | [iz_heap_lv1](https://github.com/nhtri2003gmail/writeup-ISITDTU2019-iz_heap_lv1) | pwn | c (64 bit) | `Heap Attack` `Tcache attack` |
-|  |  |  |  |
-|  |  |  |  |
 
 **https://ctf.dicega.ng/**
 | Name | Type | File Type | Technique |
@@ -50,17 +44,22 @@
 **https://dctf21.cyberedu.ro/**
 | Name | Type | File Type | Technique |
 | :---: | :---: | :---: | :---: |
+| [cache]() | pwn | c (64 bit) | `Use After Free` `Double Free` `Tcache Attack` `Overwrite GOT` |
 | [blindsight](https://github.com/nhtri2003gmail/writeup-dctf21.cyberedu.ro-blindsight) | pwn | c (64 bit) | `Blind ROP` `Buffer Overflow` |
 
 
-# Modules
+# Technique
+
+| Name | When |
+| :---: | :--- |
+| ret2dlresolve | Just input, no output and no output function |
+
+# Note
 
 #### Execute @plt on stack (BOF):
 ```
 payload = <padding> + <@plt> + <return address> + <arg1> + <arg2>...
 ```
-
-# Note
 
 #### Another version for gdb.attach()
 
