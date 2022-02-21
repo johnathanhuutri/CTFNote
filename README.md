@@ -5,7 +5,6 @@
 | Name | Type | File Type | Technique | Note |
 | :---: | :---: | :---: | :---: | :---: |
 | [C@ge](https://github.com/nhtri2003gmail/writeup-mocsctf2022.mocsctf.com-Cage) | pwn | c++ (64 bit) | `Heap Buffer Overflow` `Tcache Attack` `Ret2libc` | Use environ to leak stack address |
-|  |  |  |  | is it correct |
 
 
 **https://pwnable.tw/**
