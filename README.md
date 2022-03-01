@@ -1,9 +1,9 @@
 ### Table of content
-- Writeup
-- Technique
-- Note
+- [Writeup](#writeup-table-of-content)
+- [Technique](#technique-table-of-content)
+- [Note](#note-table-of-content)
 
-# Writeup (Table of content)
+# Writeup ([Table of content](#table-of-content))
 
 **https://mocsctf2022.mocsctf.com/challenges**
 
@@ -67,13 +67,13 @@
 | [blindsight](https://github.com/nhtri2003gmail/writeup-dctf21.cyberedu.ro-blindsight) | pwn | c (64 bit) | `Blind ROP` `Buffer Overflow` |
 
 
-# Technique
+# Technique ([Table of content](#table-of-content))
 
-| Name | When |
+| Name | Note |
 | :---: | :--- |
 | [ret2dlresolve (64 bit)](https://github.com/nhtri2003gmail/ret2dlresolve-64bit) | Just input, no output and no output function |
 
-# Note
+# Note ([Table of content](#table-of-content))
 
 #### Execute @plt on stack (BOF):
 ```
