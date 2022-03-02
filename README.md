@@ -13,7 +13,6 @@
 | [calc](https://github.com/nhtri2003gmail/writeup-mocsctf2022.mocsctf.com-calc) | pwn | c (64 bit) | `Buffer Overflow` `Unchecked Index` | `ret2win` |  |
 | [orange](https://github.com/nhtri2003gmail/writeup-mocsctf2022.mocsctf.com-orange) | pwn | c (64 bit) | `Heap Overflow` | `House of Orange` `Tcache Attack` `Unsorted Bin Attack` | Overwrite malloc hook with realloc and realloc hook with one gadget |
 
-
 **https://pwnable.tw/**
 
 | Name | Type | File Type | Technique |
@@ -66,18 +65,66 @@
 | [cache]() | pwn | c (64 bit) | `Use After Free` `Double Free` `Tcache Attack` `Overwrite GOT` |
 | [blindsight](https://github.com/nhtri2003gmail/writeup-dctf21.cyberedu.ro-blindsight) | pwn | c (64 bit) | `Blind ROP` `Buffer Overflow` |
 
-
 # Technique ([Table of content](#table-of-content))
 
 | Name | Note |
 | :---: | :--- |
 | [ret2dlresolve (64 bit)](https://github.com/nhtri2003gmail/ret2dlresolve-64bit) | Just input, no output and no output function |
+| Heap Exploit | :--- |
 
 # Note ([Table of content](#table-of-content))
 
 #### Execute @plt on stack (BOF):
 ```
 payload = <padding> + <@plt> + <return address> + <arg1> + <arg2>...
+```
+
+#### Docker outline
+
+- [Install docker on parrot](https://stackoverflow.com/questions/57025264/installing-docker-on-parrot-os):
+
+```
+sudo apt install docker.io
+```
+
+- Install [docker-compose](https://docs.docker.com/compose/install/) for convinient command
+
+- Commands:
+
+```
+docker-compose build    # Build dockerfile to images
+docker-compose up       # Run container
+```
+
+#### Attach GDB to running process in docker
+
+Because my computer doesn't show pid when running container so I use the following way to debug:
+
+```
+import subprocess
+from pwn import *
+
+def GDB():
+        proc = subprocess.Popen(['ps', 'aux'], stdout=subprocess.PIPE)
+        ps = proc.stdout.read().split(b'\n')
+        pid = ''
+        for i in ps:
+                # Change the recognization here
+                if b'/home/bacteria/bacteria' in i and b'timeout' not in i:
+                        pid = i.split(b'  ')[1].decode()
+
+        # Change command here
+        command = '''
+        '''
+        with open('/tmp/command.gdb', 'wt') as f:
+                f.write(command)
+
+        # Need sudo permission
+        subprocess.Popen(['sudo', '/usr/bin/x-terminal-emulator', '--geometry', '960x1080+960+0', '-e', 'gdb', '-p', pid, '-x', '/tmp/command.gdb'])
+        input()         # input() to make program wait with gdb
+
+p = connect('127.0.0.1', 9487)
+GDB()
 ```
 
 #### Another version for gdb.attach()
@@ -87,10 +134,11 @@ Using [x-terminal-emulator](https://www.systutorials.com/docs/linux/man/1-x-term
 ```
 import subprocess
 
-with open('/tmp/command.gdb', 'wt') as f:
-        f.write(command)
-subprocess.Popen(['/usr/bin/x-terminal-emulator', '-e', 'gdb', '-p', '<child pid here>', '-x', '/tmp/command.gdb'])
-input()         # input() to make program wait with gdb
+def GDB():
+        with open('/tmp/command.gdb', 'wt') as f:
+                f.write(command)
+        subprocess.Popen(['/usr/bin/x-terminal-emulator', '-e', 'gdb', '-p', str(p.pid), '-x', '/tmp/command.gdb'])
+        input()         # input() to make program wait with gdb
 ```
 
 #### pwntools  
