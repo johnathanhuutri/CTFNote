@@ -117,13 +117,12 @@ gef➤  x/s     (STRTAB) + (st_name)
 ```
 
 ### Table of content
-  1. Stack pivot
-  2. Fake address and structure of Elf64_Sym
-  3. Fake address and structure of Elf64_Rela
-  4. Fake address of STRTAB
-  5. Conduct ret2dlresolve
-  6. Leak libc address
-  7. Get shell
+  1. [Stack pivot](#stage-1-stack-pivot-table-of-content)
+  2. [Fake address and structure of Elf64_Sym](#stage-2-fake-address-and-structure-of-elf64_sym-table-of-content)
+  3. [Fake address and structure of Elf64_Rela](#stage-3-fake-address-and-structure-of-elf64_rela-table-of-content)
+  4. [Fake address and structure of STRTAB](#stage-4-fake-address-and-structure-of-strtab-table-of-content)
+  5. [Conduct ret2dlresolve & Leak libc address](#stage-5-conduct-ret2dlresolve--leak-libc-address-table-of-content)
+  6. [Get shell](#stage-6-get-shell-table-of-content)
 
 ---
 
