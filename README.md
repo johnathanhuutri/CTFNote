@@ -9,7 +9,7 @@ TSJ CTF 2022
 
 | Name | Type | File Type | Bug | Technique | Note |
 | :---: | :---: | :---: | :---: | :---: | :---: |
-| [bacteria](https://github.com/nhtri2003gmail/CTFNote/tree/master/writeup/2022/TSJ-CTF-2022/bacteria) | pwn | c (64 bit) | `Buffer Overflow` | `Ret2dlresolve` | r_offset can be any writable and controllable place, don't need to be @got |
+| [bacteria](https://github.com/nhtri2003gmail/CTFNote/tree/master/writeup/2022/TSJ-CTF-2022/bacteria) | pwn | c (64 bit) | `Buffer Overflow` | `Ret2dlresolve` | r_offset can be any writable and controlable place, don't need to be @got |
 
 
 **https://mocsctf2022.mocsctf.com/challenges**
