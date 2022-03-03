@@ -5,6 +5,13 @@
 
 # Writeup ([Table of content](#table-of-content))
 
+TSJ CTF 2022
+
+| Name | Type | File Type | Bug | Technique | Note |
+| :---: | :---: | :---: | :---: | :---: | :---: |
+| [bacteria] | :---: | :---: | :---: | :---: | :---: |
+
+
 **https://mocsctf2022.mocsctf.com/challenges**
 
 | Name | Type | File Type | Bug | Technique | Note |

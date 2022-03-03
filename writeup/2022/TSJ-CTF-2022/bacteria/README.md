@@ -57,7 +57,7 @@ So that's means we have the **Buffer Overflow** bug and that's all, we cannot fi
 
 First, we have the **Buffer Overflow** bug but because the space for our payload is too small so I intent to do a stack pivot first. But the challenge file has `NX enabled` so we cannot execute assembly shellcode on it. Also because the binary is small, we don't have any gadget to conduct a full ROPgadget or even just a part of ROPgadget.
 
-But we have `read@plt`, which means it will need to resolve the libc address for the first time. So we have the dlresolver function, all we need now is a `ret2dlresolve`. If you don't know what it is, you can read here.
+But we have `read@plt`, which means it will need to resolve the libc address for the first time. So we have the dlresolver function, all we need now is a `ret2dlresolve`. If you don't know what it is, you can read [here](https://github.com/nhtri2003gmail/ret2dlresolve-64bit).
 
 First, this is a 64-bit file so using `ret2dlresolve` technique may work and may not work for some special case. And we can conduct this technique by 2 ways: faking `link_map` or faking `reloc_arg`
 
