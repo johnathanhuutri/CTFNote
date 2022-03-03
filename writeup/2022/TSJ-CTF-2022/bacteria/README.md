@@ -127,7 +127,7 @@ gef➤  x/s     (STRTAB) + (st_name)
 
 ---
 
-### Stage 1: Stack pivot
+### Stage 1: Stack pivot ([Table of content](#table-of-content))
 
 First, let's attach gdb to the process of bacteria in the container to get the read & write section so that we can do stack pivot:
 
