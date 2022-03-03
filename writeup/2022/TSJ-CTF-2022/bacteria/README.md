@@ -77,7 +77,7 @@ So first, we will try to fake some structures to conduct `ret2dlresolve` to exec
 Before we continue our exploit, I write this function to attach gdb to the process of bacteria:
 
 <details>
-<summary></summary>
+<summary>Code snippet</summary>
 <p>
 
 ```
