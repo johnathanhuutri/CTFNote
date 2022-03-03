@@ -159,7 +159,7 @@ Status of code:
 
 That's look good! Just leave it here for a while and we will continue building exploit later.
 
-### Stage 2: Fake address and structure of Elf64_Sym
+### Stage 2: Fake address and structure of Elf64_Sym ([Table of content](#table-of-content))
 
 The reason why I fake Elf64_Sym structure first is because with the address of Elf64_Sym structure, we can calculate the symbol_number and the other stuff.
 
@@ -210,7 +210,7 @@ Elf64_Sym_struct = st_name + st_info + st_other + st_shndx
 
 Because we haven't build up structure for STRTAB so st_name will be `0xdeadbeef`, just temporary and will change when STRTAB is finished. Now we will leave it here and continue with the second struct: Elf64_Rela!
 
-### Stage 3: Fake address and structure of Elf64_Rela
+### Stage 3: Fake address and structure of Elf64_Rela ([Table of content](#table-of-content))
 
 First, we will need the address for Elf64_Rela struct to make `reloc_arg` is an integer with the following calculation:
 
@@ -253,7 +253,7 @@ Elf64_Rela_struct = r_offset + r_info
 
 We know that r_offset is the place which contains the resolved libc address so we will chose the address for that later. Now we will move to the last thing we need to fake: STRTAB.
 
-### Stage 4. Fake address and structure of STRTAB
+### Stage 4. Fake address and structure of STRTAB ([Table of content](#table-of-content))
 
 As 2 part above does at the begining, we will choose the address for STRTAB first. This address also have to satisfy this calculation:
 
@@ -297,7 +297,7 @@ Elf64_Sym_struct = st_name + st_info + st_other + st_shndx + st_value
 
 And for r_offset, we just leave it as `0xdeadbeef` and will change that after checking the stack. So now we just move to the next stage to know if our struct are in the correct position or not.
 
-### Stage 5. Conduct ret2dlresolve & Leak libc address
+### Stage 5. Conduct ret2dlresolve & Leak libc address ([Table of content](#table-of-content))
 
 We have the address for each struct so now just write stuff to stack. Remember where we stopped was at the stage 1 with the following code:
 
@@ -455,7 +455,7 @@ Check with libc in GDB and we get the same address:
 
 What a long way! Let's keep going cause we are very close to flag.
 
-### Stage 6. Get shell
+### Stage 6. Get shell ([Table of content](#table-of-content))
 
 Now we will get the libc from container to our host and then find one gadget from it:
 
