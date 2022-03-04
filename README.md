@@ -63,7 +63,7 @@ TSJ CTF 2022
 **https://ctf.dicega.ng/**
 | Name | Type | File Type | Technique |
 | :---: | :---: | :---: | :---: |
-| [baby-rop](https://github.com/nhtri2003gmail/writeup-ctf.dicega.ng-baby-rop) | pwn | c (64 bit) | `Heap Attack` `ROP chaining` |
+| [baby-rop](https://github.com/nhtri2003gmail/CTFNote/tree/master/writeup/2022/DiceCTF-2022/baby-rop) | pwn | c (64 bit) | `Heap Attack` `ROP chaining` |
 | [dataeater](https://github.com/nhtri2003gmail/CTFNote/tree/master/writeup/2022/DiceCTF-2022/dataeater) | pwn | c (64 bit) | `ret2dlresolve` `Fake link_map` |
 
 **https://dctf21.cyberedu.ro/**
