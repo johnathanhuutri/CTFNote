@@ -76,7 +76,7 @@ TSJ CTF 2022
 
 | Name | Note |
 | :---: | :--- |
-| [ret2dlresolve (64 bit)](https://github.com/nhtri2003gmail/CTFNote/tree/master/technique/ret2dlresolve) | Just input, no output and no output function |
+| [ret2dlresolve (64 bit)](https://github.com/nhtri2003gmail/CTFNote/tree/master/technique/ret2dlresolve-64bit) | Just input, no output and no output function |
 | Heap Exploit | :--- |
 
 # Note ([Table of content](#table-of-content))
