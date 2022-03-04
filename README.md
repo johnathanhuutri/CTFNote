@@ -30,9 +30,9 @@ TSJ CTF 2022
 
 | Name | Type | File Type | Technique |
 | :---: | :---: | :---: | :---: |
-| [Letwarnup](https://github.com/nhtri2003gmail/writeup-cnsc.uit.edu.vn-letwarnup) | pwn | c (64 bit) | `Format String` `Overwrite GOT` |
-| [Feedback](https://github.com/nhtri2003gmail/writeup-cnsc.uit.edu.vn-feedback) | pwn | c (64 bit) | `Least Significant Byte` |
-| [note](https://github.com/nhtri2003gmail/writeup-cnsc.uit.edu.vn-note) | pwn | c (64 bit) | `Heap Attack` `Unsorted Bin Attack` |
+| [Letwarnup](https://github.com/nhtri2003gmail/CTFNote/tree/master/writeup/2022/wannaGame/letwarnup) | pwn | c (64 bit) | `Format String` `Overwrite GOT` |
+| [Feedback](https://github.com/nhtri2003gmail/CTFNote/tree/master/writeup/2022/wannaGame/feedback) | pwn | c (64 bit) | `Least Significant Byte` |
+| [note](https://github.com/nhtri2003gmail/CTFNote/tree/master/writeup/2022/wannaGame/note) | pwn | c (64 bit) | `Heap Attack` `Unsorted Bin Attack` |
 
 **https://pwn.tn/**
 
