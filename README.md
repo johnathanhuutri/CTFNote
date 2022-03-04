@@ -64,7 +64,7 @@ TSJ CTF 2022
 | Name | Type | File Type | Technique |
 | :---: | :---: | :---: | :---: |
 | [baby-rop](https://github.com/nhtri2003gmail/writeup-ctf.dicega.ng-baby-rop) | pwn | c (64 bit) | `Heap Attack` `ROP chaining` |
-| [dataeater](https://github.com/nhtri2003gmail/writeup-ctf.dicega.ng-dataeater) | pwn | c (64 bit) | `ret2dlresolve` `Fake link_map` |
+| [dataeater](https://github.com/nhtri2003gmail/CTFNote/tree/master/writeup/2022/DiceCTF-2022/dataeater) | pwn | c (64 bit) | `ret2dlresolve` `Fake link_map` |
 
 **https://dctf21.cyberedu.ro/**
 | Name | Type | File Type | Technique |
@@ -76,7 +76,7 @@ TSJ CTF 2022
 
 | Name | Note |
 | :---: | :--- |
-| [ret2dlresolve (64 bit)](https://github.com/nhtri2003gmail/ret2dlresolve-64bit) | Just input, no output and no output function |
+| [ret2dlresolve (64 bit)](https://github.com/nhtri2003gmail/CTFNote/tree/master/technique/ret2dlresolve) | Just input, no output and no output function |
 | Heap Exploit | :--- |
 
 # Note ([Table of content](#table-of-content))
