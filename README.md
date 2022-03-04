@@ -45,13 +45,13 @@ TSJ CTF 2022
 
 | Name | Type | File Type | Technique |
 | :---: | :---: | :---: | :---: |
-| [ArrayUnderFl0w](https://github.com/nhtri2003gmail/writeup-kcscctf.site-ArrayUnderFl0w) | pwn | c | `Unchecked Index` |
-| [guessMe](https://github.com/nhtri2003gmail/writeup-kcscctf.site-guessMe) | pwn | c | `Specific Seed Rand` |
-| [Make Me Crash](https://github.com/nhtri2003gmail/writeup-kcscctf.site-Make_Me_Crash) | pwn | c | `Buffer Overflow` |
-| [Chall](https://github.com/nhtri2003gmail/writeup-kcscctf.site-Chall) | pwn | c | `Format String` |
-| [ret2win](https://github.com/nhtri2003gmail/writeup-kcscctf.site-ret2win) | pwn | c | `Buffer Overflow` |
-| [get OVER InT](https://github.com/nhtri2003gmail/writeup-kcscctf.site-get_OVER_InT) | pwn | c | `Integer Overflow` |
-| [bof1](https://github.com/nhtri2003gmail/writeup-kcscctf.site-bof1) | pwn | c | `Buffer Overflow` |
+| [ArrayUnderFl0w](https://github.com/nhtri2003gmail/CTFNote/tree/master/writeup/2022/KCSC-CTF/ArrayUnderFl0w) | pwn | c | `Unchecked Index` |
+| [guessMe](https://github.com/nhtri2003gmail/CTFNote/tree/master/writeup/2022/KCSC-CTF/guessMe) | pwn | c | `Specific Seed Rand` |
+| [Make Me Crash](https://github.com/nhtri2003gmail/CTFNote/tree/master/writeup/2022/KCSC-CTF/Make-Me-Crash) | pwn | c | `Buffer Overflow` |
+| [Chall](https://github.com/nhtri2003gmail/CTFNote/tree/master/writeup/2022/KCSC-CTF/Chall) | pwn | c | `Format String` |
+| [ret2win](https://github.com/nhtri2003gmail/CTFNote/tree/master/writeup/2022/KCSC-CTF/ret2win) | pwn | c | `Buffer Overflow` |
+| [get OVER InT](https://github.com/nhtri2003gmail/CTFNote/tree/master/writeup/2022/KCSC-CTF/GET_OVER_InT) | pwn | c | `Integer Overflow` |
+| [bof1](https://github.com/nhtri2003gmail/CTFNote/tree/master/writeup/2022/KCSC-CTF/bof1) | pwn | c | `Buffer Overflow` |
 
 **ISITDTU 2019** (Connection closed)
 
