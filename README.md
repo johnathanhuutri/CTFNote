@@ -105,6 +105,13 @@ docker-compose up       # Run container
 
 #### Attach GDB to running process in docker
 
+To debug a process from docker, add this YAML code to docker-compose.yml, the same wilth `expose` ([source](https://stackoverflow.com/questions/42029834/gdb-in-docker-container-returns-ptrace-operation-not-permitted)):
+
+```
+cap_add:
+- SYS_PTRACE
+```
+
 Because my computer doesn't show pid when running container so I use the following way to debug:
 
 ```
