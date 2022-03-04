@@ -57,7 +57,7 @@ TSJ CTF 2022
 
 | Name | Type | File Type | Technique |
 | :---: | :---: | :---: | :---: |
-| [tokenizer](https://github.com/nhtri2003gmail/writeup-ISITDTU2019-tokenizer) | pwn | cpp (64 bit) | `Least Significant Byte` |
+| [tokenizer](https://github.com/nhtri2003gmail/CTFNote/tree/master/writeup/2019/ISITDTU/tokenizer) | pwn | cpp (64 bit) | `Least Significant Byte` |
 | [iz_heap_lv1](https://github.com/nhtri2003gmail/CTFNote/tree/master/writeup/2019/ISITDTU/iz_heap_lv1) | pwn | c (64 bit) | `Heap Attack` `Tcache attack` |
 
 **https://ctf.dicega.ng/**
