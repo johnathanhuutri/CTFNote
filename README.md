@@ -151,7 +151,7 @@ import subprocess
 def GDB():
         with open('/tmp/command.gdb', 'wt') as f:
                 f.write(command)
-        subprocess.Popen(['/usr/bin/x-terminal-emulator', '-e', 'gdb', '-p', str(p.pid), '-x', '/tmp/command.gdb'])
+        subprocess.Popen(['/usr/bin/x-terminal-emulator', '--geometry', '960x1080+960+0', '-e', 'gdb', '-p', str(p.pid), '-x', '/tmp/command.gdb'])
         input()         # input() to make program wait with gdb
 ```
 
