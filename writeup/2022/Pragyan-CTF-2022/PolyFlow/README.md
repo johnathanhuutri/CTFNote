@@ -132,6 +132,7 @@ p.sendlineafter(b'passphrase: ', payload1)
 ```
 
 </p>
+</details>
 
 And now, let's move on the final stage: Get flag!
 
