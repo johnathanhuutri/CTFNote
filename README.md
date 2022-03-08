@@ -5,6 +5,15 @@
 
 # Writeup ([Table of content](#table-of-content))
 
+Pragyan CTF 2022
+| Name | Type | File Type | Bug | Technique | Note |
+| :---: | :---: | :---: | :---: | :---: | :---: |
+| [Poly-Flow](https://github.com/nhtri2003gmail/CTFNote/tree/master/writeup/2022/Pragyan-CTF-2022/PolyFlow) | pwn | c (32 bit) | `Buffer Overflow` |  |  |
+| [Portal](https://github.com/nhtri2003gmail/CTFNote/tree/master/writeup/2022/Pragyan-CTF-2022/Portal) | pwn | c (64 bit) | `Format String` |  |  |
+| [Database](https://github.com/nhtri2003gmail/CTFNote/tree/master/writeup/2022/Pragyan-CTF-2022/database) | pwn | c (64 bit) | `Heap Overflow` | `Tcache Attack` |  |
+| [Comeback](https://github.com/nhtri2003gmail/CTFNote/tree/master/writeup/2022/Pragyan-CTF-2022/comeback) | pwn | c (32 bit) | `Buffer Overflow` |  |  |
+| [TBBT](https://github.com/nhtri2003gmail/CTFNote/tree/master/writeup/2022/Pragyan-CTF-2022/TBBT) | pwn | c (32 bit) | `Format String` | `Overwrite GOT` |  |
+
 TSJ CTF 2022
 
 | Name | Type | File Type | Bug | Technique | Note |
