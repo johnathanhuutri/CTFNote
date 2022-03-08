@@ -122,17 +122,10 @@ payload1 = \x3b\x2f\x2b\x37\x3b\x2f\x2b\x37\x3b\x2f\x2b\x37\x3e\x31\x2c\x39
 
 Input this with pwntool and we jump into input() function.
 
-<details>
-<summary>Code snippet</summary>
-<p>
-
 ```
 payload1 = b'\x3b\x2f\x2b\x37\x3b\x2f\x2b\x37\x3b\x2f\x2b\x37\x3e\x31\x2c\x39'
 p.sendlineafter(b'passphrase: ', payload1)
 ```
-
-</p>
-</details>
 
 And now, let's move on the final stage: Get flag!
 
