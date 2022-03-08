@@ -51,7 +51,7 @@ The sum inside loop will work like this (hex format) on stack if we input `aaaab
                    85 85 85 8a
 ```
 
-Because the sum will result in 0x1xx so from `0x61*4 = 0x184 + 1 = 0x185`. And afterh the sum, if it's equal with `0xdeadbeef` we will go into input function:
+Because the sum will result in 0x1xx so from `0x61*4 = 0x184 + 1 = 0x185`. And after the sum, if it's equal with `0xdeadbeef` we will go into input function:
 
 ![input.png](images/input.png)
 
