@@ -246,6 +246,7 @@ while True:
 ```
 
 </p>
+</details>
 
 ![get_flag2.png](images/get_flag2.png)
 

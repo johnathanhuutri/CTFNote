@@ -95,6 +95,7 @@ def show():
 ```
 
 </p>
+</details>
 
 And now, let's start!
 
