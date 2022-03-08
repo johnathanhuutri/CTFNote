@@ -5,7 +5,7 @@
 
 # Writeup ([Table of content](#table-of-content))
 
-Pragyan CTF 2022
+[Pragyan CTF 2022](https://ctftime.org/event/1591)
 | Name | Type | File Type | Bug | Technique | Note |
 | :---: | :---: | :---: | :---: | :---: | :---: |
 | [Poly-Flow](https://github.com/nhtri2003gmail/CTFNote/tree/master/writeup/2022/Pragyan-CTF-2022/PolyFlow) | pwn | c (32 bit) | `Buffer Overflow` |  |  |
@@ -14,8 +14,7 @@ Pragyan CTF 2022
 | [Comeback](https://github.com/nhtri2003gmail/CTFNote/tree/master/writeup/2022/Pragyan-CTF-2022/comeback) | pwn | c (32 bit) | `Buffer Overflow` |  |  |
 | [TBBT](https://github.com/nhtri2003gmail/CTFNote/tree/master/writeup/2022/Pragyan-CTF-2022/TBBT) | pwn | c (32 bit) | `Format String` | `Overwrite GOT` |  |
 
-TSJ CTF 2022
-
+[TSJ CTF 2022](https://ctftime.org/event/1547)
 | Name | Type | File Type | Bug | Technique | Note |
 | :---: | :---: | :---: | :---: | :---: | :---: |
 | [bacteria](https://github.com/nhtri2003gmail/CTFNote/tree/master/writeup/2022/TSJ-CTF-2022/bacteria) | pwn | c (64 bit) | `Buffer Overflow` | `Ret2dlresolve` | r_offset can be any writable and controllable place, don't need to be @got |
