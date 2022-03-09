@@ -43,7 +43,7 @@ First is the main() function. We can see that there are 3 subfunction: `Add Page
 
 With the first option `Add Page`, we can add upto 20 chunk with number from 0 to 20, then malloc() with the size we want because there is no check for the size. After that, we will input data to the chuck with fgets():
 
-![add_page.png](images)
+![add_page.png](images/add_page.png)
 
 The second option is `Show Page`, which first check if the pointer to chunk is removed or exist in global var `note`. If exist, print data of that chunk out with `puts()` (`puts()` will end at null byte).
 
