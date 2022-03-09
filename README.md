@@ -5,6 +5,11 @@
 
 # Writeup ([Table of content](#table-of-content))
 
+[FooBar CTF 2022](https://ctftime.org/event/1579)
+| Name | Type | File Type | Bug | Technique | Note |
+| :---: | :---: | :---: | :---: | :---: | :---: |
+| [Death-note](https://github.com/nhtri2003gmail/CTFNote/tree/master/writeup/2022/FooBar-CTF-2022/Death-note) | pwn | c (64 bit) | `Use After Free` | `Tcache Attack` `House of Botcake` | Tcache forward pointer changed in libc 2.32 ([source](https://elixir.bootlin.com/glibc/glibc-2.32/source/malloc/malloc.c#L2928)) |
+
 [Pragyan CTF 2022](https://ctftime.org/event/1591)
 | Name | Type | File Type | Bug | Technique | Note |
 | :---: | :---: | :---: | :---: | :---: | :---: |
