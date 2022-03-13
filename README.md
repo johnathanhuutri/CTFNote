@@ -132,23 +132,23 @@ import subprocess
 from pwn import *
 
 def GDB():
-        proc = subprocess.Popen(['ps', 'aux'], stdout=subprocess.PIPE)
-        ps = proc.stdout.read().split(b'\n')
-        pid = ''
-        for i in ps:
-                # Change the recognization here
-                if b'/home/bacteria/bacteria' in i and b'timeout' not in i:
-                        pid = i.split(b'  ')[1].decode()
+    proc = subprocess.Popen(['ps', 'aux'], stdout=subprocess.PIPE)
+    ps = proc.stdout.read().split(b'\n')
+    pid = ''
+    for i in ps:
+        # Change the recognization here
+        if b'/home/bacteria/bacteria' in i and b'timeout' not in i:
+            pid = i.split(b'  ')[1].decode()
 
-        # Change command here
-        command = '''
-        '''
-        with open('/tmp/command.gdb', 'wt') as f:
-                f.write(command)
+    # Change command here
+    command = '''
+    '''
+    with open('/tmp/command.gdb', 'wt') as f:
+        f.write(command)
 
-        # Need sudo permission
-        subprocess.Popen(['sudo', '/usr/bin/x-terminal-emulator', '--geometry', '960x1080+960+0', '-e', 'gdb', '-p', pid, '-x', '/tmp/command.gdb'])
-        input()         # input() to make program wait with gdb
+    # Need sudo permission
+    subprocess.Popen(['sudo', '/usr/bin/x-terminal-emulator', '--geometry', '960x1080+960+0', '-e', 'gdb', '-p', pid, '-x', '/tmp/command.gdb'])
+    input()     # input() to make program wait with gdb
 
 p = connect('127.0.0.1', 9487)
 GDB()
@@ -162,10 +162,12 @@ Using [x-terminal-emulator](https://www.systutorials.com/docs/linux/man/1-x-term
 import subprocess
 
 def GDB():
-        with open('/tmp/command.gdb', 'wt') as f:
-                f.write(command)
-        subprocess.Popen(['/usr/bin/x-terminal-emulator', '--geometry', '960x1080+960+0', '-e', 'gdb', '-p', str(p.pid), '-x', '/tmp/command.gdb'])
-        input()         # input() to make program wait with gdb
+    command = '''
+    '''
+    with open('/tmp/command.gdb', 'wt') as f:
+        f.write(command)
+    subprocess.Popen(['/usr/bin/x-terminal-emulator', '--geometry', '960x1080+960+0', '-e', 'gdb', '-p', str(p.pid), '-x', '/tmp/command.gdb'])
+    input()         # input() to make program wait with gdb
 ```
 
 #### pwntools  
