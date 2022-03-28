@@ -8,7 +8,7 @@
 [Wolverine Security Conference/CTF](https://ctftime.org/event/1612)
 | Name | File Type | Bug | Technique | Note |
 | :---: | :---: | :---: | :---: | :---: |
-| [Us3_th3_F0rc3](https://github.com/nhtri2003gmail/CTFNote/tree/master/writeup/2022/Wolverine-Security-Conference-CTF/Us3_th3_F0rc3) | c (64 bit) | `Heap Overflow` | `House of Force` | :---: |
+| [Us3_th3_F0rc3](https://github.com/nhtri2003gmail/CTFNote/tree/master/writeup/2022/Wolverine-Security-Conference-CTF/Us3_th3_F0rc3) | c (64 bit) | `Heap Overflow` | `House of Force` |  |
 
 [zer0pts CTF 2022](https://ctftime.org/event/1555)
 | Name | File Type | Bug | Technique | Note |
