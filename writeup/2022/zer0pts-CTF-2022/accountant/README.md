@@ -270,7 +270,7 @@ Check with the current address:
 
 ![disas-main-gdb.png](images/disas-main-gdb.png)
 
-And we know it's correct. But the leak address is just lucky, it might sometimes be wrong (I realize if the result is negative, the leak address after bruteforce is almost correct).
+And we know it's correct. But the leak address is got by luck, it might sometimes be wrong (I realize if the result is negative, the leak address after bruteforce is almost correct).
 
 With the leak address, we can calculate the exe base address. Let's get the offset between the leak address and the base. First, we run command `vmmap` or `info proc map` to get the exe base address:
 
