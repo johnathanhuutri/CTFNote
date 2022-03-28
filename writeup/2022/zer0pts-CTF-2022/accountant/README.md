@@ -238,7 +238,7 @@ The idea for bruteforcing is:
 1. Bruteforce 2 first bytes of the result which is lost when converted from 64-bit to 32-bit --> new_result
 2. Take new_result divide with x which run from `0x5555` to `0x56ff`. After the division:
     - If it returns an integer number, compare that number with 5 last number with `00b6c`, if equal --> maybe the correct address
-    - If not an integer number, continue
+    - If not an integer number, skip that num
 
 The idea can be transfer to python script as following:
 
