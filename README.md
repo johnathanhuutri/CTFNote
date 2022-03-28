@@ -9,6 +9,7 @@
 | Name | File Type | Bug | Technique | Note |
 | :---: | :---: | :---: | :---: | :---: |
 | [Modern Rome](https://github.com/nhtri2003gmail/CTFNote/tree/master/writeup/2022/zer0pts-CTF-2022/Modern-Rome) | c++ (64 bit) | `Integer Overflow` |  |  |
+| [accountant](https://github.com/nhtri2003gmail/CTFNote/tree/master/writeup/2022/zer0pts-CTF-2022/accountant) | c (64 bit) | `Integer Overflow` | `ret2libc` | If register (rax, rbx, rcx...) contain `0x10000000000000000` (9 bytes in total), the most significant byte will be remove (the 0x1 will be remove) and make register to null again |
 
 [FooBar CTF 2022](https://ctftime.org/event/1579)
 | Name | Type | File Type | Bug | Technique | Note |
