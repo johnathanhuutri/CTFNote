@@ -101,33 +101,49 @@
 | Name | Note |
 | :---: | :--- |
 | [ret2dlresolve (64 bit)](https://github.com/nhtri2003gmail/CTFNote/tree/master/technique/ret2dlresolve-64bit) | Just input, no output and no output function |
-| Heap Exploit | :--- |
+| Heap Exploit |  |
 
 # Note ([Table of content](#table-of-content))
 
-#### Execute @plt on stack (BOF):
+### Execute @plt on stack (BOF):
+
+- 32 bit:
 ```
-payload = <padding> + <@plt> + <return address> + <arg1> + <arg2>...
+payload = b'A'*<x>        # Padding
+payload += p32(<@plt> / libc.sym['<function name>'])
+payload += p32(<return address>)
+payload += p32(<arg1>)
+payload += p32(<arg2>)
+...
 ```
 
-#### Docker outline
+- 64 bit:
+```
+payload = b'A'*<x>             # Padding
+payload += p64(pop_rdi)
+payload += p64(<arg1>)
+payload += p64(pop_rsi_r15)
+payload += p64(<arg2>)
+payload += p64(<any byte>)
+payload += p64(@plt / libc.sym['<function name>'])
+payload += p32(<return address>)
+```
 
-- [Install docker on parrot](https://stackoverflow.com/questions/57025264/installing-docker-on-parrot-os):
+---
+
+### Docker outline
+
+Install [docker](https://stackoverflow.com/questions/57025264/installing-docker-on-parrot-os) on parrot:
 
 ```
 sudo apt install docker.io
 ```
 
-- Install [docker-compose](https://docs.docker.com/compose/install/) for convinient command
+Install [docker-compose](https://docs.docker.com/compose/install/) for convinient command
 
-- Commands:
+---
 
-```
-docker-compose build    # Build dockerfile to images
-docker-compose up       # Run container
-```
-
-#### Attach GDB to running process in docker
+### Attach GDB to running process in docker
 
 To debug a process from docker, add this YAML code to docker-compose.yml, the same wilth `expose` ([source](https://stackoverflow.com/questions/42029834/gdb-in-docker-container-returns-ptrace-operation-not-permitted)):
 
@@ -165,7 +181,9 @@ p = connect('127.0.0.1', 9487)
 GDB()
 ```
 
-#### Another version for gdb.attach()
+---
+
+### Another version for gdb.attach()
 
 Using [x-terminal-emulator](https://www.systutorials.com/docs/linux/man/1-x-terminal-emulator/) to create popup shell and pass command in a file:
 
@@ -181,7 +199,9 @@ def GDB():
     input()         # input() to make program wait with gdb
 ```
 
-#### pwntools  
+---
+
+### pwntools  
 
 - Get child pid (way 1): 
 ```
@@ -211,8 +231,6 @@ print(p.pid)
 
 - ARGS:
 
-run.py:
-
 ```
 from pwn import *
 
@@ -220,14 +238,9 @@ from pwn import *
 print(args.MYNAME)
 print(args.MYAGE)
 ```
+--> `python run.py MYNAME=Johnathan MYAGE=20`
 
-Command:
-
-```
-python run.py MYNAME=Johnathan MYAGE=20
-```
-
-- [Core File:](https://docs.pwntools.com/en/stable/elf/corefile.html)
+- [Core](https://docs.pwntools.com/en/stable/elf/corefile.html) file:
 
 ```
 from pwn import *
@@ -247,31 +260,34 @@ print(core.read(<some address>, <number of byte read>))     # Return byte
 print(core.string(<some address>))
 ```
 
-#### Get shellcode from binary
+---
 
-Reference Source: https://www.commandlinefu.com/commands/view/6051/get-all-shellcode-on-binary-file-from-objdump
+### Get [opcode](https://www.commandlinefu.com/commands/view/6051/get-all-shellcode-on-binary-file-from-objdump) from binary
 
 ```
 objdump -d <Name of program>|grep '[0-9a-f]:'|grep -v 'file'|cut -f2 -d:|cut -f1-6 -d' '|tr -s ' '|tr '\t' ' '|sed 's/\ $//g'|sed 's/\ /\\x/g'|paste -d '' -s |sed 's/^/"/'|sed 's/$/"/g'
 ```
 
-#### gdb
+---
+
+### gdb
 
 - `r < <()` can pass null byte, `r <<<$()` cannot.
 
 - `flag +/-ZERO` to set or remove flag.
 
-#### movaps xmm0,... 
+---
+
+### movaps xmm0,... 
 
 - rsp (esp) address must end with byte 0x00, 0x10, 0x20, 0x30... or it will cause error.</br>
 Ex: if rsp address end with 0xe8 --> segfault.
 
-#### format string 
+---
+
+### format string 
 
 - `%p%p%p%n` will write and access easily.
-
 - `%4$n` will write but cannot access.
-
 - Payload should have `%c` instead `%x` to make sure it write a byte, **not** a random byte on stack.
-
-- Enter `.` to `scanf()` with number format (`%d`, `%u`, `%ld`...) won't enter new value to var. 
+- Enter `.` to `scanf()` with number format (`%d`, `%u`, `%ld`...) won't enter new value to var.
