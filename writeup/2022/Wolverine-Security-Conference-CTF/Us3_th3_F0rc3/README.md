@@ -5,6 +5,7 @@ Original challenge link: https://ctf.wolvseccon.org/challenges#Us3_th3_F0rc3-49
 You can also download challenge file in my repo: [Us3_th3_F0rc3.tar.gz](Us3_th3_F0rc3.tar.gz)
 
 Download the tar file, extract it and let's start!
+
 # 1. Find bug
 
 First, we will use `file` and `checksec` to check for basic information:
