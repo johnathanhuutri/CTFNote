@@ -6,7 +6,7 @@
 # Writeup ([Table of content](#table-of-content))
 
 <details>
-<summary><p style="font-size:100px">By events</p></summary>
+<summary>By events</summary>
 
 <p>
 
