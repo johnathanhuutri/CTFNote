@@ -5,6 +5,11 @@
 
 # Writeup ([Table of content](#table-of-content))
 
+<details>
+<summary>By events</summary>
+
+<p>
+
 [Wolverine Security Conference/CTF](https://ctftime.org/event/1612)
 | Name | File Type | Bug | Technique | Note |
 | :---: | :---: | :---: | :---: | :---: |
@@ -34,7 +39,6 @@
 | Name | Type | File Type | Bug | Technique | Note |
 | :---: | :---: | :---: | :---: | :---: | :---: |
 | [bacteria](https://github.com/nhtri2003gmail/CTFNote/tree/master/writeup/2022/TSJ-CTF-2022/bacteria) | pwn | c (64 bit) | `Buffer Overflow` | `Ret2dlresolve` | r_offset can be any writable and controllable place, don't need to be @got |
-
 
 **https://mocsctf2022.mocsctf.com/challenges**
 
@@ -95,6 +99,9 @@
 | :---: | :---: | :---: | :---: |
 | [cache](https://github.com/nhtri2003gmail/CTFNote/tree/master/writeup/2022/DefCamp-CTF-2022/cache) | pwn | c (64 bit) | `Use After Free` `Double Free` `Tcache Attack` `Overwrite GOT` |
 | [blindsight](https://github.com/nhtri2003gmail/CTFNote/tree/master/writeup/2022/DefCamp-CTF-2022/blindsight) | pwn | c (64 bit) | `Blind ROP` `Buffer Overflow` |
+
+</p>
+</details>
 
 # Technique ([Table of content](#table-of-content))
 
