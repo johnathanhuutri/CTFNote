@@ -11,5 +11,5 @@ Table of content:
 
 ## Tcache
 
-***Double free***
+**__Double free__*
 - For libc <= 2.28
