@@ -11,5 +11,38 @@ Table of content:
 
 # Tcache
 
-**Double free*
-- For libc <= 2.28
+**Double free**
+- For libc <= 2.28, we just simply free() a chunk twice.
+- For libc > 2.28, there will be a key inserted to freed chunk when this chunk goes to tcache. To do a double free, we first free() a chunk, then change this key to another value and free() again:
+
+```bash
+-----------------------------------------
+| 0x0000000000000000 0x0000000000000031 |    <-- prev_size / size
+| 0x0000000000000000 0x0000000000000000 |
+| 0x0000000000000000 0x0000000000000000 |
+-----------------------------------------
+                    ↓
+                  free()
+                    ↓
+-----------------------------------------
+| 0x0000000000000000 0x0000000000000031 |    <-- prev_size  / size
+| 0x0000000000000000 0x000055555555b010 |    <-- Fw pointer / Bw pointer (key)
+| 0x0000000000000000 0x0000000000000000 |
+-----------------------------------------
+                    ↓
+          Change key (Bw pointer)
+                    ↓
+-----------------------------------------
+| 0x0000000000000000 0x0000000000000031 |    <-- prev_size  / size
+| 0x0000000000000000 0x0000000000000001 |    <-- Fw pointer / Bw pointer (key)
+| 0x0000000000000000 0x0000000000000000 |
+-----------------------------------------
+                    ↓
+               free() again
+                    ↓
+-----------------------------------------
+| 0x0000000000000000 0x0000000000000031 |    <-- prev_size  / size
+| 0x000055555555b260 0x000055555555b010 |    <-- Fw pointer / Bw pointer (key)
+| 0x0000000000000000 0x0000000000000000 |
+-----------------------------------------
+```
