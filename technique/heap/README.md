@@ -15,7 +15,7 @@ Table of content:
 - For libc <= 2.28, we just simply free() a chunk twice.
 - For libc > 2.28, there will be a key inserted to freed chunk when this chunk goes to tcache. To do a double free, we first free() a chunk, then change this key to another value and free() again:
 
-```bash
+```gdb
 -----------------------------------------
 | 0x0000000000000000 0x0000000000000031 |    <-- prev_size / size
 | 0x0000000000000000 0x0000000000000000 |
