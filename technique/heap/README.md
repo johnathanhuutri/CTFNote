@@ -12,8 +12,8 @@ Table of content:
 # Tcache
 
 ### Double free
-    - For libc <= 2.28, we just simply free() a chunk twice.
-    - For libc > 2.28, there will be a key inserted to freed chunk when this chunk goes to tcache. To do a double free, we first free() a chunk, then change the key (Bk pointer) to another value and free() again:
+- For libc <= 2.28, we just simply free() a chunk twice.
+- For libc > 2.28, there will be a key inserted to freed chunk when this chunk goes to tcache. To do a double free, we first free() a chunk, then change the key (Bk pointer) to another value and free() again:
 
 ```gdb
                malloc(0x20)
