@@ -150,8 +150,51 @@ Remember that the address of Chunk 1 is `0x55555555a2a0` and Chunk 2 is `0x55555
 </details>
 
 <details>
-<summary><h3>Create and free custom chunk</h3></summary>
+<summary><h3>Malloc and free custom chunk</h3></summary>
 <p>
-asdf
+
+We can create a fake chunk on stack or inside a large chunk and then free it easily. This script is an example:
+
+```c
+#include <stdlib.h>
+
+int main()
+{
+    // Init heap
+    malloc(1);
+
+    // Create fake chunk on stack
+    long int p1[10];
+    p1[0] = 0;       // prev_size
+    p1[1] = 0x21;    // size
+    p1[2] = 0;       // fw pointer
+    p1[3] = 0;       // bk pointer
+    free(&p1[2]);
+
+    // Create fake chunk inside a large chunk
+    long int *p2 = malloc(0x50);
+    p2[0] = 0;       // prev_size
+    p2[1] = 0x21;    // size
+    p2[2] = 0;       // fw pointer
+    p2[3] = 0;       // bk pointer
+    free(&p2[2]);
+}
+```
+
+The fake chunk on stack will look like this:
+```bash
+----------------------------------------------------------
+| 0x7fffffffde10: 0x0000000000000000  0x0000000000000021 |
+| 0x7fffffffde20: 0x0000000000000000  0x0000000000000000 |
+----------------------------------------------------------
+                            ↓
+                      free(&p1[2]);
+                            ↓
+----------------------------------------------------------
+| 0x7fffffffde10: 0x0000000000000000  0x0000000000000021 |
+| 0x7fffffffde20: 0x0000000000000000  0x0000555555559010 |
+----------------------------------------------------------
+```
+
 </p>
 </details>
