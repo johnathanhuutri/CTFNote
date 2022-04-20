@@ -184,16 +184,45 @@ int main()
 The fake chunk on stack will look like this:
 ```gdb
 ----------------------------------------------------------
-| 0x7fffffffde10: 0x0000000000000000  0x0000000000000021 |
-| 0x7fffffffde20: 0x0000000000000000  0x0000000000000000 |
+| 0x7fffffffde00: 0x0000000000000000  0x0000000000000021 |    <-- prev_size  / size
+| 0x7fffffffde10: 0x0000000000000000  0x0000000000000000 |    <-- fw pointer / bk pointer
 ----------------------------------------------------------
                             ↓
                       free(&p1[2]);
                             ↓
 ----------------------------------------------------------
-| 0x7fffffffde10: 0x0000000000000000  0x0000000000000021 |
-| 0x7fffffffde20: 0x0000000000000000  0x0000555555559010 |
+| 0x7fffffffde00: 0x0000000000000000  0x0000000000000021 |    <-- prev_size  / size
+| 0x7fffffffde10: 0x0000000000000000  0x0000555555559010 |    <-- fw pointer / bk pointer
 ----------------------------------------------------------
+```
+
+And the tcache will contain this freed chunk:
+
+```gdb
+Tcachebins[idx=0, size=0x20] count=1  ←  Chunk(addr=0x7fffffffde20, size=0x20, flags=PREV_INUSE)
+```
+
+That means we've freed a fake chunk on stack successfully. Let's keep going with the fake chunk inside a larger chunk:
+
+```gdb
+----------------------------------------------------------
+| 0x5555555592c0: 0x0000000000000000  0x0000000000000021 |    <-- prev_size  / size
+| 0x5555555592d0: 0x0000000000000000  0x0000000000000000 |    <-- fw pointer / bk pointer
+----------------------------------------------------------
+                            ↓
+                      free(&p2[2]);
+                            ↓
+----------------------------------------------------------
+| 0x5555555592c0: 0x0000000000000000  0x0000000000000021 |    <-- prev_size  / size
+| 0x5555555592d0: 0x00007fffffffde10  0x0000555555559010 |    <-- fw pointer / bk pointer
+----------------------------------------------------------
+```
+
+And the tcache list will contain 2 freed chunk whose size is `0x20`:
+
+```gdb
+Tcachebins[idx=0, size=0x20] count=2  ←  Chunk(addr=0x5555555592d0, size=0x20, flags=PREV_INUSE)  
+                                      ←  Chunk(addr=0x7fffffffde10, size=0x20, flags=PREV_INUSE)
 ```
 
 </p>
