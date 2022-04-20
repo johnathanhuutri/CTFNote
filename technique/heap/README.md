@@ -141,7 +141,7 @@ Remember that the address of Chunk 1 is `0x55555555a2a0` and Chunk 2 is `0x55555
 ---
 
 <details>
-<summary><strong>Create and free custom chunk</strong></summary>
+<summary><h3>Create and free custom chunk</h3></summary>
 <p>
 
 ```
