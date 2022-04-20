@@ -54,7 +54,6 @@ Table of content:
 
 </p>
 </details>
-
 <details>
 <summary><h3>Forward pointer</h3></summary>
 <p>
