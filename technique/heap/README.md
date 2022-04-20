@@ -237,9 +237,42 @@ Tcachebins[idx=0, size=0x20] count=2  ←  Chunk(addr=0x5555555592d0, size=0x20,
 
 To make a chunk goes into unsorted bin, there will be several checks. First, we need to make a chunk which has the size larger or equal to 0x420 so that when we free, it will go to unsorted bin.
 
-Because there will be several checks when freeing a chunk to make it go into unsorted bin so we will both write c script and analize the source code to know what should we do.
+Because there will be several checks when freeing a chunk to make it go into unsorted bin so we will both write c script and analize the source code to know what should we do (testing with libc-2.31.so).
 
-So just start as we did in [Tcache - Malloc and free custom chunk]
+So just start as we did in [Tcache - Malloc and free custom chunk](https://github.com/nhtri2003gmail/CTFNote/tree/master/technique/heap#malloc-and-free-custom-chunk):
+
+```c
+#include <stdlib.h>
+
+int main()
+{
+    long int *p = malloc(0x1000);
+    p[0] = 0;
+    p[1] = 0x421;
+    p[2] = 0;
+    p[3] = 0;
+    free(&p[2]);
+}
+```
+
+Compile and run, we get the first error `double free or corruption (!prev)`:
+
+![unsorted-bin-1.png](images/unsorted-bin-1.png)
+
+Let find the string from the source to know where we get this error from [this source](https://elixir.bootlin.com/glibc/glibc-2.31/source/malloc/malloc.c#L4317):
+
+```c
+static void _int_free(mstate av, mchunkptr p, int have_lock) {
+    ...
+    else if (!chunk_is_mmapped(p)) {
+        ...
+        nextchunk = chunk_at_offset(p, size);
+        ...
+        if (__glibc_unlikely(!prev_inuse(nextchunk)))
+            malloc_printerr("double free or corruption (!prev)");
+        ...
+    }
+```
 
 </p>
 </details>
