@@ -54,10 +54,10 @@ Table of content:
 
 </p>
 </details>
+
 <details>
 <summary><h3>Forward pointer</h3></summary>
 <p>
-
 - For libc <= 2.31, when we free a chunk and it goes to tcache, the forward pointer of this chunk will be changed into the address of the next chunk if this next chunk exist and will be null if there is no next chunk:
 
 ```gdb
@@ -144,27 +144,12 @@ So the `Fw pointer` for Chunk 2 can be calculate as:
 Chunk 1 was the previous freed chunk which has the same size as Chunk 2 so after we freed Chunk 1, we freed Chunk 2 next and the forward pointer will be `0x55500000f7fa` due to the xor mechanism.
 
 Remember that the address of Chunk 1 is `0x55555555a2a0` and Chunk 2 is `0x55555555a2d0`, not include the metadata of each chunk.
-
 </p>
 </details>
 
 <details>
 <summary><h3>Create and free custom chunk</h3></summary>
 <p>
-
-```
-abcd
-
-asf
-da
-sd
-f
-ads
-```
-
-asdfasdf
-
-qwerqwer
-
+asdf
 </p>
 </details>
