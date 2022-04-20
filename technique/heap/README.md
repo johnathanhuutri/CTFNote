@@ -8,6 +8,7 @@ This post is just about all small stuffs and things I want to note. For a full t
 
 Table of content:
 - Tcache
+- Unsorted Bin
 
 # Tcache
 
@@ -77,7 +78,7 @@ We can see that after free Chunk 1, it will go to tcache. But because there are 
 
 For the Chunk 2, because we've freed the Chunk 1 and this Chunk 2 has the same size as `0x30` with Chunk 1, so when we free Chunk 2, it will go to tcache and make the `Fw pointer` point to Chunk 1.
 
-- For libc > 2.31, there is a xor mechanism added to change the behaviour of `Fw pointer`:
+- For libc > 2.31, there is a xor mechanism added to change the behaviour of `Fw pointer` ([source](https://elixir.bootlin.com/glibc/glibc-2.32/source/malloc/malloc.c#L339)):
 
 ```c
 #define PROTECT_PTR(pos, ptr) \
@@ -224,6 +225,21 @@ And the tcache list will contain 2 freed chunk whose size is `0x20`:
 Tcachebins[idx=0, size=0x20] count=2  ←  Chunk(addr=0x5555555592d0, size=0x20, flags=PREV_INUSE)  
                                       ←  Chunk(addr=0x7fffffffde10, size=0x20, flags=PREV_INUSE)
 ```
+
+</p>
+</details>
+
+# Unsorted Bin
+
+<details>
+<summary><h3>Malloc and free custom chunk</h3></summary>
+<p>
+
+To make a chunk goes into unsorted bin, there will be several checks. First, we need to make a chunk which has the size larger or equal to 0x420 so that when we free, it will go to unsorted bin.
+
+Because there will be several checks when freeing a chunk to make it go into unsorted bin so we will both write c script and analize the source code to know what should we do.
+
+So just start as we did in [Tcache - Malloc and free custom chunk]
 
 </p>
 </details>
