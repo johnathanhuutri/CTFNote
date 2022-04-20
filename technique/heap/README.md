@@ -11,7 +11,7 @@ Table of content:
 
 # Tcache
 
-**Double free**
+### Double free
 - For libc <= 2.28, we just simply free() a chunk twice.
 - For libc > 2.28, there will be a key inserted to freed chunk when this chunk goes to tcache. To do a double free, we first free() a chunk, then change the key (Bk pointer) to another value and free() again:
 
@@ -49,7 +49,7 @@ Table of content:
 -----------------------------------------
 ```
 
-**Forward pointer**
+### Forward pointer
 - For libc <= 2.31, when we free a chunk and it goes to tcache, the forward pointer of this chunk will be changed into the address of the next chunk if this next chunk exist and will be null if there is no next chunk:
 
 ```gdb
