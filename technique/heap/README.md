@@ -58,6 +58,7 @@ Table of content:
 <details>
 <summary><h3>Forward pointer</h3></summary>
 <p>
+  
 - For libc <= 2.31, when we free a chunk and it goes to tcache, the forward pointer of this chunk will be changed into the address of the next chunk if this next chunk exist and will be null if there is no next chunk:
 
 ```gdb
