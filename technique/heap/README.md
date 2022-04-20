@@ -11,7 +11,10 @@ Table of content:
 
 # Tcache
 
-### Double free
+<details>
+<summary><h3>Double free</h3></summary>
+<p>
+
 - For libc <= 2.28, we just simply free() a chunk twice.
 - For libc > 2.28, there will be a key inserted to freed chunk when this chunk goes to tcache. To do a double free, we first free() a chunk, then change the key (Bk pointer) to another value and free() again:
 
@@ -48,6 +51,9 @@ Table of content:
 | 0x0000000000000000 0x0000000000000000 |
 -----------------------------------------
 ```
+
+</p>
+</details>
 
 <details>
 <summary><h3>Forward pointer</h3></summary>
@@ -142,9 +148,6 @@ Remember that the address of Chunk 1 is `0x55555555a2a0` and Chunk 2 is `0x55555
 
 </p>
 </details>
-
-<!-- ###  -->
----
 
 <details>
 <summary><h3>Create and free custom chunk</h3></summary>
