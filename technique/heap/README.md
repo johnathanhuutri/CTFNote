@@ -242,6 +242,7 @@ Because there will be several checks when freeing a chunk to make it go into uns
 So just start as we did in [Tcache - Malloc and free custom chunk](https://github.com/nhtri2003gmail/CTFNote/tree/master/technique/heap#malloc-and-free-custom-chunk):
 
 ```c
+// Code 1
 #include <stdlib.h>
 
 int main()
@@ -259,7 +260,7 @@ Compile and run, we get the first error `double free or corruption (!prev)`:
 
 ![unsorted-bin-1.png](images/unsorted-bin-1.png)
 
-Let find the string from the source to know where we get this error from [this source](https://elixir.bootlin.com/glibc/glibc-2.31/source/malloc/malloc.c#L4317):
+Let find the string from the function `_int_free` in source to know where we get this error from [this source](https://elixir.bootlin.com/glibc/glibc-2.31/source/malloc/malloc.c#L4317):
 
 ```c
 static void _int_free(mstate av, mchunkptr p, int have_lock) {
@@ -273,6 +274,223 @@ static void _int_free(mstate av, mchunkptr p, int have_lock) {
         ...
     }
 ```
+
+So this will check if the next chunk has the bit PREV_INUSE is set or not. To pass this check, we will add another fake chunk after the first 0x420-byte chunk with the bit PREV_INUSE set:
+
+```c
+// Code 2
+#include <stdlib.h>
+
+int main()
+{
+    long int *p = malloc(0x1000);
+    p[0] = 0;
+    p[1] = 0x421;
+    p[2] = 0;
+    p[3] = 0;
+    p[(0x420/8) + 1] = 0x21;
+    free(&p[2]);
+}
+```
+
+Index from `0x420/8` will be the position of prev_size of next chunk, so we add 1 to make it point to size of next chunk and add `0x21` which has the bit PREV_INUSE set. Compile and run script again, we get pass the first error but get the second error `corrupted size vs. prev_size`:
+
+![unsorted-bin-2.png](images/unsorted-bin-2.png)
+
+For this error, we can find this string in function `unlink_chunk()` in source [here](https://elixir.bootlin.com/glibc/glibc-2.31/source/malloc/malloc.c#L1454):
+
+```c
+static void unlink_chunk (mstate av, mchunkptr p)
+{
+    if (chunksize (p) != prev_size (next_chunk (p)))
+        malloc_printerr ("corrupted size vs. prev_size");
+    ...
+```
+
+But when debug with gdb, we can see that it execute `_int_free` and do something, then jump to `unlink_chunk`. We will try to solve the problem when it's still in `_int_free` so that it will not jump to `unlink_chunk`. Having the source of `_int_free`, we can see that it call `unlink_chunk` twice. The first one is for consolidation:
+
+```c
+if (!prev_inuse(p)) {
+    prevsize = prev_size(p);
+    size += prevsize;
+    p = chunk_at_offset(p, -((long) prevsize));
+    if (__glibc_unlikely(chunksize(p) != prevsize))
+        malloc_printerr("corrupted size vs. prev_size while consolidating");
+    unlink_chunk(av, p);
+}
+```
+
+And the second one is for checking if the next chunk (from our fake chunk being freed) is the correct next chunk as the program created:
+
+```c
+if (nextchunk != av -> top) {
+    /* get and clear inuse bit */
+    nextinuse = inuse_bit_at_offset(nextchunk, nextsize);
+
+    /* consolidate forward */
+    if (!nextinuse) {
+        unlink_chunk(av, nextchunk);
+        size += nextsize;
+    } else
+        clear_inuse_bit_at_offset(nextchunk, 0);
+    ...
+```
+
+For a better view, let's debug in gdb, set breakpoint at the check `if (nextchunk != av -> top)`:
+
+```gdb
+gef➤  disas _int_free
+   ...
+   0x00007ffff7e71b1d <+509>: cmp    QWORD PTR [rbp+0x60],r13
+   0x00007ffff7e71b21 <+513>: je     0x7ffff7e71f00 <_int_free+1504>
+   0x00007ffff7e71b27 <+519>: test   BYTE PTR [r13+r14*1+0x8],0x1
+   0x00007ffff7e71b2d <+525>: je     0x7ffff7e71f70 <_int_free+1616>
+   ...
+   0x00007ffff7e71f70 <+1616>:  mov    rdi,r13
+   0x00007ffff7e71f73 <+1619>:  add    rbx,r14
+   0x00007ffff7e71f76 <+1622>:  call   0x7ffff7e716f0 <unlink_chunk>
+   ...
+gef➤  b*0x00007ffff7e71b1d  
+Breakpoint 1 at 0x7ffff7e71b27: file malloc.c, line 4341.
+```
+
+If you ask me how to find this check, I will tell you that I use grep to find `1616` and I got the address where it jump to. And before the jump if equal will be the check so let's set breakpoint at `0x00007ffff7e71b1d`. Make it continue running and when it hit the breakpoint, let's check the address between `nextchunk` and `av -> top`:
+
+```gdb
+gef➤  x/i $rip
+=> 0x7ffff7e71b1d <_int_free+509>:  cmp    QWORD PTR [rbp+0x60],r13
+
+gef➤  x/xg $rbp+0x60
+0x7ffff7fa9be0 <main_arena+96>: 0x000055555555a2a0
+
+gef➤  p/x $r13
+$1 = 0x5555555596c0
+
+gef➤  heap chunks
+Chunk(addr=0x555555559010, size=0x290, flags=PREV_INUSE)
+    [0x0000555555559010     00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00    ................]
+Chunk(addr=0x5555555592a0, size=0x1010, flags=PREV_INUSE)
+    [0x00005555555592a0     00 00 00 00 00 00 00 00 21 04 00 00 00 00 00 00    ........!.......]
+Chunk(addr=0x55555555a2b0, size=0x1fd60, flags=PREV_INUSE)
+    [0x000055555555a2b0     00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00    ................]
+Chunk(addr=0x55555555a2b0, size=0x1fd60, flags=PREV_INUSE)  ←  top chunk
+
+gef➤  x/4xg 0x5555555596c0
+0x5555555596c0: 0x0000000000000000  0x0000000000000021
+0x5555555596d0: 0x0000000000000000  0x0000000000000000
+
+gef➤  x/4xg 0x000055555555a2a0
+0x55555555a2a0: 0x0000000000000000  0x000000000001fd61
+0x55555555a2b0: 0x0000000000000000  0x0000000000000000
+```
+
+So we know that the chunk at `0x5555555596c0` is the next chunk of current fake chunk being freed, while chunk at `0x000055555555a2a0` is the chunk from system and in this case, it's the top chunk. These 2 address are not the same so the code inside `if (nextchunk != av -> top)` will be executed. 
+
+To solve this problem, there are 2 ways for us. One is to change the size of the fake chunk to make `<address of current fake chunk> + <size> = <address of next chunk of system>`. So that we will need to malloc a small chunk before free our fake chunk in order not to make our fake chunk consolidate with top chunk:
+
+```c
+#include <stdlib.h>
+
+int main()
+{
+    long int *p = malloc(0x1000);
+    malloc(0x10);
+    p[0] = 0;
+    p[1] = 0x1001;
+    p[2] = 0;
+    p[3] = 0;
+    free(&p[2]);
+}
+```
+
+The second way is to continue with the code inside if (continue with the code 2, not the solve code from way 1). Still with the breakpoint at `0x00007ffff7e71b1d`, we continue debuging and stop at the command `nextinuse = inuse_bit_at_offset(nextchunk, nextsize);`. The function `inuse_bit_at_offset` is just a macro so in gdb, it look like this (as disassemble code above):
+
+```gdb
+gef➤  disas _int_free
+   ...
+   0x7ffff7e71b27 <_int_free+519>:  test   BYTE PTR [r13+r14*1+0x8],0x1
+   0x7ffff7e71b2d <_int_free+525>:  je     0x7ffff7e71f70 <_int_free+1616>
+   ...
+```
+
+This code will check if the bit PREV_INUSE of the next next chunk from our fake chunk is set or not, which means:
+
+```
+| Fake chunk being freed |
+--------------------------
+|      Fake chunk 1      |
+--------------------------
+|      Fake chunk 2      |
+```
+
+It will check if the bit PREV_INUSE in size of Fake chunk 2 is set or not. If that bit is not set, it will go to `unlink_chunk` and everything might be harder to solve. So we just simply add the Fake chunk 2 with the bit PREV_INUSE set and the problem is solved:
+
+```c
+#include <stdlib.h>
+
+int main()
+{
+  long int *p = malloc(0x1000);
+  p[0] = 0;
+  p[1] = 0x421;
+  p[2] = 0;
+  p[3] = 0;
+  p[(0x420/8) + 1] = 0x21;
+  p[(0x420/8) + (0x20/8) + 1] = 0x31;
+  free(&p[2]);
+}
+```
+
+So all of our fake chunks will look like this:
+
+```gdb
+------------------------ Real chunk ----------------------
+| 0x555555559290: 0x0000000000000000  0x0000000000001011 |
+------------------------ Fake chunk ----------------------
+| 0x5555555592a0: 0x0000000000000000  0x0000000000000421 |
+| 0x5555555592b0: 0x00007ffff7fa9be0  0x00007ffff7fa9be0 |
+| 0x5555555592c0: 0x0000000000000000  0x0000000000000000 |
+| ...                                                    |
+| 0x5555555596c0: 0x0000000000000000  0x0000000000000021 |
+| 0x5555555596d0: 0x0000000000000000  0x0000000000000000 |
+| 0x5555555596e0: 0x0000000000000000  0x0000000000000031 |
+| 0x5555555596f0: 0x0000000000000000  0x0000000000000000 |
+| 0x555555559700: 0x0000000000000000  0x0000000000000000 |
+------------------------ Fake chunk ----------------------
+| 0x555555559710: 0x0000000000000000  0x0000000000000000 |
+| 0x555555559720: 0x0000000000000000  0x0000000000000000 |
+| ...                                                    |
+------------------------ Real chunk ----------------------
+                            ↓
+                       free(&p[2]);
+                            ↓
+------------------------ Real chunk ----------------------
+| 0x555555559290: 0x0000000000000000  0x0000000000001011 |
+------------------------ Fake chunk ----------------------
+| 0x5555555592a0: 0x0000000000000000  0x0000000000000421 |
+| 0x5555555592b0: 0x00007ffff7fa9be0  0x00007ffff7fa9be0 |
+| 0x5555555592c0: 0x0000000000000000  0x0000000000000000 |
+| ...                                                    |
+| 0x5555555596c0: 0x0000000000000000  0x0000000000000021 |
+| 0x5555555596d0: 0x0000000000000000  0x0000000000000000 |
+| 0x5555555596e0: 0x0000000000000000  0x0000000000000031 |
+| 0x5555555596f0: 0x0000000000000000  0x0000000000000000 |
+| 0x555555559700: 0x0000000000000000  0x0000000000000000 |
+------------------------ Fake chunk ----------------------
+| 0x555555559710: 0x0000000000000000  0x0000000000000000 |
+| 0x555555559720: 0x0000000000000000  0x0000000000000000 |
+| ...                                                    |
+------------------------ Real chunk ----------------------
+```
+
+</p>
+</details>
+
+<details>
+<summary><h3>Consolidation</h3></summary>
+<p>
+
+
 
 </p>
 </details>
