@@ -14,7 +14,7 @@ This post is just about all small stuffs and things I want to note. For a full t
 # Tcache
 
 <details>
-<summary><h3>Double free ([Table of content](https://github.com/nhtri2003gmail/CTFNote/tree/master/technique/heap#table-of-content))</h3></summary>
+<summary><h3>Double free <a href="#table-of-content">Table of content</a></h3></summary>
 <p>
 
 - For libc <= 2.28, we just simply free() a chunk twice.
