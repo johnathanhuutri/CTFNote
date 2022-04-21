@@ -432,14 +432,14 @@ It will check if the bit PREV_INUSE in size of Fake chunk 2 is set or not. If th
 
 int main()
 {
-  long int *p = malloc(0x1000);
-  p[0] = 0;
-  p[1] = 0x421;
-  p[2] = 0;
-  p[3] = 0;
-  p[(0x420/8) + 1] = 0x21;
-  p[(0x420/8) + (0x20/8) + 1] = 0x31;
-  free(&p[2]);
+    long int *p = malloc(0x1000);
+    p[0] = 0;
+    p[1] = 0x421;
+    p[2] = 0;
+    p[3] = 0;
+    p[(0x420/8) + 1] = 0x21;
+    p[(0x420/8) + (0x20/8) + 1] = 0x31;
+    free(&p[2]);
 }
 ```
 
@@ -675,16 +675,16 @@ Because we did't fake `p -> fd` and `p -> bk` for Fake chunk 1 so when it assign
 
 int main()
 {
-  long int *p = malloc(0x1000);
-  p[0] = 0;
-  p[1] = 0x421;
-  p[2] = 0;
-  p[3] = 0;
-  p[(0x420/8) + 1] = 0x21;
-  p[(0x420/8) + 2] = (long int)&p[(0x420/8)];
-  p[(0x420/8) + 3] = (long int)&p[(0x420/8)];
-  p[(0x420/8) + (0x20/8)] = 0x20;
-  free(&p[2]);
+    long int *p = malloc(0x1000);
+    p[0] = 0;
+    p[1] = 0x421;
+    p[2] = 0;
+    p[3] = 0;
+    p[(0x420/8) + 1] = 0x21;
+    p[(0x420/8) + 2] = (long int)&p[(0x420/8)];
+    p[(0x420/8) + 3] = (long int)&p[(0x420/8)];
+    p[(0x420/8) + (0x20/8)] = 0x20;
+    free(&p[2]);
 }
 ```
 
@@ -768,9 +768,109 @@ int main()
 
     p2[-1] = 0x430;
 
-    free(p1);
+    free(p2);
 }
 ```
+
+As expected, we get the error `corrupted size vs. prev_size while consolidating`:
+
+![unsorted-bin-5.png](images/unsorted-bin-5.png)
+
+Let's disassembly to see where is the check:
+
+```gdb
+gef➤  disas _int_free
+   ...
+=> 0x00007ffff7e71af1 <+465>: test   BYTE PTR [r12+0x8],0x1
+   0x00007ffff7e71af7 <+471>: jne    0x7ffff7e71b1d <_int_free+509>
+   0x00007ffff7e71af9 <+473>: mov    rax,QWORD PTR [r12]
+   0x00007ffff7e71afd <+477>: sub    r12,rax
+   0x00007ffff7e71b00 <+480>: add    rbx,rax
+   0x00007ffff7e71b03 <+483>: mov    rdx,QWORD PTR [r12+0x8]
+   0x00007ffff7e71b08 <+488>: and    rdx,0xfffffffffffffff8
+   0x00007ffff7e71b0c <+492>: cmp    rdx,rax
+   0x00007ffff7e71b0f <+495>: jne    0x7ffff7e72122 <_int_free+2050>
+   ...
+   0x00007ffff7e72122 <+2050>:  lea    rdi,[rip+0x108157]        # 0x7ffff7f7a280
+   0x00007ffff7e72129 <+2057>:  call   0x7ffff7e70a40 <malloc_printerr>
+   ...
+
+gef➤  b*0x00007ffff7e71af1
+Breakpoint 1 at 0x7ffff7e71af1: file malloc.c, line 4327.
+```
+
+So let's type `ni` to check what will it check. We know that if prev_size is different from null, it will subtract the current chunk to move to the previous chunk and compare the size of previous chunk with the prev_size of current chunk.
+
+We want to make a chunk overlap `p1` so we will create a fake chunk inside `p0` and set the prev_size of `p2` to pass the check:
+
+```c
+#include <stdlib.h>
+
+int main()
+{
+    long int *p0 = malloc(0x420);
+    long int *p1 = malloc(0x20);
+    long int *p2 = malloc(0x420);
+    malloc(0x10);
+
+    p0[0] = 0;
+    p0[1] = 0x450;
+    p0[2] = 0;
+    p0[3] = 0;
+
+    p2[-2] = 0x450;
+    p2[-1] = 0x430;
+
+    free(p2);
+}
+```
+
+Our fake chunk insize `p0` will have size of 0x450 because size of `p0` is `0x430` but the fake chunk start from `p0[0]`, the content of chunk, not the metadata so the actual size is `0x420`, and the size of `p1` is `0x30` so `0x420 + 0x30 = 0x450`.
+
+So the size of fake chunk is `0x450`, we will also write this size into prev_size of `p2` to bypass the check. Compile and run again, we get a segfault. Again, as we've done with the consolidation with next chunk in [unlink_chunk](https://elixir.bootlin.com/glibc/glibc-2.31/source/malloc/malloc.c#L1451), the code make it segfault is:
+
+```c
+static void unlink_chunk(mstate av, mchunkptr p) {
+    if (chunksize(p) != prev_size(next_chunk(p)))
+        malloc_printerr("corrupted size vs. prev_size");
+
+    mchunkptr fd = p -> fd;
+    mchunkptr bk = p -> bk;
+
+    if (__builtin_expect(fd -> bk != p || bk -> fd != p, 0))
+        malloc_printerr("corrupted double-linked list");
+    ...
+```
+
+We didn't set `p -> fd` and `p -> bk`, hence both `fd` and `bk` is null. Getting `fd -> bk` will make invalid address so we get segfault. To solve this, just simply add the address of the fake chunk to `p -> fd` and `p -> bk` and the problem is solved:
+
+```c
+#include <stdlib.h>
+
+int main()
+{
+    long int *p0 = malloc(0x420);
+    long int *p1 = malloc(0x20);
+    long int *p2 = malloc(0x420);
+    malloc(0x10);
+
+    p0[0] = 0;
+    p0[1] = 0x450;
+    p0[2] = &p0[0];
+    p0[3] = &p0[0];
+
+    p2[-2] = 0x450;
+    p2[-1] = 0x430;
+
+    free(p2);
+}
+```
+
+Compile and run script, after `p2` is freed, `p2` will be consolidated with fake chunk and go into unsorted bin, which overlap `p1`:
+
+![unsorted-bin-6.png](images/unsorted-bin-6.png)
+
+> Fact: You can find this technique in `House of Einherjar`
 
 </p>
 </details>
