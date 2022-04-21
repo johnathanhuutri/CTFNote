@@ -114,7 +114,7 @@
 
 | Name | Note |
 | :---: | :--- |
-| [ret2dlresolve (64 bit)](https://github.com/nhtri2003gmail/CTFNote/tree/master/technique/ret2dlresolve-64bit) | Just input, no output and no output function |
+| [Ret2dlresolve (64 bit)](https://github.com/nhtri2003gmail/CTFNote/tree/master/technique/Ret2dlresolve-64bit) | Just input, no output and no output function |
 | [Heap Exploit](https://github.com/nhtri2003gmail/CTFNote/tree/master/technique/Heap-Exploitation) | Just notes. For a full technique, please visit [this page](https://github.com/shellphish/how2heap) |
 
 # Note ([Table of content](#table-of-content))
