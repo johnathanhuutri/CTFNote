@@ -9,11 +9,11 @@ This post is just about all small stuffs and things I want to note. For a full t
 #### Table of content:
 - [Tcache](https://github.com/nhtri2003gmail/CTFNote/tree/master/technique/heap#tcache)
     - [Double free](#double-free-table-of-content)
-    - Forward pointer
-    - Malloc and free custom chunk
+    - [Forward pointer](#forward-pointer-table-of-content)
+    - [Malloc and free custom chunk](#malloc-and-free-custom-chunk-table-of-content)
 - [Unsorted Bin](https://github.com/nhtri2003gmail/CTFNote/tree/master/technique/heap#unsorted-bin)
-    - Malloc and free custom chunk
-    - Consolidation
+    - [Malloc and free custom chunk](#malloc-and-free-custom-chunk-table-of-content-1)
+    - [Consolidation](#consolidation-table-of-content)
 
 # Tcache
 
