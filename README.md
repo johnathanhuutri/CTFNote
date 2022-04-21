@@ -5,8 +5,15 @@
 
 # Writeup ([Table of content](#table-of-content))
 
+<!-- <details>
+<summary>By type</summary>
+<p>
+    
+</p>
+</details> -->
+
 <details>
-<summary>By events</summary>
+<summary>By event</summary>
 
 <p>
 
