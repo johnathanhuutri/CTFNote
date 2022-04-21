@@ -32,7 +32,7 @@ Table of content:
                     ↓
 -----------------------------------------
 | 0x0000000000000000 0x0000000000000031 |    <-- prev_size  / size
-| 0x0000000000000000 0x000055555555b010 |    <-- Fw pointer / Bk pointer (key)
+| 0x0000000000000000 0x000055555555b010 |    <-- Fd pointer / Bk pointer (key)
 | 0x0000000000000000 0x0000000000000000 |
 -----------------------------------------
                     ↓
@@ -40,7 +40,7 @@ Table of content:
                     ↓
 -----------------------------------------
 | 0x0000000000000000 0x0000000000000031 |    <-- prev_size  / size
-| 0x0000000000000000 0x0000000000000001 |    <-- Fw pointer / Bk pointer (key)
+| 0x0000000000000000 0x0000000000000001 |    <-- Fd pointer / Bk pointer (key)
 | 0x0000000000000000 0x0000000000000000 |
 -----------------------------------------
                     ↓
@@ -48,7 +48,7 @@ Table of content:
                     ↓
 -----------------------------------------
 | 0x0000000000000000 0x0000000000000031 |    <-- prev_size  / size
-| 0x000055555555b260 0x000055555555b010 |    <-- Fw pointer / Bk pointer (key)
+| 0x000055555555b260 0x000055555555b010 |    <-- Fd pointer / Bk pointer (key)
 | 0x0000000000000000 0x0000000000000000 |
 -----------------------------------------
 ```
@@ -65,20 +65,20 @@ Table of content:
 ```gdb
 ------------------------- Chunk 1 ------------------------
 | 0x555555559290: 0x0000000000000000  0x0000000000000031 |    <-- prev_size  / size
-| 0x5555555592a0: 0x0000000000000000  0x0000555555559010 |    <-- Fw pointer / Bk pointer (key)
+| 0x5555555592a0: 0x0000000000000000  0x0000555555559010 |    <-- Fd pointer / Bk pointer (key)
 | 0x5555555592b0: 0x0000000000000000  0x0000000000000000 |
 ------------------------- Chunk 2 ------------------------
 | 0x5555555592c0: 0x0000000000000000  0x0000000000000031 |    <-- prev_size  / size
-| 0x5555555592d0: 0x00005555555592a0  0x0000555555559010 |    <-- Fw pointer / Bk pointer (key)
+| 0x5555555592d0: 0x00005555555592a0  0x0000555555559010 |    <-- Fd pointer / Bk pointer (key)
 | 0x5555555592e0: 0x0000000000000000  0x0000000000000000 |
 ----------------------------------------------------------
 ```
 
-We can see that after free Chunk 1, it will go to tcache. But because there are no freed chunk with the same size as `0x30` in tcache so the `Fw pointer` of Chunk 1 is null.
+We can see that after free Chunk 1, it will go to tcache. But because there are no freed chunk with the same size as `0x30` in tcache so the `Fd pointer` of Chunk 1 is null.
 
-For the Chunk 2, because we've freed the Chunk 1 and this Chunk 2 has the same size as `0x30` with Chunk 1, so when we free Chunk 2, it will go to tcache and make the `Fw pointer` point to Chunk 1.
+For the Chunk 2, because we've freed the Chunk 1 and this Chunk 2 has the same size as `0x30` with Chunk 1, so when we free Chunk 2, it will go to tcache and make the `Fd pointer` point to Chunk 1.
 
-- For libc > 2.31, there is a xor mechanism added to change the behaviour of `Fw pointer` ([source](https://elixir.bootlin.com/glibc/glibc-2.32/source/malloc/malloc.c#L339)):
+- For libc > 2.31, there is a xor mechanism added to change the behaviour of `Fd pointer` ([source](https://elixir.bootlin.com/glibc/glibc-2.32/source/malloc/malloc.c#L339)):
 
 ```c
 #define PROTECT_PTR(pos, ptr) \
@@ -102,19 +102,19 @@ For the Chunk 2, because we've freed the Chunk 1 and this Chunk 2 has the same s
                             ↓
 ------------------------- Chunk 1 ------------------------
 | 0x55555555a290: 0x0000000000000000  0x0000000000000031 |    <-- prev_size  / size
-| 0x55555555a2a0: 0x000000055555555a  0x000055555555a010 |    <-- Fw pointer / Bk pointer (key)
+| 0x55555555a2a0: 0x000000055555555a  0x000055555555a010 |    <-- Fd pointer / Bk pointer (key)
 | 0x55555555a2b0: 0x0000000000000000  0x0000000000000000 |
 ------------------------- Chunk 2 ------------------------
 | 0x55555555a2c0: 0x0000000000000000  0x0000000000000031 |    <-- prev_size  / size
-| 0x55555555a2d0: 0x0000000000000000  0x0000000000000000 |    <-- Fw pointer / Bk pointer (key)
+| 0x55555555a2d0: 0x0000000000000000  0x0000000000000000 |    <-- Fd pointer / Bk pointer (key)
 | 0x55555555a2e0: 0x0000000000000000  0x0000000000000000 |
 ----------------------------------------------------------
 ```
 
-Can you see the `Fw pointer` of Chunk 1 changed? The value `0x000000055555555a` is the result from the xor mechanism:
+Can you see the `Fd pointer` of Chunk 1 changed? The value `0x000000055555555a` is the result from the xor mechanism:
 
 ```python
->>> # Fw pointer =  (<Address of chunk freeing> >> 12) ^ <Address of previous freed chunk>
+>>> # Fd pointer =  (<Address of chunk freeing> >> 12) ^ <Address of previous freed chunk>
 >>> (0x55555555a2a0 >> 12) ^ 0
 0x000000055555555a
 ```
@@ -126,19 +126,19 @@ Continue freeing the Chunk 2 and we can see this:
 ```gdb
 ------------------------- Chunk 1 ------------------------
 | 0x55555555a290: 0x0000000000000000  0x0000000000000031 |    <-- prev_size  / size
-| 0x55555555a2a0: 0x000000055555555a  0x000055555555a010 |    <-- Fw pointer / Bk pointer (key)
+| 0x55555555a2a0: 0x000000055555555a  0x000055555555a010 |    <-- Fd pointer / Bk pointer (key)
 | 0x55555555a2b0: 0x0000000000000000  0x0000000000000000 |
 ------------------------- Chunk 2 ------------------------
 | 0x55555555a2c0: 0x0000000000000000  0x0000000000000031 |    <-- prev_size  / size
-| 0x55555555a2d0: 0x000055500000f7fa  0x000055555555a010 |    <-- Fw pointer / Bk pointer (key)
+| 0x55555555a2d0: 0x000055500000f7fa  0x000055555555a010 |    <-- Fd pointer / Bk pointer (key)
 | 0x55555555a2e0: 0x0000000000000000  0x0000000000000000 |
 ----------------------------------------------------------
 ```
 
-So the `Fw pointer` for Chunk 2 can be calculate as:
+So the `Fd pointer` for Chunk 2 can be calculate as:
 
 ```python
->>> # Fw pointer =  (<Address of chunk freeing> >> 12) ^ <Address of previous freed chunk>
+>>> # Fd pointer =  (<Address of chunk freeing> >> 12) ^ <Address of previous freed chunk>
 >>> (0x55555555a2d0 >> 12) ^ 0x55555555a2a0
 0x55500000f7fa
 ```
@@ -168,7 +168,7 @@ int main()
     long int p1[10];
     p1[0] = 0;       // prev_size
     p1[1] = 0x21;    // size
-    p1[2] = 0;       // fw pointer
+    p1[2] = 0;       // Fd pointer
     p1[3] = 0;       // bk pointer
     free(&p1[2]);
 
@@ -176,7 +176,7 @@ int main()
     long int *p2 = malloc(0x50);
     p2[0] = 0;       // prev_size
     p2[1] = 0x21;    // size
-    p2[2] = 0;       // fw pointer
+    p2[2] = 0;       // Fd pointer
     p2[3] = 0;       // bk pointer
     free(&p2[2]);
 }
@@ -186,14 +186,14 @@ The fake chunk on stack will look like this:
 ```gdb
 ----------------------------------------------------------
 | 0x7fffffffde00: 0x0000000000000000  0x0000000000000021 |    <-- prev_size  / size
-| 0x7fffffffde10: 0x0000000000000000  0x0000000000000000 |    <-- fw pointer / bk pointer
+| 0x7fffffffde10: 0x0000000000000000  0x0000000000000000 |    <-- Fd pointer / bk pointer
 ----------------------------------------------------------
                             ↓
                       free(&p1[2]);
                             ↓
 ----------------------------------------------------------
 | 0x7fffffffde00: 0x0000000000000000  0x0000000000000021 |    <-- prev_size  / size
-| 0x7fffffffde10: 0x0000000000000000  0x0000555555559010 |    <-- fw pointer / bk pointer
+| 0x7fffffffde10: 0x0000000000000000  0x0000555555559010 |    <-- Fd pointer / bk pointer
 ----------------------------------------------------------
 ```
 
@@ -208,14 +208,14 @@ That means we've freed a fake chunk on stack successfully. Let's keep going with
 ```gdb
 ----------------------------------------------------------
 | 0x5555555592c0: 0x0000000000000000  0x0000000000000021 |    <-- prev_size  / size
-| 0x5555555592d0: 0x0000000000000000  0x0000000000000000 |    <-- fw pointer / bk pointer
+| 0x5555555592d0: 0x0000000000000000  0x0000000000000000 |    <-- Fd pointer / bk pointer
 ----------------------------------------------------------
                             ↓
                       free(&p2[2]);
                             ↓
 ----------------------------------------------------------
 | 0x5555555592c0: 0x0000000000000000  0x0000000000000021 |    <-- prev_size  / size
-| 0x5555555592d0: 0x00007fffffffde10  0x0000555555559010 |    <-- fw pointer / bk pointer
+| 0x5555555592d0: 0x00007fffffffde10  0x0000555555559010 |    <-- Fd pointer / bk pointer
 ----------------------------------------------------------
 ```
 
@@ -386,9 +386,10 @@ gef➤  x/4xg 0x000055555555a2a0
 
 So we know that the chunk at `0x5555555596c0` is the next chunk of current fake chunk being freed, while chunk at `0x000055555555a2a0` is the chunk from system and in this case, it's the top chunk. These 2 address are not the same so the code inside `if (nextchunk != av -> top)` will be executed. 
 
-To solve this problem, there are 2 ways for us. One is to change the size of the fake chunk to make `<address of current fake chunk> + <size> = <address of next chunk of system>`. So that we will need to malloc a small chunk before free our fake chunk in order not to make our fake chunk consolidate with top chunk:
+To solve this problem, there are 3 ways for us. One is to change the size of the fake chunk to make `<address of current fake chunk> + <size> = <address of next chunk of system>`. So that we will need to malloc a small chunk before freeing our fake chunk in order not to make our fake chunk consolidate with top chunk (This technique was used in `House of Einherjar`):
 
 ```c
+// Code 3.1
 #include <stdlib.h>
 
 int main()
@@ -426,6 +427,7 @@ This code will check if the bit PREV_INUSE of the next next chunk from our fake 
 It will check if the bit PREV_INUSE in size of Fake chunk 2 is set or not. If that bit is not set, it will go to `unlink_chunk` and everything might be harder to solve. So we just simply add the Fake chunk 2 with the bit PREV_INUSE set and the problem is solved:
 
 ```c
+// Code 3.2
 #include <stdlib.h>
 
 int main()
@@ -482,6 +484,163 @@ So all of our fake chunks will look like this:
 | ...                                                    |
 ------------------------ Real chunk ----------------------
 ```
+
+That's how we bypass all the checks in `_int_free`. But sometimes you cannot bypass the checks and the program jump to `unlink_chunk`, that means our fake chunk being freed will be consolidated with fake chunk 1. Here is the source of [unlink_chunk](https://elixir.bootlin.com/glibc/glibc-2.31/source/malloc/malloc.c#L1451).
+
+With the code 2 above, compile and run it, we get this error `corrupted size vs. prev_size`:
+
+![unsorted-bin-3.png](images/unsorted-bin-3.png)
+
+Checking the source code of `unlink_chunk` and we found this string:
+
+```c
+static void unlink_chunk(mstate av, mchunkptr p) {
+    if (chunksize(p) != prev_size(next_chunk(p)))
+        malloc_printerr("corrupted size vs. prev_size");
+    ...
+```
+
+So here is what we've created in code 2:
+
+```
+| Fake chunk being freed |
+--------------------------
+|      Fake chunk 1      |
+```
+
+The c code will check if the size of Fake chunk 1 is equal to the prev_size of the next chunk from Fake chunk 1, which means prev_size of Fake chunk 2:
+
+```
+| Fake chunk being freed |
+--------------------------
+|      Fake chunk 1      |
+--------------------------
+|      Fake chunk 2      |
+```
+
+So our c code will add the prev_size to the Fake chunk 2 to bypass this check:
+
+```c
+// Code 3.3.1
+#include <stdlib.h>
+
+int main()
+{
+  long int *p = malloc(0x1000);
+  p[0] = 0;
+  p[1] = 0x421;
+  p[2] = 0;
+  p[3] = 0;
+  p[(0x420/8) + 1] = 0x21;
+  p[(0x420/8) + (0x20/8)] = 0x20;
+  free(&p[2]);
+}
+```
+
+Compile and debug with gdb, the chunk will look like this:
+
+```gdb
+------------------------ Real chunk ----------------------
+| 0x555555559290: 0x0000000000000000  0x0000000000001011 |
+------------------------ Fake chunk ----------------------
+| 0x5555555592a0: 0x0000000000000000  0x0000000000000421 |
+| ...                                                    |
+| 0x5555555596b0: 0x0000000000000000  0x0000000000000000 |
+----------------------- Fake chunk 1 ---------------------
+| 0x5555555596c0: 0x0000000000000000  0x0000000000000021 |    <-- prev_size  / size
+| 0x5555555596d0: 0x0000000000000000  0x0000000000000000 |    <-- Fd pointer / Bk pointer
+| 0x5555555596e0: 0x0000000000000020  0x0000000000000000 |    <-- prev_size  / size
+------------------------ Fake chunk ----------------------
+| 0x5555555596f0: 0x0000000000000000  0x0000000000000000 |
+| 0x555555559700: 0x0000000000000000  0x0000000000000000 |
+| 0x555555559710: 0x0000000000000000  0x0000000000000000 |
+| ...                                                    |
+------------------------ Real chunk ----------------------
+```
+
+Let's set breakpoint at the check `if (chunksize(p) != prev_size(next_chunk(p)))` to see if we pass or not:
+
+```gdb
+gef➤  disas unlink_chunk
+   ...
+   0x00007ffff7e716fb <+11>:  and    rax,0xfffffffffffffff8
+   0x00007ffff7e716ff <+15>:  cmp    rax,QWORD PTR [rdi+rax*1]
+   0x00007ffff7e71703 <+19>:  jne    0x7ffff7e7179a <unlink_chunk+170>
+   ...
+
+gef➤  b*0x00007ffff7e716ff
+Breakpoint 1 at 0x7ffff7e716ff: file malloc.c, line 1453.
+
+gef➤  c
+...
+
+gef➤  x/xg $rdi+$rax
+0x5555555596e0: 0x0000000000000020
+
+gef➤  p/x $rax
+$1 = 0x20
+```
+
+So we know it pass this check. Type `ni` to continue executing one by one and we got segfault at the other comparation, which in source is:
+
+```c
+static void unlink_chunk(mstate av, mchunkptr p) {
+    if (chunksize(p) != prev_size(next_chunk(p)))
+        malloc_printerr("corrupted size vs. prev_size");
+
+    mchunkptr fd = p -> fd;
+    mchunkptr bk = p -> bk;
+
+    if (__builtin_expect(fd -> bk != p || bk -> fd != p, 0))
+        malloc_printerr("corrupted double-linked list");
+    ...
+```
+
+Because we did't fake `p -> fd` and `p -> bk` for Fake chunk 1 so when it assign `p -> fd` into `fd`, `fd` will contain null byte address and it will make segfault at the comparation. The best thing we can do here is simply put the address of Fake chunk 1 (Address include metadata of Fake chunk 1) and we can bypass this check easily:
+
+```c
+// Code 3.3.2
+#include <stdlib.h>
+
+int main()
+{
+  long int *p = malloc(0x1000);
+  p[0] = 0;
+  p[1] = 0x421;
+  p[2] = 0;
+  p[3] = 0;
+  p[(0x420/8) + 1] = 0x21;
+  p[(0x420/8) + 2] = (long int)&p[(0x420/8)];
+  p[(0x420/8) + 3] = (long int)&p[(0x420/8)];
+  p[(0x420/8) + (0x20/8)] = 0x20;
+  free(&p[2]);
+}
+```
+
+And the chunk will look like this:
+
+```gdb
+------------------------ Real chunk ----------------------
+| 0x555555559290: 0x0000000000000000  0x0000000000001011 |
+------------------------ Fake chunk ----------------------
+| 0x5555555592a0: 0x0000000000000000  0x0000000000000421 |
+| ...                                                    |
+| 0x5555555596b0: 0x0000000000000000  0x0000000000000000 |
+----------------------- Fake chunk 1 ---------------------
+| 0x5555555596c0: 0x0000000000000000  0x0000000000000021 |    <-- prev_size  / size
+| 0x5555555596d0: 0x00005555555596c0  0x00005555555596c0 |    <-- Fd pointer / Bk pointer
+| 0x5555555596e0: 0x0000000000000020  0x0000000000000000 |    <-- prev_size  / size
+------------------------ Fake chunk ----------------------
+| 0x5555555596f0: 0x0000000000000000  0x0000000000000000 |
+| 0x555555559700: 0x0000000000000000  0x0000000000000000 |
+| 0x555555559710: 0x0000000000000000  0x0000000000000000 |
+| ...                                                    |
+------------------------ Real chunk ----------------------
+```
+
+So we add the address of Fake chunk 1 into `p -> fd` and `p -> bk`. Compile the source and run, we can free this chunk and make it consolidate with Fake chunk 1:
+
+![unsorted-bin-4.png](images/unsorted-bin-4.png)
 
 </p>
 </details>
