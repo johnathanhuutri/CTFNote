@@ -58,7 +58,7 @@ This post is just about all small stuffs and things I want to note. For a full t
 </details>
 
 <details>
-<summary><h3>Forward pointer ([Table of content](https://github.com/nhtri2003gmail/CTFNote/tree/master/technique/heap#table-of-content))</h3></summary>
+<summary><h3>Forward pointer (<a href="#table-of-content">Table of content</a>)</h3></summary>
 <p>
 
 - For libc <= 2.31, when we free a chunk and it goes to tcache, the forward pointer of this chunk will be changed into the address of the next chunk if this next chunk exist and will be null if there is no next chunk:
@@ -152,7 +152,7 @@ Remember that the address of Chunk 1 is `0x55555555a2a0` and Chunk 2 is `0x55555
 </details>
 
 <details>
-<summary><h3>Malloc and free custom chunk ([Table of content](https://github.com/nhtri2003gmail/CTFNote/tree/master/technique/heap#table-of-content))</h3></summary>
+<summary><h3>Malloc and free custom chunk (<a href="#table-of-content">Table of content</a>)</h3></summary>
 <p>
 
 We can create a fake chunk on stack or inside a large chunk and then free it easily. This script is an example:
@@ -233,7 +233,7 @@ Tcachebins[idx=0, size=0x20] count=2  ←  Chunk(addr=0x5555555592d0, size=0x20,
 # Unsorted Bin
 
 <details>
-<summary><h3>Malloc and free custom chunk ([Table of content](https://github.com/nhtri2003gmail/CTFNote/tree/master/technique/heap#table-of-content))</h3></summary>
+<summary><h3>Malloc and free custom chunk (<a href="#table-of-content">Table of content</a>)</h3></summary>
 <p>
 
 To make a chunk goes into unsorted bin, there will be several checks. First, we need to make a chunk which has the size larger or equal to 0x420 so that when we free, it will go to unsorted bin.
@@ -537,7 +537,7 @@ That's how we bypass all the checks in `_int_free` to create and free a custom c
 </details>
 
 <details>
-<summary><h3>Consolidation ([Table of content](https://github.com/nhtri2003gmail/CTFNote/tree/master/technique/heap#table-of-content))</h3></summary>
+<summary><h3>Consolidation (<a href="#table-of-content">Table of content</a>)</h3></summary>
 <p>
 
 Sometimes freeing a chunk to make it go to unsorted bin, that chunk will be consolidate with next chunk or previous chunk if the PREV_INUSE bit of next and previous chunk is unset. That process will be done with the function `unlink_chunk` which you can find source code [here](https://elixir.bootlin.com/glibc/glibc-2.31/source/malloc/malloc.c#L1451)
