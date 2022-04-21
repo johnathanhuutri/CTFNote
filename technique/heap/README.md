@@ -427,7 +427,7 @@ This code will check if the bit PREV_INUSE of the next next chunk from our fake 
 It will check if the bit PREV_INUSE in size of Fake chunk 2 is set or not. If that bit is not set, it will go to `unlink_chunk` and everything might be harder to solve. So we just simply add the Fake chunk 2 with the bit PREV_INUSE set and the problem is solved:
 
 ```c
-// Code 3.2
+// Code 3.2.1
 #include <stdlib.h>
 
 int main()
@@ -448,46 +448,119 @@ So all of our fake chunks will look like this:
 ```gdb
 ------------------------ Real chunk ----------------------
 | 0x555555559290: 0x0000000000000000  0x0000000000001011 |
------------------------- Fake chunk ----------------------
+|----------------------- Fake chunk ---------------------|
 | 0x5555555592a0: 0x0000000000000000  0x0000000000000421 |
 | 0x5555555592b0: 0x00007ffff7fa9be0  0x00007ffff7fa9be0 |
 | 0x5555555592c0: 0x0000000000000000  0x0000000000000000 |
-| ...                                                    |
+|                           ....                         |
+|---------------------- Fake chunk 1 --------------------|
 | 0x5555555596c0: 0x0000000000000000  0x0000000000000021 |
 | 0x5555555596d0: 0x0000000000000000  0x0000000000000000 |
+|---------------------- Fake chunk 2 --------------------|
 | 0x5555555596e0: 0x0000000000000000  0x0000000000000031 |
 | 0x5555555596f0: 0x0000000000000000  0x0000000000000000 |
 | 0x555555559700: 0x0000000000000000  0x0000000000000000 |
------------------------- Fake chunk ----------------------
+------------------------ Real chunk ----------------------
 | 0x555555559710: 0x0000000000000000  0x0000000000000000 |
 | 0x555555559720: 0x0000000000000000  0x0000000000000000 |
-| ...                                                    |
------------------------- Real chunk ----------------------
+|                           ....                         |
+----------------------------------------------------------
                             ↓
                        free(&p[2]);
                             ↓
 ------------------------ Real chunk ----------------------
 | 0x555555559290: 0x0000000000000000  0x0000000000001011 |
------------------------- Fake chunk ----------------------
+|----------------------- Fake chunk ---------------------|
 | 0x5555555592a0: 0x0000000000000000  0x0000000000000421 |
 | 0x5555555592b0: 0x00007ffff7fa9be0  0x00007ffff7fa9be0 |
 | 0x5555555592c0: 0x0000000000000000  0x0000000000000000 |
-| ...                                                    |
+|                           ....                         |
+|---------------------- Fake chunk 1 --------------------|
 | 0x5555555596c0: 0x0000000000000000  0x0000000000000021 |
 | 0x5555555596d0: 0x0000000000000000  0x0000000000000000 |
+|---------------------- Fake chunk 2 --------------------|
 | 0x5555555596e0: 0x0000000000000000  0x0000000000000031 |
 | 0x5555555596f0: 0x0000000000000000  0x0000000000000000 |
 | 0x555555559700: 0x0000000000000000  0x0000000000000000 |
------------------------- Fake chunk ----------------------
+------------------------ Real chunk ----------------------
 | 0x555555559710: 0x0000000000000000  0x0000000000000000 |
 | 0x555555559720: 0x0000000000000000  0x0000000000000000 |
-| ...                                                    |
------------------------- Real chunk ----------------------
+|                           ....                         |
+----------------------------------------------------------
 ```
 
-That's how we bypass all the checks in `_int_free`. But sometimes you cannot bypass the checks and the program jump to `unlink_chunk`, that means our fake chunk being freed will be consolidated with fake chunk 1. Here is the source of [unlink_chunk](https://elixir.bootlin.com/glibc/glibc-2.31/source/malloc/malloc.c#L1451).
+If you don't want to create Fake chunk 2 and you already have another chunk (created by system) after the currect fake chunk, just make the size of Fake chunk 1 large enough so that the next chunk from Fake chunk 1 is the chunk created by system:
 
-With the code 2 above, compile and run it, we get this error `corrupted size vs. prev_size`:
+```c
+// Code 3.2.2
+#include <stdlib.h>
+
+int main()
+{
+    long int *p = malloc(0x1000);
+    long int *p0 = malloc(0x20);
+    p[0] = 0;
+    p[1] = 0x421;
+    p[2] = 0;
+    p[3] = 0;
+    p[(0x420/8) + 1] = 0xbe1;
+    free(&p[2]);
+}
+```
+
+```gdb
+---------------------- Real chunk 1 ----------------------
+| 0x555555559290: 0x0000000000000000  0x0000000000001011 |
+|---------------------- Fake chunk ----------------------|
+| 0x5555555592a0: 0x0000000000000000  0x0000000000000421 |
+| 0x5555555592b0: 0x0000000000000000  0x0000000000000000 |
+|                           ....                         |
+| 0x5555555596b0: 0x0000000000000000  0x0000000000000000 |
+|--------------------- Fake chunk 1 ---------------------|
+| 0x5555555596c0: 0x0000000000000000  0x0000000000000be1 |
+| 0x5555555596d0: 0x0000000000000000  0x0000000000000000 |
+|                           ....                         |
+| 0x55555555a290: 0x0000000000000000  0x0000000000000000 |
+---------------------- Real chunk 2 ----------------------
+| 0x55555555a2a0: 0x0000000000000000  0x0000000000000031 |
+| 0x55555555a2b0: 0x0000000000000000  0x0000000000000000 |
+| 0x55555555a2c0: 0x0000000000000000  0x0000000000000000 |
+----------------------- Top chunk ------------------------
+| 0x55555555a2d0: 0x0000000000000000  0x000000000001fd31 |
+----------------------------------------------------------
+```
+
+That's how we bypass all the checks in `_int_free` to create and free a custom chunk to make it go into unsorted bin.
+
+</p>
+</details>
+
+<details>
+<summary><h3>Consolidation</h3></summary>
+<p>
+
+Sometimes freeing a chunk to make it go to unsorted bin, that chunk will be consolidate with next chunk or previous chunk if the PREV_INUSE bit of next and previous chunk is unset. That process will be done with the function `unlink_chunk` which you can find source code [here](https://elixir.bootlin.com/glibc/glibc-2.31/source/malloc/malloc.c#L1451)
+
+- Consolidation with next chunk
+
+First, we will create 2 fake chunks inside a large chunk and free the first fake chunk:
+
+```c
+#include <stdlib.h>
+
+int main()
+{
+    long int *p = malloc(0x1000);
+    p[0] = 0;
+    p[1] = 0x421;
+    p[2] = 0;
+    p[3] = 0;
+    p[(0x420/8) + 1] = 0x21;
+    free(&p[2]);
+}
+```
+
+Compile and run it, we get this error `corrupted size vs. prev_size`:
 
 ![unsorted-bin-3.png](images/unsorted-bin-3.png)
 
@@ -500,7 +573,7 @@ static void unlink_chunk(mstate av, mchunkptr p) {
     ...
 ```
 
-So here is what we've created in code 2:
+So here is what we've created:
 
 ```
 | Fake chunk being freed |
@@ -508,7 +581,7 @@ So here is what we've created in code 2:
 |      Fake chunk 1      |
 ```
 
-The c code will check if the size of Fake chunk 1 is equal to the prev_size of the next chunk from Fake chunk 1, which means prev_size of Fake chunk 2:
+The first thing `unlink_chunk` does is to check if the size of Fake chunk 1 is equal to the prev_size of the next chunk from Fake chunk 1, which means prev_size of Fake chunk 2:
 
 ```
 | Fake chunk being freed |
@@ -518,22 +591,21 @@ The c code will check if the size of Fake chunk 1 is equal to the prev_size of t
 |      Fake chunk 2      |
 ```
 
-So our c code will add the prev_size to the Fake chunk 2 to bypass this check:
+So our c code will add the size of Fake chunk 1 to the prev_size of the Fake chunk 2 to bypass this check:
 
 ```c
-// Code 3.3.1
 #include <stdlib.h>
 
 int main()
 {
-  long int *p = malloc(0x1000);
-  p[0] = 0;
-  p[1] = 0x421;
-  p[2] = 0;
-  p[3] = 0;
-  p[(0x420/8) + 1] = 0x21;
-  p[(0x420/8) + (0x20/8)] = 0x20;
-  free(&p[2]);
+    long int *p = malloc(0x1000);
+    p[0] = 0;
+    p[1] = 0x421;
+    p[2] = 0;
+    p[3] = 0;
+    p[(0x420/8) + 1] = 0x21;
+    p[(0x420/8) + (0x20/8)] = 0x20;
+    free(&p[2]);
 }
 ```
 
@@ -544,7 +616,7 @@ Compile and debug with gdb, the chunk will look like this:
 | 0x555555559290: 0x0000000000000000  0x0000000000001011 |
 ------------------------ Fake chunk ----------------------
 | 0x5555555592a0: 0x0000000000000000  0x0000000000000421 |
-| ...                                                    |
+|                           ....                         |
 | 0x5555555596b0: 0x0000000000000000  0x0000000000000000 |
 ----------------------- Fake chunk 1 ---------------------
 | 0x5555555596c0: 0x0000000000000000  0x0000000000000021 |    <-- prev_size  / size
@@ -554,7 +626,7 @@ Compile and debug with gdb, the chunk will look like this:
 | 0x5555555596f0: 0x0000000000000000  0x0000000000000000 |
 | 0x555555559700: 0x0000000000000000  0x0000000000000000 |
 | 0x555555559710: 0x0000000000000000  0x0000000000000000 |
-| ...                                                    |
+|                           ....                         |
 ------------------------ Real chunk ----------------------
 ```
 
@@ -596,10 +668,9 @@ static void unlink_chunk(mstate av, mchunkptr p) {
     ...
 ```
 
-Because we did't fake `p -> fd` and `p -> bk` for Fake chunk 1 so when it assign `p -> fd` into `fd`, `fd` will contain null byte address and it will make segfault at the comparation. The best thing we can do here is simply put the address of Fake chunk 1 (Address include metadata of Fake chunk 1) and we can bypass this check easily:
+Because we did't fake `p -> fd` and `p -> bk` for Fake chunk 1 so when it assign `p -> fd` into `fd`, `fd` will contain null byte address and it will make segfault at the comparation. The best thing we can do here is simply put the address of Fake chunk 1 (include metadata of Fake chunk 1) and we can bypass this check easily:
 
 ```c
-// Code 3.3.2
 #include <stdlib.h>
 
 int main()
@@ -622,34 +693,84 @@ And the chunk will look like this:
 ```gdb
 ------------------------ Real chunk ----------------------
 | 0x555555559290: 0x0000000000000000  0x0000000000001011 |
------------------------- Fake chunk ----------------------
+| ---------------------- Fake chunk -------------------- |
 | 0x5555555592a0: 0x0000000000000000  0x0000000000000421 |
-| ...                                                    |
+|                           ....                         |
 | 0x5555555596b0: 0x0000000000000000  0x0000000000000000 |
------------------------ Fake chunk 1 ---------------------
+| --------------------- Fake chunk 1 ------------------- |
 | 0x5555555596c0: 0x0000000000000000  0x0000000000000021 |    <-- prev_size  / size
 | 0x5555555596d0: 0x00005555555596c0  0x00005555555596c0 |    <-- Fd pointer / Bk pointer
+| --------------------- Fake metadata ------------------ |
 | 0x5555555596e0: 0x0000000000000020  0x0000000000000000 |    <-- prev_size  / size
------------------------- Fake chunk ----------------------
+------------------------ Real chunk ----------------------
 | 0x5555555596f0: 0x0000000000000000  0x0000000000000000 |
 | 0x555555559700: 0x0000000000000000  0x0000000000000000 |
 | 0x555555559710: 0x0000000000000000  0x0000000000000000 |
-| ...                                                    |
------------------------- Real chunk ----------------------
+|                           ....                         |
+----------------------------------------------------------
 ```
 
 So we add the address of Fake chunk 1 into `p -> fd` and `p -> bk`. Compile the source and run, we can free this chunk and make it consolidate with Fake chunk 1:
 
 ![unsorted-bin-4.png](images/unsorted-bin-4.png)
 
-</p>
-</details>
+- Consolidation with previous chunk
 
-<details>
-<summary><h3>Consolidation</h3></summary>
-<p>
+To make a fake chunk just consolidate with a previous chunk, not next chunk, our fake chunk need to pass the check in `_int_free` in order not to consolidate with next chunk. So the base code we have is:
 
+```c
+// Code 1
+#include <stdlib.h>
 
+int main()
+{
+    long int *p0 = malloc(0x420);
+    long int *p1 = malloc(0x20);
+    long int *p2 = malloc(0x420);
+    malloc(0x10);
+
+    free(p1);
+}
+```
+
+We will try to free `p2` and make it consolidate with a fake chunk in `p0` and it will overlap `p1`. We want `_int_free` to call `unlink_chunk` to make heap consolidation and we get this code:
+
+```c
+_int_free(mstate av, mchunkptr p, int have_lock) {
+    ...
+    else if (!chunk_is_mmapped(p)) {
+        ...
+        /* consolidate backward */
+        if (!prev_inuse(p)) {
+            prevsize = prev_size(p);
+            size += prevsize;
+            p = chunk_at_offset(p, -((long) prevsize));
+            if (__glibc_unlikely(chunksize(p) != prevsize))
+                malloc_printerr("corrupted size vs. prev_size while consolidating");
+            unlink_chunk(av, p);
+        ...
+    }
+    ...
+```
+
+So first, it will check if the current chunk being freed has the bit PREV_INUSE on or off. If the PREV_INUSE bit is not set, it will consolidate with the previous chunk by executing `unlink_chunk`. So let's unset the bit PREV_INUSE of `p2` with the updated code:
+
+```c
+// Code 2
+#include <stdlib.h>
+
+int main()
+{
+    long int *p0 = malloc(0x420);
+    long int *p1 = malloc(0x20);
+    long int *p2 = malloc(0x420);
+    malloc(0x10);
+
+    p2[-1] = 0x430;
+
+    free(p1);
+}
+```
 
 </p>
 </details>
