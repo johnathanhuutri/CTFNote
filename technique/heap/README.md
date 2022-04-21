@@ -8,8 +8,12 @@ This post is just about all small stuffs and things I want to note. For a full t
 
 #### Table of content:
 - [Tcache](https://github.com/nhtri2003gmail/CTFNote/tree/master/technique/heap#tcache)
-    - Double free
+    - [Double free](#double-free-table-of-content)
+    - Forward pointer
+    - Malloc and free custom chunk
 - [Unsorted Bin](https://github.com/nhtri2003gmail/CTFNote/tree/master/technique/heap#unsorted-bin)
+    - Malloc and free custom chunk
+    - Consolidation
 
 # Tcache
 
