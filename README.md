@@ -73,8 +73,8 @@
 
 | Name | Type | File Type | Technique |
 | :---: | :---: | :---: | :---: |
-| [f_one](https://github.com/nhtri2003gmail/writeup-pwn.tn-f_one) | pwn | c (64 bit) | `Format String` `Overwrite GOT` |
-| [f_two](https://github.com/nhtri2003gmail/writeup-pwn.tn-f_two) | pwn | c (32 bit) | `Buffer Overflow` `Integer Overflow` `Format String` |
+| [f_one](https://github.com/nhtri2003gmail/CTFNote/tree/master/writeup/online/pwn.tn/f_one) | pwn | c (64 bit) | `Format String` `Overwrite GOT` |
+| [f_two](https://github.com/nhtri2003gmail/CTFNote/tree/master/writeup/online/pwn.tn/f_two) | pwn | c (32 bit) | `Buffer Overflow` `Integer Overflow` `Format String` |
 
 **https://www.kcscctf.site/** (Connection closed)
 
