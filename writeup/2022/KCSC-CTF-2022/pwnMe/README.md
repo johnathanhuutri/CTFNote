@@ -1,4 +1,4 @@
-# KCSC CTF 2022 - guess2pwn
+# KCSC CTF 2022 - pwnMe
 
 Các bạn có thể tải chall ở repo của mình: [pwnMe.zip](pwnMe.zip)
 
