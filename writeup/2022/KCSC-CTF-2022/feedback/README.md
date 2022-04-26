@@ -209,10 +209,14 @@ Vậy là mọi thứ đã được set up. Chạy lại script và lấy flag t
 
 Full code: [solve.py](solve.py)
 
+Cơ mà do là hàm read nên mình có thể gom payload lại làm 1 và input 1 lần duy nhất là được rồi, khỏi phải chạy nhiều lần nên ta có script 2: [solve_2.py](solve_2.py)
+
+Ở script 2 này mình sẽ chỉnh cái payload 1 ở chỗ pad `payload1 = payload1.rjust(8*8190, b'P')` và thêm 8 byte chữ `quitquit` vào.
+
 # 4. Lấy cờ
 
-Do phải nhập nhiều lần nên sẽ hơi lâu nhé.
+![get-flag-1.png](images/get-flag-1.png)
 
-![](images/)
+![get-flag-2.png](images/get-flag-2.png)
 
-Flag là ``
+Flag là `KCSC{50e32e708be4d5f635ecd7ba63735100}`
