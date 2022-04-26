@@ -20,7 +20,7 @@
 ### [KCSC CTF 2022](#)
 | Name | File Type | Bug | Technique | Note |
 | :---: | :---: | :---: | :---: | :---: |
-| [readOnly](https://github.com/nhtri2003gmail/CTFNote/tree/master/writeup/2022/KCSC-CTF-2022/readOnly) | c (64 bit) |  | `Ret2dlresolve` |  |
+| [readOnly](https://github.com/nhtri2003gmail/CTFNote/tree/master/writeup/2022/KCSC-CTF-2022/readOnly) | c (64 bit) | `Buffer Overflow` | `Ret2dlresolve` |  |
 | [start](https://github.com/nhtri2003gmail/CTFNote/tree/master/writeup/2022/KCSC-CTF-2022/start) | c (64 bit) | `Buffer Overflow` | `SROP` |  |
 | [feedback](https://github.com/nhtri2003gmail/CTFNote/tree/master/writeup/2022/KCSC-CTF-2022/feedback) | c (64 bit) | `Integer Overflow` `Buffer Overflow` | `SROP` |  |
 | [guess2pwn](https://github.com/nhtri2003gmail/CTFNote/tree/master/writeup/2022/KCSC-CTF-2022/guess2pwn) | c++ (64 bit) |  |  | First byte from `urandom` may be null |
