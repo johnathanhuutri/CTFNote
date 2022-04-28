@@ -226,6 +226,25 @@ def GDB():
 
 ---
 
+### Load libc in python
+
+```python
+from ctypes import*
+
+# Load glibc chạy chung với chương trình
+glibc = cdll.LoadLibrary('./libc6_2.27-3ubuntu1.4_amd64.so')
+
+# Tạo seed rand với seed bằng time(null)
+glibc.srand(glibc.time(None))
+
+# Lấy giá trị random
+val = glibc.rand()
+
+print(hex(val))
+```
+
+---
+
 ### pwntools  
 
 - Get child pid (way 1): 
