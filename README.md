@@ -17,7 +17,7 @@
 <p>
 
 <details>
-<summary>KCSC CTF 2022</summary>
+<summary><a href="http://kcscctf.site/">KCSC CTF 2022</a></summary>
 <p>
 
 | Name | File Type | Bug | Technique | Note |
@@ -144,7 +144,7 @@
 </details>
 
 <details>
-<summary><a href="https://www.kcscctf.site/">KCSC - Entrance exam</a></summary>
+<summary><a href="http://kcscctf.site/">KCSC - Entrance exam</a></summary>
 <p>
 
 | Name | Type | File Type | Technique |
