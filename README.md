@@ -110,9 +110,9 @@
 <summary><a href="https://pwnable.tw/">pwnable.tw</a></summary>
 <p>
 
-| Name | Type | File Type | Technique |
-| :---: | :---: | :---: | :---: |
-| [Start](https://github.com/nhtri2003gmail/CTFNote/tree/master/writeup/pwnable.tw/Start) | pwn | c (32 bit) | `Buffer Overflow` `ROP`|
+| Name | File Type | Bug | Technique | Note |
+| :---: | :---: | :---: | :---: | :---: |
+| [Start](https://github.com/nhtri2003gmail/CTFNote/tree/master/writeup/online/pwnable.tw/Start) | c (32 bit) |  |  |  |
 
 </p>
 </details>
