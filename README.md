@@ -195,6 +195,9 @@
 </p>
 </details>
 
+</p>
+</details>
+
 # Technique ([Table of content](#table-of-content))
 
 | Name | Note |
