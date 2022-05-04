@@ -14,10 +14,12 @@
 
 <details>
 <summary>By event</summary>
-
 <p>
 
-### [KCSC CTF 2022](#)
+<details>
+<summary><h3>KCSC CTF 2022</h3></summary>
+<p>
+
 | Name | File Type | Bug | Technique | Note |
 | :---: | :---: | :---: | :---: | :---: |
 | [readOnly](https://github.com/nhtri2003gmail/CTFNote/tree/master/writeup/2022/KCSC-CTF-2022/readOnly) | c (64 bit) | `Buffer Overflow` | `Ret2dlresolve` |  |
@@ -27,6 +29,9 @@
 | [pwnMe](https://github.com/nhtri2003gmail/CTFNote/tree/master/writeup/2022/KCSC-CTF-2022/pwnMe) | c (64 bit) | `Format String` | `Ret2libc` |  |
 | [babyheap](https://github.com/nhtri2003gmail/CTFNote/tree/master/writeup/2022/KCSC-CTF-2022/babyheap) | c (64 bit) | `Use After Free` `Heap Overflow` |  |  |
 | [5ecretN0te](https://github.com/nhtri2003gmail/CTFNote/tree/master/writeup/2022/KCSC-CTF-2022/5ecretN0te) | c (64 bit) | `Heap Overflow` | `House of Force` |  |
+
+</p>
+</details>
 
 [Wolverine Security Conference/CTF](https://ctftime.org/event/1612)
 | Name | File Type | Bug | Technique | Note |
