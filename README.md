@@ -13,11 +13,11 @@
 </details> -->
 
 <details>
-<summary>By event</summary>
+<summary><h3>By event</h3></summary>
 <p>
 
 <details>
-<summary><h3>KCSC CTF 2022</h3></summary>
+<summary>KCSC CTF 2022</summary>
 <p>
 
 | Name | File Type | Bug | Technique | Note |
