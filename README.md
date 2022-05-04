@@ -112,8 +112,8 @@
 
 | Name | File Type | Bug | Technique | Note |
 | :---: | :---: | :---: | :---: | :---: |
-| [Start](https://github.com/nhtri2003gmail/CTFNote/tree/master/writeup/online/pwnable.tw/Start) | c (32 bit) |  |  |  |
-| [calc](https://github.com/nhtri2003gmail/CTFNote/tree/master/writeup/online/pwnable.tw/Start) | c (32 bit) |  |  |  |
+| [Start](https://github.com/nhtri2003gmail/CTFNote/tree/master/writeup/online/pwnable.tw/Start) | c (32 bit) | `Buffer Overflow` | `ROPchain` `Shellcode` |  |
+| [calc](https://github.com/nhtri2003gmail/CTFNote/tree/master/writeup/online/pwnable.tw/calc) | c (32 bit) |  | `ROPchain` |  |
 
 </p>
 </details>
