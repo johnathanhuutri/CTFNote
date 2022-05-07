@@ -197,7 +197,7 @@
 </details>
 
 <details id="svattt-2019">
-<summary><a href="#svattt-2019">SVATTT 2019</a></summary>
+<summary><a href="#user-content-svattt-2019">SVATTT 2019</a></summary>
 <p>
 
 | Name | File Type | Bug | Technique | Note |
