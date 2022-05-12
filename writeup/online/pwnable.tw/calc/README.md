@@ -255,5 +255,3 @@ Full script: [solve.py](solve.py)
 We can get the flag at `/home/calc/flag`
 
 ![get-flag.png](images/get-flag.png)
-
-Flag is `FLAG{C:\Windows\System32\calc.exe}`
