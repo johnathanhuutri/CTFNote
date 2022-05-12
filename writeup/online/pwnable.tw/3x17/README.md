@@ -93,7 +93,7 @@ So first, in detail, we will change the `foo_destructor` to main so that when pr
 
 So with the image above, we know the function `__libc_csu_fini` is at `0x402960`. Analize that function and we know the address of `.fini_array` is at `0x4b40f0`:
 
-![libc_csu_fini.png](imaegs/libc_csu_fini.png)
+![libc_csu_fini.png](images/libc_csu_fini.png)
 
 And with the images above, we know the address of `main` is `0x401b6d`. We know where to write and what to write, let's make a script to overwrite `.fini_array`:
 
