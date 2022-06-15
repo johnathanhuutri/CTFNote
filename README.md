@@ -17,6 +17,25 @@
 <p>
 
 <details>
+<summary><a href="#">HCMUS CTF 2022</summary>
+<p>
+
+### Quals
+| Name | File Type | Bug | Technique | Note |
+| :---: | :---: | :---: | :---: | :---: |
+| [PrintMe](https://github.com/nhtri2003gmail/CTFNote/tree/master/writeup/2022/HCMUS-CTF-2022/Quals/PrintMe) |  |  |  |  |
+| [Timehash - rev](https://github.com/nhtri2003gmail/CTFNote/tree/master/writeup/2022/HCMUS-CTF-2022/Quals/Timehash) | c (64 bit) |  |  | Patch file |
+| [WWW](https://github.com/nhtri2003gmail/CTFNote/tree/master/writeup/2022/HCMUS-CTF-2022/Quals/WWW) | c (64 bit) | `Format String` | `Overwrite GOT` |  |
+
+### Final
+| Name | File Type | Bug | Technique | Note |
+| :---: | :---: | :---: | :---: | :---: |
+| [calert](https://github.com/nhtri2003gmail/CTFNote/tree/master/writeup/2022/HCMUS-CTF-2022/Final/calert) | c (64 bit) | `Integer Overflow` `Buffer Overflow` | `Ret2libc` | We can change original canary if we know its address which is not in range of libc nor ld |
+
+</p>
+</details>
+
+<details>
 <summary><a href="http://kcscctf.site/">KCSC CTF 2022</a></summary>
 <p>
 
