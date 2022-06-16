@@ -323,6 +323,7 @@ GDB()
 Using [x-terminal-emulator](https://www.systutorials.com/docs/linux/man/1-x-terminal-emulator/) to create popup shell and pass command in a file:
 
 ```
+# Intel debug
 import subprocess
 
 def GDB():
@@ -332,6 +333,20 @@ def GDB():
         f.write(command)
     subprocess.Popen(['/usr/bin/x-terminal-emulator', '--geometry', '960x1080+960+0', '-e', 'gdb', '-p', str(p.pid), '-x', '/tmp/command.gdb'])
     input()         # input() to make program wait with gdb
+```
+
+
+
+```
+# Arm debug
+def GDB(filename, port):
+    q = process(f"/usr/bin/x-terminal-emulator --geometry 960x1080+960+0 -x gdb-multiarch -q --nh -ex 'source ~/.gef-283690ae9bfcecbb3deb80cd275d327c46b276b5.py' -ex 'set architecture arm64' -ex 'file {filename}' -ex 'target remote localhost:{port}'", shell=True)
+
+port = 1234
+filename = ''
+
+p = process(f'qemu-aarch64 -L /usr/aarch64-linux-gnu -g {port} {filename}}'.split())
+GDB('cli', port)
 ```
 
 ---
