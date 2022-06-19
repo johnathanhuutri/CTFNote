@@ -23,7 +23,7 @@
 | Name | File Type | Bug | Technique | Note |
 | :---: | :---: | :---: | :---: | :---: |
 | [Duet](https://github.com/nhtri2003gmail/CTFNote/tree/master/writeup/2022/KMACTF-2022/Duet) | c (64 bit) | `Buffer Overflow` | `Ret2Shellcode` | Shellcode (32 bit) can be executed on 64 bit binary and argument when execute `int 0x80` will be eax, ebx, ecx, edx... |
-| [Duet](https://github.com/nhtri2003gmail/CTFNote/tree/master/writeup/2022/KMACTF-2022/TwoShot) | c (64 bit) | `Buffer Overflow` `Format String` | `Ret2libc` |  |
+| [Two Shot](https://github.com/nhtri2003gmail/CTFNote/tree/master/writeup/2022/KMACTF-2022/TwoShot) | c (64 bit) | `Buffer Overflow` `Format String` | `Ret2libc` |  |
 
 
 </p>
