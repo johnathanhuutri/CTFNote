@@ -473,3 +473,9 @@ Ex: if rsp address end with 0xe8 --> segfault.
 - `%4$n` will write but cannot access.
 - Payload should have `%c` instead `%x` to make sure it write a byte, **not** a random byte on stack.
 - Enter `.` to `scanf()` with number format (`%d`, `%u`, `%ld`...) won't enter new value to var.
+- `%*` works as `%d` and will print first 4 bytes
+- `%*<k>$` works as `%<k>$d`
+- `%*<k>$c` will be the pad of ` ` with the size that `%<k>c` point to
+- `%.*<k>$c` will be the pad of `0` with the size that `%<k>$c` point to
+- Format string can be use to modify and read data at the same time just in case you don't use the short format (`%<k>$c`), use the plain format instead (`%p`, `%n`, `%s`, `%c`).
+    - Example: ``
