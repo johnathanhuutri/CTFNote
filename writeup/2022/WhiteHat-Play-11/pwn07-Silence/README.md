@@ -41,6 +41,10 @@ Full script: [solve_w2.py](solve_w2.py)
 
 > This script is from @Yuumi001#8183
 
+### Way 3
+
+We will get the shell with execve although stdout was closed. But with the shell in hand, just type `exec 1>&0` and everything from stdout will be directed to stdin. Hence, we get the shell as normal.
+
 # Get flag
 
 ![get-flag-way-1.png](images/get-flag-way-1.png)
