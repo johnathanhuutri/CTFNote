@@ -22,9 +22,9 @@
 
 | Name | File Type | Bug | Technique | Note |
 | :---: | :---: | :---: | :---: | :---: |
-| [pwn06-Ez_fmt](https://github.com/nhtri2003gmail/CTFNote/tree/master/writeup/2022/WhiteHat-Play-11/pwn06-Ez_fmt) | c (64 bit) | `Format String` | :---: | `%n` and `%p` (or `%s`) can be used at the same time just in case `%n` in clear form and `%p` (or `%s`) can be in short form. Ex: `%c%c%n%3$p` |
-| [pwn07-Silence](https://github.com/nhtri2003gmail/CTFNote/tree/master/writeup/2022/WhiteHat-Play-11/pwn07-Silence) | c (64 bit) | `Buffer Overflow` | :---: | Due to the close of stdout and stderr, we can send data via stdin so we will use `getdents` syscall to get file name and print the flag through stdin, or we can `dup2()` to reopen stdout and stderr, and get shell |
-| [pwn08-Ruby](https://github.com/nhtri2003gmail/CTFNote/tree/master/writeup/2022/WhiteHat-Play-11/pwn08-Ruby) | c (64 bit) | `Integer Overflow` | :---: | Attacking tcache_perthread_struct by freeing fake chunk which has size of `0x10000` and this size is inside tcache_perthread_struct |
+| [pwn06-Ez_fmt](https://github.com/nhtri2003gmail/CTFNote/tree/master/writeup/2022/WhiteHat-Play-11/pwn06-Ez_fmt) | c (64 bit) | `Format String` |  | `%n` and `%p` (or `%s`) can be used at the same time just in case `%n` in clear form and `%p` (or `%s`) can be in short form. Ex: `%c%c%n%3$p` |
+| [pwn07-Silence](https://github.com/nhtri2003gmail/CTFNote/tree/master/writeup/2022/WhiteHat-Play-11/pwn07-Silence) | c (64 bit) | `Buffer Overflow` |  | Due to the close of stdout and stderr, we can send data via stdin so we will use `getdents` syscall to get file name and print the flag through stdin, or we can `dup2()` to reopen stdout and stderr, and get shell |
+| [pwn08-Ruby](https://github.com/nhtri2003gmail/CTFNote/tree/master/writeup/2022/WhiteHat-Play-11/pwn08-Ruby) | c (64 bit) | `Integer Overflow` |  | Attacking tcache_perthread_struct by freeing fake chunk which has size of `0x10000` and this size is inside tcache_perthread_struct |
 
 
 </p>
