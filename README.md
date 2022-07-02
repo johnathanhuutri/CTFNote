@@ -17,6 +17,20 @@
 <p>
 
 <details>
+<summary>WhiteHat Play 11</summary>
+<p>
+
+| Name | File Type | Bug | Technique | Note |
+| :---: | :---: | :---: | :---: | :---: |
+| [pwn06-Ez_fmt](https://github.com/nhtri2003gmail/CTFNote/tree/master/writeup/2022/WhiteHat-Play-11/pwn06-Ez_fmt) | c (64 bit) | `Format String` | :---: | `%n` and `%p` (or `%s`) can be used at the same time just in case `%n` in clear form and `%p` (or `%s`) can be in short form. Ex: `%c%c%n%3$p` |
+| [pwn07-Silence](https://github.com/nhtri2003gmail/CTFNote/tree/master/writeup/2022/WhiteHat-Play-11/pwn07-Silence) | c (64 bit) | `Buffer Overflow` | :---: | Due to the close of stdout and stderr, we can send data via stdin so we will use `getdents` syscall to get file name and print the flag through stdin, or we can `dup2()` to reopen stdout and stderr, and get shell |
+| [pwn08-Ruby](https://github.com/nhtri2003gmail/CTFNote/tree/master/writeup/2022/WhiteHat-Play-11/pwn08-Ruby) | c (64 bit) | `Integer Overflow` | :---: | Attacking tcache_perthread_struct by freeing fake chunk which has size of `0x10000` and this size is inside tcache_perthread_struct |
+
+
+</p>
+</details>
+
+<details>
 <summary>KMACTF 2022</summary>
 <p>
 
@@ -339,12 +353,14 @@ Using [x-terminal-emulator](https://www.systutorials.com/docs/linux/man/1-x-term
 # Intel debug
 import subprocess
 
-def GDB():
-    command = '''
-    '''
+def GDB(command=''):
+    if not command:
+        command = '''
+        '''
     with open('/tmp/command.gdb', 'wt') as f:
         f.write(command)
     subprocess.Popen(['/usr/bin/x-terminal-emulator', '--geometry', '960x1080+960+0', '-e', 'gdb', '-p', str(p.pid), '-x', '/tmp/command.gdb'])
+    # subprocess.Popen(['/usr/bin/x-terminal-emulator', '--geometry', '960x1080+0+0', '-e', 'gdb', '-p', str(p.pid), '-x', '/tmp/command.gdb'])
     input()         # input() to make program wait with gdb
 ```
 
