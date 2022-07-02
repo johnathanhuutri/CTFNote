@@ -1,4 +1,4 @@
-# WhiteHat Play 11 - pwn06-Ez_fmt
+# WhiteHat Play 11 - pwn07-Silence
 
 Original challenge link: https://wargame.whitehat.vn/thuc-hanh
 
