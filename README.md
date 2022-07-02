@@ -250,7 +250,7 @@
 
 | Name | File Type | Bug | Technique | Note |
 | :---: | :---: | :---: | :---: | :---: |
-| [three_o_three](https://github.com/nhtri2003gmail/CTFNote/tree/master/writeup/2019/SVATTT2019/three_o_three) | c (64 bit) | `Unlimited malloc size` | `FILE structure attack` | Malloc with size larger than heap size make the chunk near libc ; `Scanf` flow: `__uflow` -> `_IO_file_underflow` -> `read` 1 byte until meet `\n`; </br> Or we can overwrite exit hook with one gadget. You can read more [here](https://blog.csdn.net/A951860555/article/details/121581338) |
+| [three_o_three](https://github.com/nhtri2003gmail/CTFNote/tree/master/writeup/2019/SVATTT2019/three_o_three) | c (64 bit) | `Unlimited malloc size` | `FILE structure attack` | Malloc with size larger than heap size make the chunk near libc ; `Scanf` flow: `__uflow` -> `_IO_file_underflow` -> `read` 1 byte until meet `\n`; </br> Or we can overwrite exit hook with one gadget. More information can be found [here](https://blog.csdn.net/A951860555/article/details/121581338) |
 
 </p>
 </details>
