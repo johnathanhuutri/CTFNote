@@ -17,6 +17,17 @@
 <p>
 
 <details>
+<summary>Google CTF 2022</summary>
+<p>
+
+| Name | File Type | Bug | Technique | Note |
+| :---: | :---: | :---: | :---: | :---: |
+| [FixedASLR] | c (64 bit) | `Buffer Overflow` `Out Of Bound` | `ROPchain` | ASLR is created by `rand(12)` whose algorithm is LFSR. Hence, recover seed with 6 leaked result of `rand(12)` by using z3, a framework of python |
+
+</p>
+</details>
+
+<details>
 <summary>WhiteHat Play 11</summary>
 <p>
 
