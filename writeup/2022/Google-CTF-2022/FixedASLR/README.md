@@ -329,14 +329,11 @@ $ objdump -d debug.o
    6:	57                   	push   %rdi
    7:	58                   	pop    %rax
    8:	c3                   	ret    
-
 ...
-
 000000000000000f <_debug_set_reg_rdx>:
    f:	57                   	push   %rdi
   10:	5a                   	pop    %rdx
   11:	c3                   	ret    
-
 ...
 ```
 
