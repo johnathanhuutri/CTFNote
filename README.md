@@ -22,7 +22,7 @@
 
 | Name | File Type | Bug | Technique | Note |
 | :---: | :---: | :---: | :---: | :---: |
-| [FixedASLR](https://github.com/nhtri2003gmail/CTFNote/tree/master/writeup/2022/Google-CTF-2022/FixedASLR) | c (64 bit) | `Buffer Overflow` `Out Of Bound` | `ROPchain` | ASLR is created by `rand(12)` whose algorithm is LFSR. Hence, recover seed with 6 leaked result of `rand(12)` by using z3, a framework of python |
+| [FixedASLR](https://github.com/nhtri2003gmail/CTFNote/tree/master/writeup/2022/Google-CTF-2022/FixedASLR) | c (64 bit) | `Buffer Overflow` `Out Of Bound` | `ROPchain` | ASLR is created by `rand(12)` whose algorithm is LFSR. Hence, recover seed (canary) with 6 leaked result of `rand(12)` by using z3, a framework of python |
 
 </p>
 </details>
