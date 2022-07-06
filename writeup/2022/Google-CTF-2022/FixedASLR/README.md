@@ -177,19 +177,19 @@ And with python function `rand()` above, we can calculate 7 values from `rand(12
 >>> hex(rand(64))
 '0x43bc56f88fb37843'        # This will be canary and seed for rand(12)
 >>> hex(rand(12))
-'0xd8d'
+'0xd8d'                     # main.o
 >>> hex(rand(12))
-'0xa9a'
+'0xa9a'                     # syscalls.o
 >>> hex(rand(12))
-'0x30c'
+'0x30c'                     # guard.o
 >>> hex(rand(12))
-'0x575'
+'0x575'                     # basic.o
 >>> hex(rand(12))
-'0xacd'
+'0xacd'                     # game.o
 >>> hex(rand(12))
-'0x699'
+'0x699'                     # res.o
 >>> hex(rand(12))
-'0xc89' 
+'0xc89'                     # debug.o
 ```
 
 Type `c` and `Ctrl + C` to pause gdb, then type `vmmap` to get all the address we have:
