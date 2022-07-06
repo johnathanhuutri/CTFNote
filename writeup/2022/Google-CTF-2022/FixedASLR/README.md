@@ -100,7 +100,7 @@ Summary:
 Before we go to the exploitation, I wrote these functions to provided a handy way to exploit:
 
 <details>
-<summary></summary>
+<summary>Code snipet</summary>
 <p>
 
 ```python
