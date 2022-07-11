@@ -51,7 +51,7 @@ Third search with `0x55555555c2`:
 
 ![search-0x55555555c2.png](images/search-0x55555555c2.png)
 
-There are some heap address on stack. However, because we can only leak 2 times so leaking stack will be impossible. Keep searching with and when we search pattern with `0x55555555c5`, there is some address in libc:
+There are some heap address on stack. However, because we can only leak 2 times so leaking stack will be impossible. Keep searching and when we search pattern with `0x55555555c5`, there is some address in libc:
 
 ![search-0x55555555c5.png](images/search-0x55555555c5.png)
 
