@@ -20,21 +20,6 @@ def free(idx):
 	p.sendlineafter(b'choice: ', b'3')
 	p.sendlineafter(b'Index:', str(idx).encode())
 
-def GDB():
-    command = '''
-    b*main+69
-    b*0x00000000004013f1
-    b*reallocate+194
-    b*rfree+85
-    b*0x00000000004014d0
-    c
-    '''
-    with open('/tmp/command.gdb', 'wt') as f:
-        f.write(command)
-    subprocess.Popen(['/usr/bin/x-terminal-emulator', '--geometry', '960x1080+0', '-e', 'gdb', '-p', str(p.pid), '-x', '/tmp/command.gdb'])
-    # subprocess.Popen(['/usr/bin/x-terminal-emulator', '--geometry', '960x1080+960', '-e', 'gdb', '-p', str(p.pid), '-x', '/tmp/command.gdb'])
-    input()         # input() to make program wait with gdb
-
 exe = ELF('./re-alloc_patched', checksec=False)
 libc = ELF('./libc.so.6', checksec=False)
 context.binary = exe
