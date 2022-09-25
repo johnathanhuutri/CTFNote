@@ -87,12 +87,11 @@ GDB()
 
 ### Another version for gdb.attach()
 
-Using [x-terminal-emulator](https://www.systutorials.com/docs/linux/man/1-x-terminal-emulator/) to create popup shell and pass command in a file:
+Using [x-terminal-emulator](https://www.systutorials.com/docs/linux/man/1-x-terminal-emulator/) to create popup shell and pass command in a file.
 
-```
-# Intel debug
-import subprocess
+- Intel debug
 
+```python
 def GDB(command=''):
     if not command:
         command = '''
@@ -104,18 +103,25 @@ def GDB(command=''):
     input()         # input() to make program wait with gdb
 ```
 
+- Arm debug
 
-
-```
-# Arm debug
+```python
 def GDB(filename, port):
     q = process(f"/usr/bin/x-terminal-emulator --geometry 960x1080+960+0 -x gdb-multiarch -q --nh -ex 'source ~/.gef-283690ae9bfcecbb3deb80cd275d327c46b276b5.py' -ex 'set architecture arm64' -ex 'file {filename}' -ex 'target remote localhost:{port}'", shell=True)
 
 port = 1234
 filename = ''
 
-p = process(f'qemu-aarch64 -L /usr/aarch64-linux-gnu -g {port} {filename}}'.split())
+p = process(f'qemu-aarch64 -L /usr/aarch64-linux-gnu -g {port} {filename}'.split())
 GDB('cli', port)
+```
+
+- Kernel debug (add before qemu command, add `-s` to qemu, using wsl2 ubuntu 20.04)
+
+```bash
+command="-ex 'target remote localhost:1234'"
+command="${command} -ex '<addcommandhere>'"
+cmd.exe /c "start <commandtostartubuntu> run gdb $command" &
 ```
 
 ---
