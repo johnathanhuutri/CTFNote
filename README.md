@@ -56,7 +56,7 @@ cap_add:
 
 Because my computer doesn't show pid when running container so I use the following way to debug:
 
-```
+```python
 import subprocess
 from pwn import *
 
@@ -67,7 +67,7 @@ def GDB():
     for i in ps:
         # Change the recognization here
         if b'/home/bacteria/bacteria' in i and b'timeout' not in i:
-            pid = i.split(b'  ')[1].decode()
+            pid = i.split()[1].decode()
 
     # Change command here
     command = '''
@@ -78,9 +78,6 @@ def GDB():
     # Need sudo permission
     subprocess.Popen(['sudo', '/usr/bin/x-terminal-emulator', '--geometry', '960x1080+960+0', '-e', 'gdb', '-p', pid, '-x', '/tmp/command.gdb'])
     input()     # input() to make program wait with gdb
-
-p = connect('127.0.0.1', 9487)
-GDB()
 ```
 
 ---
@@ -109,11 +106,11 @@ def GDB(command=''):
 def GDB(filename, port):
     q = process(f"/usr/bin/x-terminal-emulator --geometry 960x1080+960+0 -x gdb-multiarch -q --nh -ex 'source ~/.gef-283690ae9bfcecbb3deb80cd275d327c46b276b5.py' -ex 'set architecture arm64' -ex 'file {filename}' -ex 'target remote localhost:{port}'", shell=True)
 
+
 port = 1234
 filename = ''
-
 p = process(f'qemu-aarch64 -L /usr/aarch64-linux-gnu -g {port} {filename}'.split())
-GDB('cli', port)
+GDB(filename, port)
 ```
 
 - Kernel debug (add before qemu command, add `-s` to qemu, using wsl2 ubuntu 20.04)
