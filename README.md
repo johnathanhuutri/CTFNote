@@ -126,6 +126,7 @@ GDB(filename, port)
 ```bash
 command="-nx"
 command="${command} -ex 'set disassembly-flavor intel'"
+command="${command} -ex 'set pagination off'"
 command="${command} -ex 'target remote localhost:1234'"
 command="${command} -ex 'display/x \$rax'"
 command="${command} -ex 'display/x \$rbx'"
