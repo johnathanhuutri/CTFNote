@@ -124,7 +124,9 @@ GDB(filename, port)
 - Kernel debug (add before qemu command, add `-s` to qemu, using wsl2 ubuntu 20.04)
 
 ```bash
-command="-ex 'target remote localhost:1234'"
+command="-nx"
+command="${command} -ex 'set disassembly-flavor intel'"
+command="${command} -ex 'target remote localhost:1234'"
 command="${command} -ex '<addcommandhere>'"
 cmd.exe /c "start <wsl2filename> run gdb $command" &
 ```
