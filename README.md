@@ -152,6 +152,28 @@ print(hex(val))
 
 ---
 
+### GDB show data when stop
+
+You can read [this blog](https://www.cse.unsw.edu.au/~learn/debugging/modules/gdb_watch_display/) for example.
+
+- watch
+
+```
+(gdb) watch <variable_name>
+(gdb) info breakpoints    # Viewing both breakpoint and watchpoint
+(gdb) disable <watchpoint_number>
+```
+
+- display
+
+```
+(gdb) display <expression/variable_name>
+(gdb) info display
+(gdb) delete display <display_number>
+```
+
+---
+
 ### pwntools  
 
 - Get child pid (way 1): 
