@@ -127,6 +127,7 @@ GDB(filename, port)
 command="-nx"
 command="${command} -ex 'set disassembly-flavor intel'"
 command="${command} -ex 'set pagination off'"
+command="${command} -ex 'set confirm off'"
 command="${command} -ex 'target remote localhost:1234'"
 command="${command} -ex 'display/x \$rax'"
 command="${command} -ex 'display/x \$rbx'"
@@ -200,10 +201,20 @@ You can read [this blog](https://www.cse.unsw.edu.au/~learn/debugging/modules/gd
 
 ### GDB disable "Type <return> to continue..."
 
-I got it from [here](https://stackoverflow.com/questions/28815621/how-to-disable-type-return-to-continue-or-q-return-to-quit-in-gdb)
+I got it from https://stackoverflow.com/questions/28815621/how-to-disable-type-return-to-continue-or-q-return-to-quit-in-gdb
 
 ```
 (gdb) set pagination off
+```
+
+---
+
+### GDB disable "Quit anyway?..."
+
+I got it from https://stackoverflow.com/questions/4355978/get-rid-of-quit-anyway-prompt-using-gdb-just-kill-the-process-and-quit
+
+```
+(gdb) set confirm off
 ```
 
 ---
