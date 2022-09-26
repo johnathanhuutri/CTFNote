@@ -41,7 +41,7 @@ Install [docker](https://stackoverflow.com/questions/57025264/installing-docker-
 sudo apt install docker.io
 ```
 
-Install [docker-compose](https://docs.docker.com/compose/install/) for convinient command
+Install [docker-compose](https://docs.docker.com/compose/install/linux/) for convinient command. If you get errot `Unable to locate package docker-compose-plugin`, please read [this blog](https://dothanhlong.org/cai-docker-compose-tren-ubuntu-linux/) to install another way
 
 ---
 
@@ -89,15 +89,23 @@ Using [x-terminal-emulator](https://www.systutorials.com/docs/linux/man/1-x-term
 - Intel debug
 
 ```python
-def GDB(command=''):
-    if not command:
-        command = '''
-        '''
+def GDB():
+    command = '''
+    '''
     with open('/tmp/command.gdb', 'wt') as f:
         f.write(command)
     subprocess.Popen(['/usr/bin/x-terminal-emulator', '--geometry', '960x1080+960+0', '-e', 'gdb', '-p', str(p.pid), '-x', '/tmp/command.gdb'])
-    # subprocess.Popen(['/usr/bin/x-terminal-emulator', '--geometry', '960x1080+0+0', '-e', 'gdb', '-p', str(p.pid), '-x', '/tmp/command.gdb'])
-    input()         # input() to make program wait with gdb
+    input()
+```
+
+```python
+def GDB():
+    command = '''
+    '''
+    with open('/tmp/command.gdb', 'w') as f:
+        f.write(command)
+    q = process(f'cmd.exe /c start ubuntu2004 run gdb -p {p.pid} -x /tmp/command.gdb'.split())
+    input()
 ```
 
 - Arm debug
@@ -118,7 +126,7 @@ GDB(filename, port)
 ```bash
 command="-ex 'target remote localhost:1234'"
 command="${command} -ex '<addcommandhere>'"
-cmd.exe /c "start <commandtostartubuntu> run gdb $command" &
+cmd.exe /c "start <wsl2filename> run gdb $command" &
 ```
 
 ---
