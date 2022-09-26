@@ -166,10 +166,16 @@ You can read [this blog](https://www.cse.unsw.edu.au/~learn/debugging/modules/gd
 
 - display
 
-```
-(gdb) display <expression/variable_name>
-(gdb) info display
-(gdb) delete display <display_number>
+```gdb
+# display <expression/variable_name>
+(gdb) display $rax
+
+# display/fmt <expression/variable_name>
+(gdb) display/x $rax    # display as hex format
+
+# info display
+# delete display <display_number>
+(gdb) delete display 1
 ```
 
 ---
