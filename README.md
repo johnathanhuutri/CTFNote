@@ -89,7 +89,7 @@ Using [x-terminal-emulator](https://www.systutorials.com/docs/linux/man/1-x-term
 - Intel debug
 
 ```python
-def GDB():
+def GDB():     # Real machine
     command = '''
     '''
     with open('/tmp/command.gdb', 'wt') as f:
@@ -99,7 +99,7 @@ def GDB():
 ```
 
 ```python
-def GDB():
+def GDB():     # Wsl2
     command = '''
     '''
     with open('/tmp/command.gdb', 'w') as f:
