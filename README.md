@@ -127,6 +127,23 @@ GDB(filename, port)
 command="-nx"
 command="${command} -ex 'set disassembly-flavor intel'"
 command="${command} -ex 'target remote localhost:1234'"
+command="${command} -ex 'display/x \$rax'"
+command="${command} -ex 'display/x \$rbx'"
+command="${command} -ex 'display/x \$rcx'"
+command="${command} -ex 'display/x \$rdx'"
+command="${command} -ex 'display/x \$rdi'"
+command="${command} -ex 'display/x \$rsi'"
+command="${command} -ex 'display/x \$rbp'"
+command="${command} -ex 'display/x \$rsp'"
+command="${command} -ex 'display/x \$r8'"
+command="${command} -ex 'display/x \$r9'"
+command="${command} -ex 'display/x \$r10'"
+command="${command} -ex 'display/x \$r11'"
+command="${command} -ex 'display/x \$r12'"
+command="${command} -ex 'display/x \$r13'"
+command="${command} -ex 'display/x \$r14'"
+command="${command} -ex 'display/x \$r15'"
+command="${command} -ex 'display/10i \$rip'"
 command="${command} -ex '<addcommandhere>'"
 cmd.exe /c "start <wsl2filename> run gdb $command" &
 ```
@@ -176,6 +193,16 @@ You can read [this blog](https://www.cse.unsw.edu.au/~learn/debugging/modules/gd
 # info display
 # delete display <display_number>
 (gdb) delete display 1
+```
+
+---
+
+### GDB disable "Type <return> to continue..."
+
+I got it from [here](https://stackoverflow.com/questions/28815621/how-to-disable-type-return-to-continue-or-q-return-to-quit-in-gdb)
+
+```
+(gdb) set pagination off
 ```
 
 ---
