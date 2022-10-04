@@ -89,7 +89,7 @@ Using [x-terminal-emulator](https://www.systutorials.com/docs/linux/man/1-x-term
 - Intel debug
 
 ```python
-def GDB():     # Real machine
+def GDB():     # *NIX machine
     command = '''
     '''
     with open('/tmp/command.gdb', 'wt') as f:
@@ -100,11 +100,20 @@ def GDB():     # Real machine
 
 ```python
 def GDB():     # Wsl2
+    import os
+    script = '''
+    #!/bin/sh
+
+    cd <Path_to_folder_contain_running_binary>
+    '''
+    script += f'gdb -p {p.pid} -x /tmp/command.gdb'
+    with open('/tmp/script.sh', 'w') as f: f.write(script)
+    os.system("chmod +x /tmp/script.sh")
+
     command = '''
     '''
-    with open('/tmp/command.gdb', 'w') as f:
-        f.write(command)
-    q = process(f'cmd.exe /c start ubuntu2004 run gdb -p {p.pid} -x /tmp/command.gdb'.split())
+    with open('/tmp/command.gdb', 'w') as f: f.write(command)
+    q = process(f'cmd.exe /c start C:\\Windows\\system32\\wsl.exe -d <wsl2_number> /tmp/script.sh'.split())
     input()
 ```
 
