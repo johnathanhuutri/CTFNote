@@ -113,7 +113,7 @@ def GDB():     # Wsl2
     command = '''
     '''
     with open('/tmp/command.gdb', 'w') as f: f.write(command)
-    q = process(f'cmd.exe /c start C:\\Windows\\system32\\wsl.exe -d <wsl2_number> /tmp/script.sh'.split())
+    q = process(f'cmd.exe /c start C:\\Windows\\system32\\wsl.exe /tmp/script.sh'.split())
     input()
 ```
 
