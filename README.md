@@ -1,3 +1,7 @@
+https://blackcloud.me/Linux-shellcode-alphanumeric/
+https://nets.ec/Ascii_shellcode
+https://github.com/VincentDary/PolyAsciiShellGen
+
 # Technique ([Table of content](#table-of-content))
 
 | Name | Note |
@@ -36,7 +40,9 @@ payload += p32(<return address>)
 </p>
 </details>
 
-### Docker outline
+<details>
+<summary><h3>Docker installation</h3></summary>
+<p>
 
 Install [docker](https://stackoverflow.com/questions/57025264/installing-docker-on-parrot-os) on parrot:
 
@@ -46,9 +52,12 @@ sudo apt install docker.io
 
 Install [docker-compose](https://docs.docker.com/compose/install/linux/) for convinient command. If you get errot `Unable to locate package docker-compose-plugin`, please read [this blog](https://dothanhlong.org/cai-docker-compose-tren-ubuntu-linux/) to install another way
 
----
+</p>
+</details>
 
-### Attach GDB to running process in docker
+<details>
+<summary><h3>Attach GDB to running process in docker</h3></summary>
+<p>
 
 To debug a process from docker, add this YAML code to docker-compose.yml, the same wilth `expose` ([source](https://stackoverflow.com/questions/42029834/gdb-in-docker-container-returns-ptrace-operation-not-permitted)):
 
@@ -83,7 +92,8 @@ def GDB():
     input()     # input() to make program wait with gdb
 ```
 
----
+</p>
+</details>
 
 ### Another version for gdb.attach()
 
