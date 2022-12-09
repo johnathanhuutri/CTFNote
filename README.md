@@ -95,7 +95,9 @@ def GDB():
 </p>
 </details>
 
-### Another version for gdb.attach()
+<details>
+<summary><h3>Another version for gdb.attach()</h3></summary>
+<p>
 
 Using [x-terminal-emulator](https://www.systutorials.com/docs/linux/man/1-x-terminal-emulator/) to create popup shell and pass command in a file.
 
@@ -172,9 +174,12 @@ command="${command} -ex '<addcommandhere>'"
 cmd.exe /c "start <wsl2filename> run gdb $command" &
 ```
 
----
+</p>
+</details>
 
-### Load libc in python
+<details>
+<summary><h3>Load libc in python</h3></summary>
+<p>
 
 ```python
 from ctypes import*
@@ -191,7 +196,12 @@ val = glibc.rand()
 print(hex(val))
 ```
 
----
+</p>
+</details>
+
+<details>
+<summary><h3>GDB show data when stop</h3></summary>
+<p>
 
 ### GDB show data when stop
 
@@ -219,9 +229,12 @@ You can read [this blog](https://www.cse.unsw.edu.au/~learn/debugging/modules/gd
 (gdb) delete display 1
 ```
 
----
+</p>
+</details>
 
-### GDB disable "Type <return> to continue..."
+<details>
+<summary><h3>GDB disable "Type <return> to continue..."</h3></summary>
+<p>
 
 I got it from https://stackoverflow.com/questions/28815621/how-to-disable-type-return-to-continue-or-q-return-to-quit-in-gdb
 
@@ -229,9 +242,12 @@ I got it from https://stackoverflow.com/questions/28815621/how-to-disable-type-r
 (gdb) set pagination off
 ```
 
----
+</p>
+</details>
 
-### GDB disable "Quit anyway?..."
+<details>
+<summary><h3>GDB disable "Quit anyway?..."</h3></summary>
+<p>
 
 I got it from https://stackoverflow.com/questions/4355978/get-rid-of-quit-anyway-prompt-using-gdb-just-kill-the-process-and-quit
 
@@ -239,9 +255,12 @@ I got it from https://stackoverflow.com/questions/4355978/get-rid-of-quit-anyway
 (gdb) set confirm off
 ```
 
----
+</p>
+</details>
 
-### pwntools  
+<details>
+<summary><h3>pwntools</h3></summary>
+<p>
 
 - Get child pid (way 1): 
 ```
@@ -299,6 +318,9 @@ print(core.read(<some address>, <number of byte read>))     # Return byte
 # Read until null byte
 print(core.string(<some address>))
 ```
+
+</p>
+</details>
 
 ---
 
