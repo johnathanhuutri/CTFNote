@@ -233,7 +233,7 @@ You can read [this blog](https://www.cse.unsw.edu.au/~learn/debugging/modules/gd
 </details>
 
 <details>
-<summary><h3>GDB disable "Type <return> to continue..."</h3></summary>
+<summary><h3>GDB disable "Type return to continue..."</h3></summary>
 <p>
 
 I got it from https://stackoverflow.com/questions/28815621/how-to-disable-type-return-to-continue-or-q-return-to-quit-in-gdb
