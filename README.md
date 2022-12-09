@@ -323,7 +323,9 @@ print(core.string(<some address>))
 <p>
 
 https://blackcloud.me/Linux-shellcode-alphanumeric/
+
 https://nets.ec/Ascii_shellcode
+
 https://github.com/VincentDary/PolyAsciiShellGen
 
 </p>
