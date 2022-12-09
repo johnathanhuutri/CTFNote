@@ -1,7 +1,3 @@
-https://blackcloud.me/Linux-shellcode-alphanumeric/
-https://nets.ec/Ascii_shellcode
-https://github.com/VincentDary/PolyAsciiShellGen
-
 # Technique ([Table of content](#table-of-content))
 
 | Name | Note |
@@ -322,32 +318,52 @@ print(core.string(<some address>))
 </p>
 </details>
 
----
+<details>
+<summary><h3>Ascii shellcode</h3></summary>
+<p>
 
-### Get [opcode](https://www.commandlinefu.com/commands/view/6051/get-all-shellcode-on-binary-file-from-objdump) from binary
+https://blackcloud.me/Linux-shellcode-alphanumeric/
+https://nets.ec/Ascii_shellcode
+https://github.com/VincentDary/PolyAsciiShellGen
+
+</p>
+</details>
+
+<details>
+<summary><h3>Get <a href="https://www.commandlinefu.com/commands/view/6051/get-all-shellcode-on-binary-file-from-objdump">opcode</a> from binary</h3></summary>
+<p>
 
 ```
 objdump -d <Name of program>|grep '[0-9a-f]:'|grep -v 'file'|cut -f2 -d:|cut -f1-6 -d' '|tr -s ' '|tr '\t' ' '|sed 's/\ $//g'|sed 's/\ /\\x/g'|paste -d '' -s |sed 's/^/"/'|sed 's/$/"/g'
 ```
 
----
+</p>
+</details>
 
-### gdb
+<details>
+<summary><h3>gdb</h3></summary>
+<p>
 
 - `r < <()` can pass null byte, `r <<<$()` cannot.
 
 - `flag +/-ZERO` to set or remove flag.
 
----
+</p>
+</details>
 
-### movaps xmm0,... 
+<details>
+<summary><h3>movaps xmm0,... </h3></summary>
+<p>
 
 - rsp (esp) address must end with byte 0x00, 0x10, 0x20, 0x30... or it will cause error.</br>
 Ex: if rsp address end with 0xe8 --> segfault.
 
----
+</p>
+</details>
 
-### format string 
+<details>
+<summary><h3>format string </h3></summary>
+<p>
 
 - `%p%p%p%n` will write and access easily.
 - `%4$n` will write but cannot access.
@@ -359,3 +375,6 @@ Ex: if rsp address end with 0xe8 --> segfault.
 - `%.*<k>$c` will be the pad of `0` with the size that `%<k>$c` point to
 - Format string can be use to modify and read data at the same time just in case you don't use the short format (`%<k>$c`), use the plain format instead (`%p`, `%n`, `%s`, `%c`).
     - Example: `%c%c%c%c%1234c%hn%6$s` to change address and read from that changed address
+
+</p>
+</details>
