@@ -7,7 +7,9 @@
 
 # Note ([Table of content](#table-of-content))
 
-### Execute @plt on stack (BOF):
+<details>
+<summary><h3>Execute @plt on stack (BOF)</h3></summary>
+<p>
 
 - 32 bit:
 ```
@@ -31,7 +33,8 @@ payload += p64(@plt / libc.sym['<function name>'])
 payload += p32(<return address>)
 ```
 
----
+</p>
+</details>
 
 ### Docker outline
 
