@@ -52,8 +52,10 @@ Install [docker-compose](https://docs.docker.com/compose/install/linux/) for con
 </details>
 
 <details>
-<summary><h3>Attach GDB to running process in docker</h3></summary>
+<summary>GDB Attach</summary>
 <p>
+
+### Attach GDB to running process in docker
 
 To debug a process from docker, add this YAML code to docker-compose.yml, the same wilth `expose` ([source](https://stackoverflow.com/questions/42029834/gdb-in-docker-container-returns-ptrace-operation-not-permitted)):
 
