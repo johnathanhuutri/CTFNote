@@ -236,6 +236,12 @@ val = glibc.rand()
 print(hex(val))
 ```
 
+### Other tips
+
+- `r < <()` can input null byte, `r <<<$()` cannot.
+
+- `flag +/-ZERO` to set or remove flag.
+
 </p>
 </details>
 
@@ -323,17 +329,6 @@ https://github.com/VincentDary/PolyAsciiShellGen
 ```
 objdump -d <Name of program>|grep '[0-9a-f]:'|grep -v 'file'|cut -f2 -d:|cut -f1-6 -d' '|tr -s ' '|tr '\t' ' '|sed 's/\ $//g'|sed 's/\ /\\x/g'|paste -d '' -s |sed 's/^/"/'|sed 's/$/"/g'
 ```
-
-</p>
-</details>
-
-<details>
-<summary><h3>gdb</h3></summary>
-<p>
-
-- `r < <()` can pass null byte, `r <<<$()` cannot.
-
-- `flag +/-ZERO` to set or remove flag.
 
 </p>
 </details>
