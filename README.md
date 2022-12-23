@@ -57,7 +57,7 @@ Install [docker-compose](https://docs.docker.com/compose/install/linux/) for con
 
 Using [x-terminal-emulator](https://www.systutorials.com/docs/linux/man/1-x-terminal-emulator/) to create popup shell and pass command in a file.
 
-- Intel debug
+### Intel debug
 
 ```python
 def GDB():     # *NIX machine
@@ -88,7 +88,7 @@ def GDB():     # Wsl2
     input()
 ```
 
-- Arm debug
+### Arm debug
 
 ```python
 def GDB(filename, port):
@@ -101,7 +101,7 @@ p = process(f'qemu-aarch64 -L /usr/aarch64-linux-gnu -g {port} {filename}'.split
 GDB(filename, port)
 ```
 
-- Kernel debug (add before qemu command, add `-s` to qemu, using wsl2 ubuntu 20.04)
+### Kernel debug (add before qemu command, add `-s` to qemu, using wsl2 ubuntu 20.04)
 
 ```bash
 command="-nx"
@@ -130,7 +130,7 @@ command="${command} -ex '<addcommandhere>'"
 cmd.exe /c "start <wsl2filename> run gdb $command" &
 ```
 
-- Debug docker process
+### Debug docker process
 
 To debug a process from docker, add this YAML code to docker-compose.yml, the same wilth `expose` ([source](https://stackoverflow.com/questions/42029834/gdb-in-docker-container-returns-ptrace-operation-not-permitted)):
 
@@ -169,38 +169,16 @@ def GDB():
 </details>
 
 <details>
-<summary><h3>Load libc in python</h3></summary>
+<summary><h3>GDB tips</h3></summary>
 <p>
 
-```python
-from ctypes import*
-
-# Load glibc chạy chung với chương trình
-glibc = cdll.LoadLibrary('./libc6_2.27-3ubuntu1.4_amd64.so')
-
-# Tạo seed rand với seed bằng time(null)
-glibc.srand(glibc.time(None))
-
-# Lấy giá trị random
-val = glibc.rand()
-
-print(hex(val))
-```
-
-</p>
-</details>
-
-<details>
-<summary><h3>GDB show data when stop</h3></summary>
-<p>
-
-### GDB show data when stop
+### Show data when stop
 
 You can read [this blog](https://www.cse.unsw.edu.au/~learn/debugging/modules/gdb_watch_display/) for example.
 
 - watch
 
-```
+```gdb
 (gdb) watch <variable_name>
 (gdb) info breakpoints    # Viewing both breakpoint and watchpoint
 (gdb) disable <watchpoint_number>
@@ -220,12 +198,7 @@ You can read [this blog](https://www.cse.unsw.edu.au/~learn/debugging/modules/gd
 (gdb) delete display 1
 ```
 
-</p>
-</details>
-
-<details>
-<summary><h3>GDB disable "Type return to continue..."</h3></summary>
-<p>
+### Disable "Type return to continue..."
 
 I got it from https://stackoverflow.com/questions/28815621/how-to-disable-type-return-to-continue-or-q-return-to-quit-in-gdb
 
@@ -233,17 +206,34 @@ I got it from https://stackoverflow.com/questions/28815621/how-to-disable-type-r
 (gdb) set pagination off
 ```
 
-</p>
-</details>
-
-<details>
-<summary><h3>GDB disable "Quit anyway?..."</h3></summary>
-<p>
+### Disable "Quit anyway?..."
 
 I got it from https://stackoverflow.com/questions/4355978/get-rid-of-quit-anyway-prompt-using-gdb-just-kill-the-process-and-quit
 
 ```
 (gdb) set confirm off
+```
+
+</p>
+</details>
+
+<details>
+<summary><h3>Load libc in python</h3></summary>
+<p>
+
+```python
+from ctypes import*
+
+# Load glibc chạy chung với chương trình
+glibc = cdll.LoadLibrary('./libc6_2.27-3ubuntu1.4_amd64.so')
+
+# Tạo seed rand với seed bằng time(null)
+glibc.srand(glibc.time(None))
+
+# Lấy giá trị random
+val = glibc.rand()
+
+print(hex(val))
 ```
 
 </p>
