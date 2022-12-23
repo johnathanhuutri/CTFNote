@@ -52,49 +52,7 @@ Install [docker-compose](https://docs.docker.com/compose/install/linux/) for con
 </details>
 
 <details>
-<summary>GDB Attach</summary>
-<p>
-
-### Attach GDB to running process in docker
-
-To debug a process from docker, add this YAML code to docker-compose.yml, the same wilth `expose` ([source](https://stackoverflow.com/questions/42029834/gdb-in-docker-container-returns-ptrace-operation-not-permitted)):
-
-```
-cap_add:
-- SYS_PTRACE
-```
-
-Because my computer doesn't show pid when running container so I use the following way to debug:
-
-```python
-import subprocess
-from pwn import *
-
-def GDB():
-    proc = subprocess.Popen(['ps', 'aux'], stdout=subprocess.PIPE)
-    ps = proc.stdout.read().split(b'\n')
-    pid = ''
-    for i in ps:
-        # Change the recognization here
-        if b'/home/bacteria/bacteria' in i and b'timeout' not in i:
-            pid = i.split()[1].decode()
-
-    # Change command here
-    command = '''
-    '''
-    with open('/tmp/command.gdb', 'wt') as f:
-        f.write(command)
-
-    # Need sudo permission
-    subprocess.Popen(['sudo', '/usr/bin/x-terminal-emulator', '--geometry', '960x1080+960+0', '-e', 'gdb', '-p', pid, '-x', '/tmp/command.gdb'])
-    input()     # input() to make program wait with gdb
-```
-
-</p>
-</details>
-
-<details>
-<summary><h3>Another version for gdb.attach()</h3></summary>
+<summary><h3>GDB Attach</h3></summary>
 <p>
 
 Using [x-terminal-emulator](https://www.systutorials.com/docs/linux/man/1-x-terminal-emulator/) to create popup shell and pass command in a file.
@@ -170,6 +128,41 @@ command="${command} -ex 'display/x \$r15'"
 command="${command} -ex 'display/10i \$rip'"
 command="${command} -ex '<addcommandhere>'"
 cmd.exe /c "start <wsl2filename> run gdb $command" &
+```
+
+- Debug docker process
+
+To debug a process from docker, add this YAML code to docker-compose.yml, the same wilth `expose` ([source](https://stackoverflow.com/questions/42029834/gdb-in-docker-container-returns-ptrace-operation-not-permitted)):
+
+```
+cap_add:
+- SYS_PTRACE
+```
+
+Because my computer doesn't show pid when running container so I use the following way to debug:
+
+```python
+import subprocess
+from pwn import *
+
+def GDB():
+    proc = subprocess.Popen(['ps', 'aux'], stdout=subprocess.PIPE)
+    ps = proc.stdout.read().split(b'\n')
+    pid = ''
+    for i in ps:
+        # Change the recognization here
+        if b'/home/bacteria/bacteria' in i and b'timeout' not in i:
+            pid = i.split()[1].decode()
+
+    # Change command here
+    command = '''
+    '''
+    with open('/tmp/command.gdb', 'wt') as f:
+        f.write(command)
+
+    # Need sudo permission
+    subprocess.Popen(['sudo', '/usr/bin/x-terminal-emulator', '--geometry', '960x1080+960+0', '-e', 'gdb', '-p', pid, '-x', '/tmp/command.gdb'])
+    input()     # input() to make program wait with gdb
 ```
 
 </p>
