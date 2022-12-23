@@ -214,6 +214,12 @@ I got it from https://stackoverflow.com/questions/4355978/get-rid-of-quit-anyway
 (gdb) set confirm off
 ```
 
+### Other tips
+
+- `r < <()` can input null byte, `r <<<$()` cannot.
+
+- `flag +/-ZERO` to set or remove flag.
+
 </p>
 </details>
 
@@ -235,12 +241,6 @@ val = glibc.rand()
 
 print(hex(val))
 ```
-
-### Other tips
-
-- `r < <()` can input null byte, `r <<<$()` cannot.
-
-- `flag +/-ZERO` to set or remove flag.
 
 </p>
 </details>
