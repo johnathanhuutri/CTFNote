@@ -322,32 +322,32 @@ https://github.com/VincentDary/PolyAsciiShellGen
 Some special assembly code:
 
 ```as
-34 30                   xor    al,0x30                         : ✓
-80 f3 30                xor    bl,0x30                         : ✘
-80 f1 30                xor    cl,0x30                         : ✘
-80 f2 30                xor    dl,0x30                         : ✘
+34 30                   xor    al,0x30                : ✓
+80 f3 30                xor    bl,0x30                : ✘
+80 f1 30                xor    cl,0x30                : ✘
+80 f2 30                xor    dl,0x30                : ✘
 
-66 35 30 30             xor    ax,0x3030                       : ✓
-66 81 f3 30 30          xor    bx,0x3030                       : ✘
-66 81 f1 30 30          xor    cx,0x3030                       : ✘
-66 81 f2 30 30          xor    dx,0x3030                       : ✘
+66 35 30 30             xor    ax,0x3030              : ✓
+66 81 f3 30 30          xor    bx,0x3030              : ✘
+66 81 f1 30 30          xor    cx,0x3030              : ✘
+66 81 f2 30 30          xor    dx,0x3030              : ✘
 
-31 58 20                xor    DWORD PTR [eax+0x20],ebx        : ✓
-66 31 58 20             xor    WORD PTR [eax+0x20],bx          : ✓
-30 78 20                xor    BYTE PTR [eax+0x20],bh          : ✓
-30 58 20                xor    BYTE PTR [eax+0x20],bl          : ✓
+31 58 20                xor    [eax+0x20],ebx         : ✓
+66 31 58 20             xor    [eax+0x20],bx          : ✓
+30 78 20                xor    [eax+0x20],bh          : ✓
+30 58 20                xor    [eax+0x20],bl          : ✓
 
 You can change between eax, ebx, ecx or edx for both 2 operands for 4 instruction above.
 
-31 44 24 40             xor    DWORD PTR [esp+0x40],eax        : ✓ / ✘ (depends)
-66 31 44 24 40          xor    WORD PTR [esp+0x40],ax          : ✓ / ✘ (depends)
-30 64 24 40             xor    BYTE PTR [esp+0x40],ah          : ✓ / ✘ (depends)
-30 44 24 40             xor    BYTE PTR [esp+0x40],al          : ✓ / ✘ (depends)
+31 44 24 40             xor    [esp+0x40],eax         : ✓ / ✘ (depends)
+66 31 44 24 40          xor    [esp+0x40],ax          : ✓ / ✘ (depends)
+30 64 24 40             xor    [esp+0x40],ah          : ✓ / ✘ (depends)
+30 44 24 40             xor    [esp+0x40],al          : ✓ / ✘ (depends)
 
-6a 30                   push   0x30                            : ✓
-68 31 30 00 00          push   0x3031                          : ✓
-68 32 31 30 00          push   0x303132                        : ✓
-68 33 32 31 30          push   0x30313233                      : ✓
+6a 30                   push   0x30                   : ✓
+68 31 30 00 00          push   0x3031                 : ✓
+68 32 31 30 00          push   0x303132               : ✓
+68 33 32 31 30          push   0x30313233             : ✓
 ```
 
 </p>
