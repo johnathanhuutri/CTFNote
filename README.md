@@ -306,6 +306,49 @@ print(core.read(<some address>, <number of byte read>))     # Return byte
 print(core.string(<some address>))
 ```
 
+To check if core dump is enable or not, run `ulimit -a` and check the line `-c: core file size`
+
+![](images/ulimit-show.png)
+
+String `unlimited` is what we want. If it doesn't, you will want to change back to unlimited with this command:
+
+```bash
+ulimit -c unlimited
+```
+
+But that is just ulimit soft, which means ulimit just affect current session, current terminal, not the next time. If you want to set it hard, you would like to edit the file `/etc/security/limits.conf` by adding the following line with chosen user:
+
+```
+<user>      hard    core        ulimited
+```
+
+Now the core dump will be generated when a program get segfault. If you want to know where the core file is saved, run this command to show you the default core place:
+
+```bash
+cat /proc/sys/kernel/core_pattern
+```
+
+Want to debug with that core file? Run these commands:
+
+```bash
+gdb <executable file>
+...
+(gdb) core <core-file>
+```
+
+Most useful commands are:
+
+- `bt` (backtrace)
+- `info locals` (show values of local variables)
+- `info registers` (show values of local variables)
+- `frame X` (show values of local variables)
+- `up` and `down` (navigate in the stack frame (call chain))
+
+**Reference:**
+
+https://stackoverflow.com/a/54943610
+https://linuxhint.com/increase-open-file-limit-ubuntu/
+
 </p>
 </details>
 
