@@ -306,6 +306,13 @@ print(core.read(<some address>, <number of byte read>))     # Return byte
 print(core.string(<some address>))
 ```
 
+</p>
+</details>
+
+<details>
+<summary><h3>Core dump</h3></summary>
+<p>
+
 To check if core dump is enable or not, run `ulimit -a` and check the line `-c: core file size`
 
 ![](images/ulimit-show.png)
@@ -322,7 +329,7 @@ But that is just ulimit soft, which means ulimit just affect current session, cu
 <user>      hard    core        ulimited
 ```
 
-Now the core dump will be generated when a program get segfault. If you want to know where the core file is saved, run this command to show you the default core place:
+Now the core dump will be generated when a program get segfault. If you want to know where the core file is saved, run this command to show the default core place:
 
 ```bash
 cat /proc/sys/kernel/core_pattern
@@ -344,10 +351,13 @@ Most useful commands are:
 - `frame X` (show values of local variables)
 - `up` and `down` (navigate in the stack frame (call chain))
 
+If you want to analyze core file with pwntools, see the session [pwntools](https://github.com/nhtri2003gmail/CTFNote#pwntools) above.
+
 **Reference:**
 
-https://stackoverflow.com/a/54943610
-https://linuxhint.com/increase-open-file-limit-ubuntu/
+- https://stackoverflow.com/a/54943610
+- https://linuxhint.com/increase-open-file-limit-ubuntu/
+
 
 </p>
 </details>
