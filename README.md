@@ -310,7 +310,7 @@ To check if core dump is enable or not, run `ulimit -a` and check the line `-c: 
 
 ![](images/ulimit-show.png)
 
-String `unlimited` is what we want. If it doesn't, you will want to change back to unlimited with this command:
+String `unlimited` is what we want. If it's not that string, you will want to change back to unlimited with this command:
 
 ```bash
 ulimit -c unlimited
