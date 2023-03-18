@@ -246,6 +246,58 @@ print(hex(val))
 </details>
 
 <details>
+<summary><h3>Core dump</h3></summary>
+<p>
+
+To check if core dump is enable or not, run `ulimit -a` and check the line `-c: core file size`
+
+![](images/ulimit-show.png)
+
+String `unlimited` is what we want. If it's not that string, you will want to change back to unlimited with this command:
+
+```bash
+ulimit -c unlimited
+```
+
+But that is just ulimit soft, which means ulimit just affect current session, current terminal, not the next time. If you want to set it hard, you would like to edit the file `/etc/security/limits.conf` by adding the following line with chosen user:
+
+```
+<user>      hard    core        ulimited
+```
+
+Now the core dump will be generated when a program get segfault. If you want to know where the core file is saved, run this command to show the default core place:
+
+```bash
+cat /proc/sys/kernel/core_pattern
+```
+
+Want to debug with that core file? Run these commands:
+
+```bash
+gdb <executable file>
+...
+(gdb) core <core-file>
+```
+
+Most useful commands are:
+
+- `bt` (backtrace)
+- `info locals` (show values of local variables)
+- `info registers` (show values of local variables)
+- `frame X` (show values of local variables)
+- `up` and `down` (navigate in the stack frame (call chain))
+
+If you want to analyze core file with pwntools, see the session [pwntools](https://github.com/nhtri2003gmail/CTFNote#pwntools) below.
+
+**Reference:**
+
+- https://stackoverflow.com/a/54943610
+- https://linuxhint.com/increase-open-file-limit-ubuntu/
+
+</p>
+</details>
+
+<details>
 <summary><h3>pwntools</h3></summary>
 <p>
 
@@ -305,59 +357,6 @@ print(core.read(<some address>, <number of byte read>))     # Return byte
 # Read until null byte
 print(core.string(<some address>))
 ```
-
-</p>
-</details>
-
-<details>
-<summary><h3>Core dump</h3></summary>
-<p>
-
-To check if core dump is enable or not, run `ulimit -a` and check the line `-c: core file size`
-
-![](images/ulimit-show.png)
-
-String `unlimited` is what we want. If it's not that string, you will want to change back to unlimited with this command:
-
-```bash
-ulimit -c unlimited
-```
-
-But that is just ulimit soft, which means ulimit just affect current session, current terminal, not the next time. If you want to set it hard, you would like to edit the file `/etc/security/limits.conf` by adding the following line with chosen user:
-
-```
-<user>      hard    core        ulimited
-```
-
-Now the core dump will be generated when a program get segfault. If you want to know where the core file is saved, run this command to show the default core place:
-
-```bash
-cat /proc/sys/kernel/core_pattern
-```
-
-Want to debug with that core file? Run these commands:
-
-```bash
-gdb <executable file>
-...
-(gdb) core <core-file>
-```
-
-Most useful commands are:
-
-- `bt` (backtrace)
-- `info locals` (show values of local variables)
-- `info registers` (show values of local variables)
-- `frame X` (show values of local variables)
-- `up` and `down` (navigate in the stack frame (call chain))
-
-If you want to analyze core file with pwntools, see the session [pwntools](https://github.com/nhtri2003gmail/CTFNote#pwntools) above.
-
-**Reference:**
-
-- https://stackoverflow.com/a/54943610
-- https://linuxhint.com/increase-open-file-limit-ubuntu/
-
 
 </p>
 </details>
