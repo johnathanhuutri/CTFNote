@@ -406,6 +406,109 @@ You can change between eax, ebx, ecx or edx for both 2 operands for 4 instructio
 </details>
 
 <details>
+<summary><h3>Odd shellcode</h3></summary>
+<p>
+
+https://ctftime.org/writeup/34832
+
+https://marcosvalle.github.io/re/exploit/2018/09/02/odd-even-encoder.html
+
+https://github.com/VincentDary/PolyAsciiShellGen
+
+Some special assembly code:
+
+```as
+35 ab ab ab ab          xor    eax,0xabababab
+81 f3 ab ab ab ab       xor    ebx,0xabababab
+81 f1 ab ab ab ab       xor    ecx,0xabababab
+83 f3 33                xor    ebx,0x33
+83 f1 33                xor    ecx,0x33
+
+67 31 43 31             xor    DWORD PTR [ebx+0x31],eax
+67 31 4b 31             xor    DWORD PTR [ebx+0x31],ecx
+67 31 53 31             xor    DWORD PTR [ebx+0x31],edx
+67 31 41 31             xor    DWORD PTR [ecx+0x31],eax
+67 31 59 31             xor    DWORD PTR [ecx+0x31],ebx
+67 31 51 31             xor    DWORD PTR [ecx+0x31],edx
+
+31 c3                   xor    ebx,eax
+31 db                   xor    ebx,ebx
+31 cb                   xor    ebx,ecx
+31 d3                   xor    ebx,edx
+31 c1                   xor    ecx,eax
+31 d9                   xor    ecx,ebx
+31 c9                   xor    ecx,ecx
+31 d1                   xor    ecx,edx
+31 c7                   xor    edi,eax
+31 df                   xor    edi,ebx
+31 cf                   xor    edi,ecx
+31 d7                   xor    edi,edx
+
+93                      xchg   ebx,eax
+87 cb                   xchg   ebx,ecx
+87 db                   xchg   ebx,ebx
+87 d3                   xchg   ebx,edx
+91                      xchg   ecx,eax
+87 d9                   xchg   ecx,ebx
+87 c9                   xchg   ecx,ecx
+87 d1                   xchg   ecx,edx
+97                      xchg   edi,eax
+87 df                   xchg   edi,ebx
+87 cf                   xchg   edi,ecx
+87 d7                   xchg   edi,edx
+
+49 8d 01                lea    rax,[r9]
+49 8d 03                lea    rax,[r11]
+49 8d 07                lea    rax,[r15]
+49 8d 19                lea    rbx,[r9]
+49 8d 1b                lea    rbx,[r11]
+49 8d 1f                lea    rbx,[r15]
+49 8d 09                lea    rcx,[r9]
+49 8d 0b                lea    rcx,[r11]
+49 8d 0f                lea    rcx,[r15]
+49 8d 11                lea    rdx,[r9]
+49 8d 13                lea    rdx,[r11]
+49 8d 17                lea    rdx,[r15]
+49 8d 39                lea    rdi,[r9]
+49 8d 3b                lea    rdi,[r11]
+49 8d 3f                lea    rdi,[r15]
+49 8d 31                lea    rsi,[r9]
+49 8d 33                lea    rsi,[r11]
+49 8d 37                lea    rsi,[r15]
+
+ff c3                   inc    ebx
+ff c1                   inc    ecx
+ff cb                   dec    ebx
+ff c9                   dec    ecx
+
+89 c3                   mov    ebx,eax
+89 cb                   mov    ebx,ecx
+89 d3                   mov    ebx,edx
+89 c1                   mov    ecx,eax
+89 d9                   mov    ecx,ebx
+89 d1                   mov    ecx,edx
+bb 33 33 33 33          mov    ebx,0x33333333
+b3 37                   mov    bl,0x37
+b7 39                   mov    bh,0x39
+b9 33 33 33 33          mov    ecx,0x33333333
+b1 37                   mov    cl,0x37
+b5 39                   mov    ch,0x39
+
+53                      push   rbx
+51                      push   rcx
+57                      push   rdi
+5b                      pop    rbx
+59                      pop    rcx
+5f                      pop    rdi
+
+c3                      ret
+c9                      leave
+```
+
+</p>
+</details>
+
+<details>
 <summary><h3>Get <a href="https://www.commandlinefu.com/commands/view/6051/get-all-shellcode-on-binary-file-from-objdump">opcode</a> from binary</h3></summary>
 <p>
 
