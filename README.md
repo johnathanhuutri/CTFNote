@@ -416,6 +416,321 @@ https://marcosvalle.github.io/re/exploit/2018/09/02/odd-even-encoder.html
 Some special assembly code:
 
 ```as
+01 c3                   add    ebx,eax
+01 db                   add    ebx,ebx
+01 cb                   add    ebx,ecx
+01 d3                   add    ebx,edx
+01 fb                   add    ebx,edi
+01 f3                   add    ebx,esi
+01 eb                   add    ebx,ebp
+01 e3                   add    ebx,esp
+01 c1                   add    ecx,eax
+01 d9                   add    ecx,ebx
+01 c9                   add    ecx,ecx
+01 d1                   add    ecx,edx
+01 f9                   add    ecx,edi
+01 f1                   add    ecx,esi
+01 e9                   add    ecx,ebp
+01 e1                   add    ecx,esp
+01 c7                   add    edi,eax
+01 df                   add    edi,ebx
+01 cf                   add    edi,ecx
+01 d7                   add    edi,edx
+01 ff                   add    edi,edi
+01 f7                   add    edi,esi
+01 ef                   add    edi,ebp
+01 e7                   add    edi,esp
+01 c5                   add    ebp,eax
+01 dd                   add    ebp,ebx
+01 cd                   add    ebp,ecx
+01 d5                   add    ebp,edx
+01 fd                   add    ebp,edi
+01 f5                   add    ebp,esi
+01 ed                   add    ebp,ebp
+01 e5                   add    ebp,esp
+49 01 c1                add    r9,rax
+49 01 d9                add    r9,rbx
+49 01 c9                add    r9,rcx
+49 01 d1                add    r9,rdx
+49 01 f9                add    r9,rdi
+49 01 f1                add    r9,rsi
+49 01 e9                add    r9,rbp
+49 01 e1                add    r9,rsp
+4d 01 c1                add    r9,r8
+4d 01 c9                add    r9,r9
+4d 01 d1                add    r9,r10
+4d 01 d9                add    r9,r11
+4d 01 e1                add    r9,r12
+4d 01 e9                add    r9,r13
+4d 01 f1                add    r9,r14
+4d 01 f9                add    r9,r15
+49 01 c3                add    r11,rax
+49 01 db                add    r11,rbx
+49 01 cb                add    r11,rcx
+49 01 d3                add    r11,rdx
+49 01 fb                add    r11,rdi
+49 01 f3                add    r11,rsi
+49 01 eb                add    r11,rbp
+49 01 e3                add    r11,rsp
+4d 01 c3                add    r11,r8
+4d 01 cb                add    r11,r9
+4d 01 d3                add    r11,r10
+4d 01 db                add    r11,r11
+4d 01 e3                add    r11,r12
+4d 01 eb                add    r11,r13
+4d 01 f3                add    r11,r14
+4d 01 fb                add    r11,r15
+49 01 c5                add    r13,rax
+49 01 dd                add    r13,rbx
+49 01 cd                add    r13,rcx
+49 01 d5                add    r13,rdx
+49 01 fd                add    r13,rdi
+49 01 f5                add    r13,rsi
+49 01 ed                add    r13,rbp
+49 01 e5                add    r13,rsp
+4d 01 c5                add    r13,r8
+4d 01 cd                add    r13,r9
+4d 01 d5                add    r13,r10
+4d 01 dd                add    r13,r11
+4d 01 e5                add    r13,r12
+4d 01 ed                add    r13,r13
+4d 01 f5                add    r13,r14
+4d 01 fd                add    r13,r15
+49 01 c7                add    r15,rax
+49 01 df                add    r15,rbx
+49 01 cf                add    r15,rcx
+49 01 d7                add    r15,rdx
+49 01 ff                add    r15,rdi
+49 01 f7                add    r15,rsi
+49 01 ef                add    r15,rbp
+49 01 e7                add    r15,rsp
+4d 01 c7                add    r15,r8
+4d 01 cf                add    r15,r9
+4d 01 d7                add    r15,r10
+4d 01 df                add    r15,r11
+4d 01 e7                add    r15,r12
+4d 01 ef                add    r15,r13
+4d 01 f7                add    r15,r14
+4d 01 ff                add    r15,r15
+
+29 c3                   sub    ebx,eax
+29 db                   sub    ebx,ebx
+29 cb                   sub    ebx,ecx
+29 d3                   sub    ebx,edx
+29 fb                   sub    ebx,edi
+29 f3                   sub    ebx,esi
+29 eb                   sub    ebx,ebp
+29 e3                   sub    ebx,esp
+29 c1                   sub    ecx,eax
+29 d9                   sub    ecx,ebx
+29 c9                   sub    ecx,ecx
+29 d1                   sub    ecx,edx
+29 f9                   sub    ecx,edi
+29 f1                   sub    ecx,esi
+29 e9                   sub    ecx,ebp
+29 e1                   sub    ecx,esp
+29 c7                   sub    edi,eax
+29 df                   sub    edi,ebx
+29 cf                   sub    edi,ecx
+29 d7                   sub    edi,edx
+29 ff                   sub    edi,edi
+29 f7                   sub    edi,esi
+29 ef                   sub    edi,ebp
+29 e7                   sub    edi,esp
+29 c5                   sub    ebp,eax
+29 dd                   sub    ebp,ebx
+29 cd                   sub    ebp,ecx
+29 d5                   sub    ebp,edx
+29 fd                   sub    ebp,edi
+29 f5                   sub    ebp,esi
+29 ed                   sub    ebp,ebp
+29 e5                   sub    ebp,esp
+49 29 c1                sub    r9,rax
+49 29 d9                sub    r9,rbx
+49 29 c9                sub    r9,rcx
+49 29 d1                sub    r9,rdx
+49 29 f9                sub    r9,rdi
+49 29 f1                sub    r9,rsi
+49 29 e9                sub    r9,rbp
+49 29 e1                sub    r9,rsp
+4d 29 c1                sub    r9,r8
+4d 29 c9                sub    r9,r9
+4d 29 d1                sub    r9,r10
+4d 29 d9                sub    r9,r11
+4d 29 e1                sub    r9,r12
+4d 29 e9                sub    r9,r13
+4d 29 f1                sub    r9,r14
+4d 29 f9                sub    r9,r15
+49 29 c3                sub    r11,rax
+49 29 db                sub    r11,rbx
+49 29 cb                sub    r11,rcx
+49 29 d3                sub    r11,rdx
+49 29 fb                sub    r11,rdi
+49 29 f3                sub    r11,rsi
+49 29 eb                sub    r11,rbp
+49 29 e3                sub    r11,rsp
+4d 29 c3                sub    r11,r8
+4d 29 cb                sub    r11,r9
+4d 29 d3                sub    r11,r10
+4d 29 db                sub    r11,r11
+4d 29 e3                sub    r11,r12
+4d 29 eb                sub    r11,r13
+4d 29 f3                sub    r11,r14
+4d 29 fb                sub    r11,r15
+49 29 c5                sub    r13,rax
+49 29 dd                sub    r13,rbx
+49 29 cd                sub    r13,rcx
+49 29 d5                sub    r13,rdx
+49 29 fd                sub    r13,rdi
+49 29 f5                sub    r13,rsi
+49 29 ed                sub    r13,rbp
+49 29 e5                sub    r13,rsp
+4d 29 c5                sub    r13,r8
+4d 29 cd                sub    r13,r9
+4d 29 d5                sub    r13,r10
+4d 29 dd                sub    r13,r11
+4d 29 e5                sub    r13,r12
+4d 29 ed                sub    r13,r13
+4d 29 f5                sub    r13,r14
+4d 29 fd                sub    r13,r15
+49 29 c7                sub    r15,rax
+49 29 df                sub    r15,rbx
+49 29 cf                sub    r15,rcx
+49 29 d7                sub    r15,rdx
+49 29 ff                sub    r15,rdi
+49 29 f7                sub    r15,rsi
+49 29 ef                sub    r15,rbp
+49 29 e7                sub    r15,rsp
+4d 29 c7                sub    r15,r8
+4d 29 cf                sub    r15,r9
+4d 29 d7                sub    r15,r10
+4d 29 df                sub    r15,r11
+4d 29 e7                sub    r15,r12
+4d 29 ef                sub    r15,r13
+4d 29 f7                sub    r15,r14
+4d 29 ff                sub    r15,r15
+
+ff cb                   dec    ebx
+ff c9                   dec    ecx
+ff cf                   dec    edi
+ff cd                   dec    ebp
+49 ff c9                dec    r9
+49 ff cb                dec    r11
+49 ff cd                dec    r13
+49 ff cf                dec    r13
+
+ff c3                   inc    ebx
+ff c1                   inc    ecx
+ff c7                   inc    edi
+ff c5                   inc    ebp
+49 ff c1                inc    r9
+49 ff c3                inc    r11
+49 ff c5                inc    r13
+49 ff c7                inc    r13
+
+49 8d 01                lea    rax,[r9]
+49 8d 03                lea    rax,[r11]
+49 8d 07                lea    rax,[r15]
+49 8d 19                lea    rbx,[r9]
+49 8d 1b                lea    rbx,[r11]
+49 8d 1f                lea    rbx,[r15]
+49 8d 09                lea    rcx,[r9]
+49 8d 0b                lea    rcx,[r11]
+49 8d 0f                lea    rcx,[r15]
+49 8d 11                lea    rdx,[r9]
+49 8d 13                lea    rdx,[r11]
+49 8d 17                lea    rdx,[r15]
+49 8d 39                lea    rdi,[r9]
+49 8d 3b                lea    rdi,[r11]
+49 8d 3f                lea    rdi,[r15]
+49 8d 31                lea    rsi,[r9]
+49 8d 33                lea    rsi,[r11]
+49 8d 37                lea    rsi,[r15]
+
+89 c3                   mov    ebx,eax
+89 cb                   mov    ebx,ecx
+89 d3                   mov    ebx,edx
+89 fb                   mov    ebx,edi
+89 c1                   mov    ecx,eax
+89 d9                   mov    ecx,ebx
+89 d1                   mov    ecx,edx
+89 f9                   mov    ecx,edi
+bb 33 33 33 33          mov    ebx,0x33333333
+b3 37                   mov    bl,0x37
+b7 39                   mov    bh,0x39
+b9 33 33 33 33          mov    ecx,0x33333333
+b1 37                   mov    cl,0x37
+b5 39                   mov    ch,0x39
+49 8b 01                mov    rax,QWORD PTR [r9]
+49 8b 03                mov    rax,QWORD PTR [r11]
+49 8b 45 ff             mov    rax,QWORD PTR [r13-0x1]
+49 8b 07                mov    rax,QWORD PTR [r15]
+49 8b 19                mov    rbx,QWORD PTR [r9]
+49 8b 1b                mov    rbx,QWORD PTR [r11]
+49 8b 5d ff             mov    rbx,QWORD PTR [r13-0x1]
+49 8b 1f                mov    rbx,QWORD PTR [r15]
+49 8b 09                mov    rcx,QWORD PTR [r9]
+49 8b 0b                mov    rcx,QWORD PTR [r11]
+49 8b 4d ff             mov    rcx,QWORD PTR [r13-0x1]
+49 8b 0f                mov    rcx,QWORD PTR [r15]
+49 8b 11                mov    rdx,QWORD PTR [r9]
+49 8b 13                mov    rdx,QWORD PTR [r11]
+49 8b 55 ff             mov    rdx,QWORD PTR [r13-0x1]
+49 8b 17                mov    rdx,QWORD PTR [r15]
+49 8b 39                mov    rdi,QWORD PTR [r9]
+49 8b 3b                mov    rdi,QWORD PTR [r11]
+49 8b 7d ff             mov    rdi,QWORD PTR [r13-0x1]
+49 8b 3f                mov    rdi,QWORD PTR [r15]
+49 8b 31                mov    rsi,QWORD PTR [r9]
+49 8b 33                mov    rsi,QWORD PTR [r11]
+49 8b 75 ff             mov    rsi,QWORD PTR [r13-0x1]
+49 8b 37                mov    rsi,QWORD PTR [r15]
+49 8b 21                mov    rsp,QWORD PTR [r9]
+49 8b 23                mov    rsp,QWORD PTR [r11]
+49 8b 65 ff             mov    rsp,QWORD PTR [r13-0x1]
+49 8b 27                mov    rsp,QWORD PTR [r15]
+49 8b 29                mov    rbp,QWORD PTR [r9]
+49 8b 2b                mov    rbp,QWORD PTR [r11]
+49 8b 6d ff             mov    rbp,QWORD PTR [r13-0x1]
+49 8b 2f                mov    rbp,QWORD PTR [r15]
+4d 8b 01                mov    r8,QWORD PTR [r9]
+4d 8b 03                mov    r8,QWORD PTR [r11]
+4d 8b 45 ff             mov    r8,QWORD PTR [r13-0x1]
+4d 8b 07                mov    r8,QWORD PTR [r15]
+4d 8b 09                mov    r9,QWORD PTR [r9]
+4d 8b 0b                mov    r9,QWORD PTR [r11]
+4d 8b 4d ff             mov    r9,QWORD PTR [r13-0x1]
+4d 8b 0f                mov    r9,QWORD PTR [r15]
+
+53                      push   rbx
+51                      push   rcx
+57                      push   rdi
+55                      push   rbp
+41 51                   push   r9
+41 53                   push   r11
+41 55                   push   r13
+41 57                   push   r15
+5b                      pop    rbx
+59                      pop    rcx
+5f                      pop    rdi
+5d                      pop    rbp
+41 59                   pop    r9
+41 5b                   pop    r11
+41 5d                   pop    r13
+41 5f                   pop    r15
+
+c1 e3 03                shl    ebx,0x3
+c1 e1 03                shl    ecx,0x3
+c1 e7 03                shl    edi,0x3
+c1 e5 03                shl    ebp,0x3
+d3 e3                   shl    ebx,cl
+d3 e1                   shl    ecx,cl
+d3 e7                   shl    edi,cl
+d3 e5                   shl    ebp,cl
+d3 eb                   shr    ebx,cl
+d3 e9                   shr    ecx,cl
+d3 ef                   shr    edi,cl
+
 35 31 31 31 31          xor    eax,0x31313131
 81 f3 31 31 31 31       xor    ebx,0x31313131
 81 f1 31 31 31 31       xor    ecx,0x31313131
@@ -450,14 +765,17 @@ Some special assembly code:
 31 db                   xor    ebx,ebx
 31 cb                   xor    ebx,ecx
 31 d3                   xor    ebx,edx
+31 fb                   xor    ebx,edi
 31 c1                   xor    ecx,eax
 31 d9                   xor    ecx,ebx
 31 c9                   xor    ecx,ecx
 31 d1                   xor    ecx,edx
+31 f9                   xor    ecx,edi
 31 c7                   xor    edi,eax
 31 df                   xor    edi,ebx
 31 cf                   xor    edi,ecx
 31 d7                   xor    edi,edx
+31 ff                   xor    edi,edi
 49 31 e1                xor    r9,rsp
 49 31 e3                xor    r11,rsp
 49 31 e5                xor    r13,rsp
@@ -467,10 +785,16 @@ Some special assembly code:
 87 cb                   xchg   ebx,ecx
 87 db                   xchg   ebx,ebx
 87 d3                   xchg   ebx,edx
+87 fb                   xchg   ebx,edi
+87 f3                   xchg   ebx,esi
+87 eb                   xchg   ebx,ebp
+87 e3                   xchg   ebx,esp
 91                      xchg   ecx,eax
 87 d9                   xchg   ecx,ebx
 87 c9                   xchg   ecx,ecx
 87 d1                   xchg   ecx,edx
+87 f9                   xchg   ecx,edi
+87 f1                   xchg   ecx,esi
 97                      xchg   edi,eax
 87 df                   xchg   edi,ebx
 87 cf                   xchg   edi,ecx
@@ -495,63 +819,6 @@ Some special assembly code:
 4d 87 e9                xchg   r9,r13
 4d 87 f1                xchg   r9,r14
 4d 87 f9                xchg   r9,r15
-
-49 8d 01                lea    rax,[r9]
-49 8d 03                lea    rax,[r11]
-49 8d 07                lea    rax,[r15]
-49 8d 19                lea    rbx,[r9]
-49 8d 1b                lea    rbx,[r11]
-49 8d 1f                lea    rbx,[r15]
-49 8d 09                lea    rcx,[r9]
-49 8d 0b                lea    rcx,[r11]
-49 8d 0f                lea    rcx,[r15]
-49 8d 11                lea    rdx,[r9]
-49 8d 13                lea    rdx,[r11]
-49 8d 17                lea    rdx,[r15]
-49 8d 39                lea    rdi,[r9]
-49 8d 3b                lea    rdi,[r11]
-49 8d 3f                lea    rdi,[r15]
-49 8d 31                lea    rsi,[r9]
-49 8d 33                lea    rsi,[r11]
-49 8d 37                lea    rsi,[r15]
-
-ff c3                   inc    ebx
-ff c1                   inc    ecx
-ff c7                   inc    edi
-ff c5                   inc    ebp
-49 ff c1                inc    r9
-49 ff c3                inc    r11
-49 ff c5                inc    r13
-49 ff c7                inc    r13
-
-ff cb                   dec    ebx
-ff c9                   dec    ecx
-ff cf                   dec    edi
-ff cd                   dec    ebp
-49 ff c9                dec    r9
-49 ff cb                dec    r11
-49 ff cd                dec    r13
-49 ff cf                dec    r13
-
-89 c3                   mov    ebx,eax
-89 cb                   mov    ebx,ecx
-89 d3                   mov    ebx,edx
-89 c1                   mov    ecx,eax
-89 d9                   mov    ecx,ebx
-89 d1                   mov    ecx,edx
-bb 33 33 33 33          mov    ebx,0x33333333
-b3 37                   mov    bl,0x37
-b7 39                   mov    bh,0x39
-b9 33 33 33 33          mov    ecx,0x33333333
-b1 37                   mov    cl,0x37
-b5 39                   mov    ch,0x39
-
-53                      push   rbx
-51                      push   rcx
-57                      push   rdi
-5b                      pop    rbx
-59                      pop    rcx
-5f                      pop    rdi
 
 c3                      ret
 c9                      leave
