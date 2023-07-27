@@ -416,11 +416,28 @@ https://marcosvalle.github.io/re/exploit/2018/09/02/odd-even-encoder.html
 Some special assembly code:
 
 ```as
+35 31 31 31 31          xor    eax,0x31313131
+81 f3 31 31 31 31       xor    ebx,0x31313131
+81 f1 31 31 31 31       xor    ecx,0x31313131
+81 f7 31 31 31 31       xor    edi,0x31313131
+81 f5 31 31 31 31       xor    ebp,0x31313131
+49 81 f1 31 31 31 31    xor    r9, 0x31313131
+49 81 f3 31 31 31 31    xor    r11,0x31313131
+49 81 f5 31 31 31 31    xor    r13,0x31313131
+49 81 f7 31 31 31 31    xor    r15,0x31313131
 35 ab ab ab ab          xor    eax,0xabababab
 81 f3 ab ab ab ab       xor    ebx,0xabababab
 81 f1 ab ab ab ab       xor    ecx,0xabababab
+81 f7 ab ab ab ab       xor    edi,0xabababab
+81 f5 ab ab ab ab       xor    ebp,0xabababab
 83 f3 33                xor    ebx,0x33
 83 f1 33                xor    ecx,0x33
+83 f7 31                xor    edi,0x31
+83 f5 31                xor    ebp,0x31
+49 83 f1 31             xor    r9, 0x31
+49 83 f3 31             xor    r11,0x31
+49 83 f5 31             xor    r13,0x31
+49 83 f7 31             xor    r15,0x31
 
 67 31 43 31             xor    DWORD PTR [ebx+0x31],eax
 67 31 4b 31             xor    DWORD PTR [ebx+0x31],ecx
@@ -441,6 +458,10 @@ Some special assembly code:
 31 df                   xor    edi,ebx
 31 cf                   xor    edi,ecx
 31 d7                   xor    edi,edx
+49 31 e1                xor    r9,rsp
+49 31 e3                xor    r11,rsp
+49 31 e5                xor    r13,rsp
+49 31 e7                xor    r15,rsp
 
 93                      xchg   ebx,eax
 87 cb                   xchg   ebx,ecx
@@ -454,6 +475,26 @@ Some special assembly code:
 87 df                   xchg   edi,ebx
 87 cf                   xchg   edi,ecx
 87 d7                   xchg   edi,edx
+
+49 91                   xchg   rax,r9
+49 93                   xchg   rax,r11
+49 95                   xchg   rax,r13
+49 97                   xchg   rax,r15
+49 87 d9                xchg   r9,rbx
+49 87 c9                xchg   r9,rcx
+49 87 d1                xchg   r9,rdx
+49 87 f1                xchg   r9,rsi
+49 87 f9                xchg   r9,rdi
+49 87 e9                xchg   r9,rbp
+49 87 e1                xchg   r9,rsp
+4d 87 c1                xchg   r9,r8
+4d 87 c9                xchg   r9,r9
+4d 87 d1                xchg   r9,r10
+4d 87 d9                xchg   r9,r11
+4d 87 e1                xchg   r9,r12
+4d 87 e9                xchg   r9,r13
+4d 87 f1                xchg   r9,r14
+4d 87 f9                xchg   r9,r15
 
 49 8d 01                lea    rax,[r9]
 49 8d 03                lea    rax,[r11]
@@ -476,8 +517,21 @@ Some special assembly code:
 
 ff c3                   inc    ebx
 ff c1                   inc    ecx
+ff c7                   inc    edi
+ff c5                   inc    ebp
+49 ff c1                inc    r9
+49 ff c3                inc    r11
+49 ff c5                inc    r13
+49 ff c7                inc    r13
+
 ff cb                   dec    ebx
 ff c9                   dec    ecx
+ff cf                   dec    edi
+ff cd                   dec    ebp
+49 ff c9                dec    r9
+49 ff cb                dec    r11
+49 ff cd                dec    r13
+49 ff cf                dec    r13
 
 89 c3                   mov    ebx,eax
 89 cb                   mov    ebx,ecx
