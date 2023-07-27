@@ -413,8 +413,6 @@ https://ctftime.org/writeup/34832
 
 https://marcosvalle.github.io/re/exploit/2018/09/02/odd-even-encoder.html
 
-https://github.com/VincentDary/PolyAsciiShellGen
-
 Some special assembly code:
 
 ```as
@@ -503,6 +501,8 @@ b5 39                   mov    ch,0x39
 
 c3                      ret
 c9                      leave
+
+0f 05                   syscall
 ```
 
 </p>
