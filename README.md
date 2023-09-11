@@ -214,6 +214,22 @@ I got it from https://stackoverflow.com/questions/4355978/get-rid-of-quit-anyway
 (gdb) set confirm off
 ```
 
+### Reload libc symbol
+
+I found [this blog](http://www.qnx.com/developers/docs/qnxcar2/index.jsp?topic=%2Fcom.qnx.doc.neutrino.prog%2Ftopic%2Fusing_gdb_SharedLibraries.html) with a few commands but the one we will use to reload symbol of libc is:
+
+```gdb
+set solib-search-path <path>
+```
+
+When run that command with the `<path>` is where the libc (which has symbol) is stored. For example, if the libc is in `/home/user/test` but the gdb path is `/mnt/d/wsl2` and libc doesn't show any symbols, we can run:
+
+```gdb
+set solib-search-path /home/user/test
+```
+
+The symbol will be loaded!
+
 ### Other tips
 
 - `r < <()` can input null byte, `r <<<$()` cannot.
