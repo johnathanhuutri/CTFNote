@@ -885,7 +885,7 @@ Ex: if rsp address end with 0xe8 --> segfault.
 </details>
 
 <details>
-    <summary>Creating challenge</summary>
+    <summary><h3>Creating challenge</h3></summary>
 
 <p>
 
