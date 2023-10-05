@@ -1,11 +1,11 @@
-# Technique ([Table of content](#table-of-content))
+# Technique
 
 | Name | Note |
 | :---: | :--- |
 | [Ret2dlresolve (64 bit)](Ret2dlresolve-64bit) | Just input, no output and no output function |
 | [Heap Exploit](Heap-Exploitation) | Just notes. For a full technique, please visit [this page](https://github.com/shellphish/how2heap) |
 
-# Note ([Table of content](#table-of-content))
+# Note
 
 <details>
 <summary><h3>Execute @plt on stack (BOF)</h3></summary>
@@ -880,6 +880,31 @@ Ex: if rsp address end with 0xe8 --> segfault.
 - `%.*<k>$c` will be the pad of `0` with the size that `%<k>$c` point to
 - Format string can be use to modify and read data at the same time just in case you don't use the short format (`%<k>$c`), use the plain format instead (`%p`, `%n`, `%s`, `%c`).
     - Example: `%c%c%c%c%1234c%hn%6$s` to change address and read from that changed address
+
+</p>
+</details>
+
+<details>
+    <summary></summary>
+
+<p>
+
+Canary mode:
+- `-fno-stack-protector`: No canary
+- `-fstack-protector`: Turn on canary of a function when local buffer is < 8 bytes
+- `--param ssp-buffer-size=<k>`: Used with `-fstack-protector` to specify if local buffer larger than `<k>` bytes, then add canary to that function
+- `-fstack-full-protector` (default): Turn on canary for all functions
+
+No RelRO: `-z norelro`
+
+No NX: `-z execstack`
+
+No pie: `-no-pie`
+
+Static built: `-static`
+
+Write seccomp rule: https://blog.yadutaf.fr/2014/05/29/introduction-to-seccomp-bpf-linux-syscall-filter/
+
 
 </p>
 </details>
