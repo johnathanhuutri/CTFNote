@@ -8,6 +8,69 @@
 # Note
 
 <details>
+<summary><h3>genscr</h3></summary>
+<p>
+
+```python
+#!/usr/bin/python3
+
+import sys, os, subprocess
+
+program = sys.argv[1]
+if len(sys.argv) > 2: libc = sys.argv[2]
+
+script = f'''#!/usr/bin/python3
+
+from pwn import *
+
+exe = ELF('{program if len(sys.argv) != 1 else ""}', checksec=False)
+{("libc = ELF('" + libc + "', checksec=False)") if len(sys.argv) != 2 else ""}
+context.binary = exe
+
+info = lambda msg: log.info(msg)
+sla = lambda msg, data: p.sendlineafter(msg, data)
+sa = lambda msg, data: p.sendafter(msg, data)
+sl = lambda data: p.sendline(data)
+s = lambda data: p.send(data)
+sln = lambda msg, num: sla(msg, str(num).encode())
+sn = lambda msg, num: sa(msg, str(num).encode())
+
+def GDB():
+    if not args.REMOTE:
+        gdb.attach(p, gdbscript=\'\'\'
+
+
+        c
+        \'\'\')
+        input()
+
+
+if args.REMOTE:
+    p = remote('')
+else:
+    p = process(exe.path)
+GDB()
+
+
+
+p.interactive()
+'''
+
+with open('exploit.py', 'wt') as f:
+    f.write(script)
+
+os.system('chmod +x ' + program)
+os.chmod('exploit.py', 0o755)
+os.system('subl exploit.py')
+```
+
+Copy this script and write it into `/usr/local/bin/genscr`, then `chmod +x /usr/local/bin/genscr` and you can use it!
+
+</p>
+
+</details>
+
+<details>
 <summary><h3>Execute @plt on stack (BOF)</h3></summary>
 <p>
 
