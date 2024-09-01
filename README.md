@@ -948,6 +948,83 @@ Ex: if rsp address end with 0xe8 --> segfault.
 </details>
 
 <details>
+    <summary><h3>Kernel stuff</h3></summary>
+
+<p>
+
+Compress image:
+
+```
+#!/bin/bash
+
+strip_option=1
+
+while getopts "c:f:nl:L:sd" opt; do
+  case $opt in
+    c) c="$OPTARG";;
+    f) f="${OPTARG%/}";;
+    n) no_gzip=1;;
+    l) 
+        if [ -z "$lflags" ]; then
+            lflags="-l$OPTARG"
+        else
+            lflags+=" -l$OPTARG"
+        fi
+        ;;
+    L)
+        if [ -z "$lflags" ]; then
+            lflags="/usr/lib/x86_64-linux-gnu/lib$OPTARG.a"
+        else
+            lflags+=" /usr/lib/x86_64-linux-gnu/lib$OPTARG.a"
+        fi
+        ;;
+    s) static=1;;
+    d) strip_option=;;
+  esac
+done
+
+if [ -n "$f" ]; then
+    if [ -n "$c" ]; then
+        read -ra files <<< "$c"
+        file_name=$(basename "${files[0]}")
+        if [ -n "$lflags" ]; then
+            if [ -n "$static" ]; then
+                gcc_options="-static $c $lflags"
+            else
+                gcc_options="$c $lflags"
+            fi
+        else
+            if [ -n "$static" ]; then
+                gcc_options="-static $c"
+            else
+                gcc_options="$c"
+            fi
+        fi
+    fi
+
+    if [ -n "$gcc_options" ]; then
+        if [ -n "$strip_option" ]; then
+            gcc_options+=" -s"
+        fi
+        gcc -o "$f/${file_name%.c}" $gcc_options
+    fi
+
+    cd $f
+    if [ "$no_gzip" ]; then
+        find . | cpio -o -H newc -R root:root > "../$f.cpio"
+    else
+        find . | cpio -o -H newc -R root:root | gzip -9 > "../$f.cpio.gz"
+    fi
+    cd ..
+fi
+```
+
+
+
+</p>
+</details>
+
+<details>
     <summary><h3>Creating challenge</h3></summary>
 
 <p>
