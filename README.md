@@ -933,15 +933,16 @@ Ex: if rsp address end with 0xe8 --> segfault.
 <summary><h3>format string </h3></summary>
 <p>
 
+**Basic**
 - `%p%p%p%n` will write and access easily.
 - `%4$n` will write but cannot access.
 - Payload should have `%c` instead `%x` to make sure it write a byte, **not** a random byte on stack.
 - Enter `.` to `scanf()` with number format (`%d`, `%u`, `%ld`...) won't enter new value to var.
-- `%*` works as `%d` and will print first 4 bytes
-- `%*<k>$` works as `%<k>$d`
-- `%*<k>$c` will be the pad of ` ` with the size that `%<k>c` point to
-- `%.*<k>$c` will be the pad of `0` with the size that `%<k>$c` point to
-- `%*<k>$<padding>c` print `%*<k>$c` with specify `<padding>`
+
+**Advance**
+- `%*c`: print padding that %c is pointing to (full form)
+- `%*<k>$c`: print padding that %c is pointing to (short form)
+- `%<k>$<padding>c`: print value that %c is pointing to with padding
 - Format string can be use to modify and read data at the same time just in case you don't use the short format (`%<k>$c`), use the plain format instead (`%p`, `%n`, `%s`, `%c`).
     - Example: `%c%c%c%c%1234c%hn%6$s` to change address and read from that changed address
 - From man page: `printf("%*d", width, num);` == `printf("%2$*1$d", width, num);`
