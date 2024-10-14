@@ -235,11 +235,11 @@ def GDB():
 <summary><h2>GDB tips</h2></summary>
 <p>
 
-- Show data when stop
+**Show data when stop**
 
 You can read [this blog](https://www.cse.unsw.edu.au/~learn/debugging/modules/gdb_watch_display/) for example.
 
-__watch__ command
+- watch
 
 ```gdb
 (gdb) watch <variable_name>
@@ -247,7 +247,7 @@ __watch__ command
 (gdb) disable <watchpoint_number>
 ```
 
-__display__ command
+- display
 
 ```gdb
 # display <expression/variable_name>
@@ -261,25 +261,23 @@ __display__ command
 (gdb) delete display 1
 ```
 
-- Disable "Type return to continue..."
+**Disable "Type return to continue..."**
 ```
 (gdb) set pagination off
 ```
 
 References:
-https://stackoverflow.com/questions/28815621/how-to-disable-type-return-to-continue-or-q-return-to-quit-in-gdb
+- https://stackoverflow.com/questions/28815621/how-to-disable-type-return-to-continue-or-q-return-to-quit-in-gdb
 
-- Disable "Quit anyway?..."
-
-I got it from https://stackoverflow.com/questions/4355978/get-rid-of-quit-anyway-prompt-using-gdb-just-kill-the-process-and-quit
+**Disable "Quit anyway?..."**
 
 ```
 (gdb) set confirm off
 ```
+References
+- https://stackoverflow.com/questions/4355978/get-rid-of-quit-anyway-prompt-using-gdb-just-kill-the-process-and-quit
 
-### Reload libc symbol
-
-I found [this blog](http://www.qnx.com/developers/docs/qnxcar2/index.jsp?topic=%2Fcom.qnx.doc.neutrino.prog%2Ftopic%2Fusing_gdb_SharedLibraries.html) with a few commands but the one we will use to reload symbol of libc is:
+**Reload libc symbol**
 
 ```gdb
 set solib-search-path <path>
@@ -293,7 +291,10 @@ set solib-search-path /home/user/test
 
 The symbol will be loaded!
 
-### Custom GDB function
+References
+- http://www.qnx.com/developers/docs/qnxcar2/index.jsp?topic=%2Fcom.qnx.doc.neutrino.prog%2Ftopic%2Fusing_gdb_SharedLibraries.html
+
+**Custom GDB function**
 
 ```python
 # https://sourceware.org/gdb/current/onlinedocs/gdb.html/CLI-Commands-In-Python.html#CLI-Commands-In-Python
@@ -324,7 +325,7 @@ Another()
 References
 - https://stackoverflow.com/questions/70657261/gdb-defining-a-function-with-multiple-arguments-using-if-else
 
-### Other tips
+**Other tips**
 
 - `r < <()` can input null byte, `r <<<$()` cannot.
 
@@ -410,7 +411,7 @@ If you want to analyze core file with pwntools, see the session [pwntools](https
 <summary><h2>pwntools</h2></summary>
 <p>
 
-- Get child pid (method 1): 
+**Get child pid (method 1)**
 ```
 import os
 from pwn import *
@@ -420,7 +421,7 @@ child_pid = pwnlib.util.proc.children(os.getpid())[0]
 print(child_pid)
 ```
 
-- Get child pid (method 2):
+**Get child pid (method 2)**
 ```
 from pwn import *
 
@@ -428,7 +429,7 @@ p = process(<Some Program>)
 print(pidof(p))
 ```
 
-- Get child pid (method 3):
+**Get child pid (method 3)**
 ```
 from pwn import *
 
@@ -436,7 +437,7 @@ p = process(<Some Program>)
 print(p.pid)
 ```
 
-- ARGS:
+**ARGS**
 
 ```
 from pwn import *
@@ -447,7 +448,7 @@ print(args.MYAGE)
 ```
 --> `python run.py MYNAME=Johnathan MYAGE=20`
 
-- [Core](https://docs.pwntools.com/en/stable/elf/corefile.html) file:
+**[Core](https://docs.pwntools.com/en/stable/elf/corefile.html) file**
 
 ```
 from pwn import *
