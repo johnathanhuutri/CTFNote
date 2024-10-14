@@ -394,8 +394,7 @@ Most useful commands are:
 
 If you want to analyze core file with pwntools, see the session [pwntools](https://github.com/nhtri2003gmail/CTFNote#pwntools) below.
 
-**Reference:**
-
+**References**
 - https://stackoverflow.com/a/54943610
 - https://linuxhint.com/increase-open-file-limit-ubuntu/
 
@@ -470,14 +469,7 @@ print(core.string(<some address>))
 <summary><h2>Ascii shellcode</h2></summary>
 <p>
 
-https://blackcloud.me/Linux-shellcode-alphanumeric/
-
-https://nets.ec/Ascii_shellcode
-
-https://github.com/VincentDary/PolyAsciiShellGen
-
 Some special assembly code:
-
 ```as
 34 30                   xor    al,0x30                : ✓
 80 f3 30                xor    bl,0x30                : ✘
@@ -507,6 +499,10 @@ You can change between eax, ebx, ecx or edx for both 2 operands for 4 instructio
 68 33 32 31 30          push   0x30313233             : ✓
 ```
 
+**References**
+- https://blackcloud.me/Linux-shellcode-alphanumeric/
+- https://nets.ec/Ascii_shellcode
+- https://github.com/VincentDary/PolyAsciiShellGen
 </p>
 </details>
 
@@ -515,7 +511,6 @@ You can change between eax, ebx, ecx or edx for both 2 operands for 4 instructio
 <p>
 
 Some special assembly code:
-
 ```as
 01 c3                   add    ebx,eax
 01 db                   add    ebx,ebx
@@ -927,20 +922,22 @@ c9                      leave
 0f 05                   syscall
 ```
 
-References:
+**References**
 - https://ctftime.org/writeup/34832
 - https://marcosvalle.github.io/re/exploit/2018/09/02/odd-even-encoder.html
 </p>
 </details>
 
 <details>
-<summary><h2>Get <a href="https://www.commandlinefu.com/commands/view/6051/get-all-shellcode-on-binary-file-from-objdump">opcode</a> from binary</h2></summary>
+<summary><h2>Get opcode from binary</h2></summary>
 <p>
 
 ```
 objdump -d <Name of program>|grep '[0-9a-f]:'|grep -v 'file'|cut -f2 -d:|cut -f1-6 -d' '|tr -s ' '|tr '\t' ' '|sed 's/\ $//g'|sed 's/\ /\\x/g'|paste -d '' -s |sed 's/^/"/'|sed 's/$/"/g'
 ```
 
+**References**
+- https://www.commandlinefu.com/commands/view/6051/get-all-shellcode-on-binary-file-from-objdump
 </p>
 </details>
 
@@ -948,8 +945,8 @@ objdump -d <Name of program>|grep '[0-9a-f]:'|grep -v 'file'|cut -f2 -d:|cut -f1
 <summary><h2>movaps xmm0,... </h2></summary>
 <p>
 
-- rsp (esp) address must end with byte 0x00, 0x10, 0x20, 0x30... or it will cause error.</br>
-Ex: if rsp address end with 0xe8 --> segfault.
+Register rsp (esp) address must end with byte 0x00, 0x10, 0x20, 0x30... or it will cause error.</br>
+- Ex: if rsp address end with 0xe8 --> segfault.
 
 </p>
 </details>
