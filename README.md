@@ -235,11 +235,11 @@ def GDB():
 <summary><h2>GDB tips</h2></summary>
 <p>
 
-### Show data when stop
+- Show data when stop
 
 You can read [this blog](https://www.cse.unsw.edu.au/~learn/debugging/modules/gdb_watch_display/) for example.
 
-- watch
+__watch__ command
 
 ```gdb
 (gdb) watch <variable_name>
@@ -247,7 +247,7 @@ You can read [this blog](https://www.cse.unsw.edu.au/~learn/debugging/modules/gd
 (gdb) disable <watchpoint_number>
 ```
 
-- display
+__display__ command
 
 ```gdb
 # display <expression/variable_name>
@@ -261,15 +261,15 @@ You can read [this blog](https://www.cse.unsw.edu.au/~learn/debugging/modules/gd
 (gdb) delete display 1
 ```
 
-### Disable "Type return to continue..."
-
-I got it from https://stackoverflow.com/questions/28815621/how-to-disable-type-return-to-continue-or-q-return-to-quit-in-gdb
-
+- Disable "Type return to continue..."
 ```
 (gdb) set pagination off
 ```
 
-### Disable "Quit anyway?..."
+References:
+https://stackoverflow.com/questions/28815621/how-to-disable-type-return-to-continue-or-q-return-to-quit-in-gdb
+
+- Disable "Quit anyway?..."
 
 I got it from https://stackoverflow.com/questions/4355978/get-rid-of-quit-anyway-prompt-using-gdb-just-kill-the-process-and-quit
 
@@ -318,6 +318,11 @@ class Another (gdb.Command):
 HelloWorld ()
 Another()
 ```
+
+**GDB algorithm**
+
+References
+- https://stackoverflow.com/questions/70657261/gdb-defining-a-function-with-multiple-arguments-using-if-else
 
 ### Other tips
 
@@ -405,7 +410,7 @@ If you want to analyze core file with pwntools, see the session [pwntools](https
 <summary><h2>pwntools</h2></summary>
 <p>
 
-- Get child pid (way 1): 
+- Get child pid (method 1): 
 ```
 import os
 from pwn import *
@@ -415,7 +420,7 @@ child_pid = pwnlib.util.proc.children(os.getpid())[0]
 print(child_pid)
 ```
 
-- Get child pid (way 2):
+- Get child pid (method 2):
 ```
 from pwn import *
 
@@ -423,7 +428,7 @@ p = process(<Some Program>)
 print(pidof(p))
 ```
 
-- Get child pid (way 3):
+- Get child pid (method 3):
 ```
 from pwn import *
 
