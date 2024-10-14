@@ -70,8 +70,10 @@ Copy this script and write it into `/usr/local/bin/genscr`, then `chmod +x /usr/
 
 </details>
 
+---
+
 <details>
-<summary><h3>Execute @plt on stack (BOF)</h3></summary>
+<summary>Execute @plt on stack (BOF)</summary>
 <p>
 
 - 32 bit:
