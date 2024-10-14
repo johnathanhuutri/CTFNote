@@ -5,12 +5,10 @@
 | [Ret2dlresolve (64 bit)](Ret2dlresolve-64bit) | Just input, no output and no output function |
 | [Heap Exploit](Heap-Exploitation) | Just notes. For a full technique, please visit [this page](https://github.com/shellphish/how2heap) |
 
----
-
 # Note
 
 <details>
-<summary><h3>genscr</h3></summary>
+<summary>genscr</summary>
 <p>
 
 ```python
