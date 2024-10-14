@@ -1,11 +1,13 @@
-# Technique
+Technique
 
 | Name | Note |
 | :---: | :--- |
 | [Ret2dlresolve (64 bit)](Ret2dlresolve-64bit) | Just input, no output and no output function |
 | [Heap Exploit](Heap-Exploitation) | Just notes. For a full technique, please visit [this page](https://github.com/shellphish/how2heap) |
 
-# Note
+---
+
+Note
 
 <details>
 <summary><h3>genscr</h3></summary>
@@ -292,6 +294,32 @@ set solib-search-path /home/user/test
 ```
 
 The symbol will be loaded!
+
+### Custom GDB function
+
+```python
+# https://sourceware.org/gdb/current/onlinedocs/gdb.html/CLI-Commands-In-Python.html#CLI-Commands-In-Python
+
+import gdb
+import struct
+
+class HelloWorld (gdb.Command):
+  def __init__(self):
+    super(HelloWorld, self).__init__ ("ftoi", gdb.COMMAND_USER)
+
+  def invoke(self, argv, from_tty):
+    print(hex(struct.unpack('<Q', struct.pack('<d', float(argv)))[0]))
+
+class Another (gdb.Command):
+  def __init__(self):
+    super(Another, self).__init__ ("itof", gdb.COMMAND_USER)
+
+  def invoke(self, argv, from_tty):
+    print(struct.unpack('<d', struct.pack('<Q', int(argv, 16)))[0])
+
+HelloWorld ()
+Another()
+```
 
 ### Other tips
 
