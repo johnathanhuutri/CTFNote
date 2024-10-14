@@ -514,9 +514,9 @@ You can change between eax, ebx, ecx or edx for both 2 operands for 4 instructio
 <summary><h2>Odd shellcode</h2></summary>
 <p>
 
-https://ctftime.org/writeup/34832
-
-https://marcosvalle.github.io/re/exploit/2018/09/02/odd-even-encoder.html
+References:
+- https://ctftime.org/writeup/34832
+- https://marcosvalle.github.io/re/exploit/2018/09/02/odd-even-encoder.html
 
 Some special assembly code:
 
