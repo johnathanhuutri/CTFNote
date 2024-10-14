@@ -122,33 +122,42 @@ Using [x-terminal-emulator](https://www.systutorials.com/docs/linux/man/1-x-term
 
 ### Intel debug
 
+- *NIX
 ```python
-def GDB():     # *NIX machine
-    command = '''
-    '''
-    with open('/tmp/command.gdb', 'wt') as f:
-        f.write(command)
-    subprocess.Popen(['/usr/bin/x-terminal-emulator', '--geometry', '960x1080+960+0', '-e', 'gdb', '-p', str(p.pid), '-x', '/tmp/command.gdb'])
-    input()
+def GDB():
+    # import clipboard
+    # clipboard.copy()
+    if not args.REMOTE:
+        command = '''
+        '''
+        with open('/tmp/command.gdb', 'wt') as f:
+            f.write(command)
+        subprocess.Popen(['/usr/bin/x-terminal-emulator', '--geometry', '960x1080+960+0', '-e', 'gdb', '-p', str(p.pid), '-x', '/tmp/command.gdb'])
+        input()
 ```
 
+- WSL2
 ```python
-def GDB():     # Wsl2
-    import os
-    script = '''
-    #!/bin/sh
+def GDB():
+    # import clipboard
+    # clipboard.copy()
+    if not args.REMOTE:
+        import os
+        gdb_script = '''
 
-    cd <Path_to_folder_contain_running_binary>
-    '''
-    script += f'gdb -p {p.pid} -x /tmp/command.gdb'
-    with open('/tmp/script.sh', 'w') as f: f.write(script)
-    os.system("chmod +x /tmp/script.sh")
+        c
+        '''
+        open('/tmp/command.gdb', 'w').write(gdb_script)
 
-    command = '''
-    '''
-    with open('/tmp/command.gdb', 'w') as f: f.write(command)
-    q = process(f'cmd.exe /c start C:\\Windows\\system32\\wsl.exe /tmp/script.sh'.split())
-    input()
+        bash_script = '#!/bin/sh\n'
+        bash_script += '\n'
+        bash_script += f'cd {Path_to_folder_contain_running_binary}\n'
+        bash_script += f'gdb -p {p.pid} -x /tmp/command.gdb\n'
+        open('/tmp/script.sh', 'w').write(bash_script)
+
+        os.system("chmod +x /tmp/script.sh")
+        os.system(r'cmd.exe /c start wsl.exe -d Ubuntu-22.04 bash -c /tmp/script.sh')
+        input()
 ```
 
 ### Arm debug
@@ -322,6 +331,12 @@ Another()
 
 **6. GDB algorithm**
 
+```python
+if ((short)$rsp & 0xffffffff)!=0x77a0
+        det
+        q
+        end
+```
 References
 - https://stackoverflow.com/questions/70657261/gdb-defining-a-function-with-multiple-arguments-using-if-else
 
