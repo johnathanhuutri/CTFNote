@@ -1,4 +1,4 @@
-## Technique
+# Technique
 
 | Name | Note |
 | :---: | :--- |
@@ -7,7 +7,7 @@
 
 ---
 
-## Note
+# Note
 
 <details>
 <summary><h3>genscr</h3></summary>
