@@ -8,7 +8,7 @@
 # Note
 
 <details>
-<summary><h3>genscr</h3></summary>
+<summary><h2>genscr</h2></summary>
 <p>
 
 ```python
@@ -71,7 +71,7 @@ Copy this script and write it into `/usr/local/bin/genscr`, then `chmod +x /usr/
 </details>
 
 <details>
-<summary><h3>Execute @plt on stack (BOF)</h3></summary>
+<summary><h2>Execute @plt on stack (BOF)</h2></summary>
 <p>
 
 - 32 bit:
@@ -100,7 +100,7 @@ payload += p32(<return address>)
 </details>
 
 <details>
-<summary><h3>Docker installation</h3></summary>
+<summary><h2>Docker installation</h2></summary>
 <p>
 
 Install [docker](https://stackoverflow.com/questions/57025264/installing-docker-on-parrot-os) on parrot:
@@ -115,7 +115,7 @@ Install [docker-compose](https://docs.docker.com/compose/install/linux/) for con
 </details>
 
 <details>
-<summary><h3>GDB Attach</h3></summary>
+<summary><h2>GDB Attach</h2></summary>
 <p>
 
 Using [x-terminal-emulator](https://www.systutorials.com/docs/linux/man/1-x-terminal-emulator/) to create popup shell and pass command in a file.
@@ -232,7 +232,7 @@ def GDB():
 </details>
 
 <details>
-<summary><h3>GDB tips</h3></summary>
+<summary><h2>GDB tips</h2></summary>
 <p>
 
 ### Show data when stop
@@ -329,7 +329,7 @@ Another()
 </details>
 
 <details>
-<summary><h3>Load libc in python</h3></summary>
+<summary><h2>Load libc in python</h2></summary>
 <p>
 
 ```python
@@ -351,7 +351,7 @@ print(hex(val))
 </details>
 
 <details>
-<summary><h3>Core dump</h3></summary>
+<summary><h2>Core dump</h2></summary>
 <p>
 
 To check if core dump is enable or not, run `ulimit -a` and check the line `-c: core file size`
@@ -403,7 +403,7 @@ If you want to analyze core file with pwntools, see the session [pwntools](https
 </details>
 
 <details>
-<summary><h3>pwntools</h3></summary>
+<summary><h2>pwntools</h2></summary>
 <p>
 
 - Get child pid (way 1): 
@@ -467,7 +467,7 @@ print(core.string(<some address>))
 </details>
 
 <details>
-<summary><h3>Ascii shellcode</h3></summary>
+<summary><h2>Ascii shellcode</h2></summary>
 <p>
 
 https://blackcloud.me/Linux-shellcode-alphanumeric/
@@ -511,7 +511,7 @@ You can change between eax, ebx, ecx or edx for both 2 operands for 4 instructio
 </details>
 
 <details>
-<summary><h3>Odd shellcode</h3></summary>
+<summary><h2>Odd shellcode</h2></summary>
 <p>
 
 https://ctftime.org/writeup/34832
@@ -935,7 +935,7 @@ c9                      leave
 </details>
 
 <details>
-<summary><h3>Get <a href="https://www.commandlinefu.com/commands/view/6051/get-all-shellcode-on-binary-file-from-objdump">opcode</a> from binary</h3></summary>
+<summary><h2>Get <a href="https://www.commandlinefu.com/commands/view/6051/get-all-shellcode-on-binary-file-from-objdump">opcode</a> from binary</h2></summary>
 <p>
 
 ```
@@ -946,7 +946,7 @@ objdump -d <Name of program>|grep '[0-9a-f]:'|grep -v 'file'|cut -f2 -d:|cut -f1
 </details>
 
 <details>
-<summary><h3>movaps xmm0,... </h3></summary>
+<summary><h2>movaps xmm0,... </h2></summary>
 <p>
 
 - rsp (esp) address must end with byte 0x00, 0x10, 0x20, 0x30... or it will cause error.</br>
@@ -956,7 +956,7 @@ Ex: if rsp address end with 0xe8 --> segfault.
 </details>
 
 <details>
-<summary><h3>format string </h3></summary>
+<summary><h2>format string </h2></summary>
 <p>
 
 **Basic**
@@ -977,7 +977,7 @@ Ex: if rsp address end with 0xe8 --> segfault.
 </details>
 
 <details>
-    <summary><h3>Kernel stuff</h3></summary>
+    <summary><h2>Kernel stuff</h2></summary>
 
 <p>
 
@@ -1054,7 +1054,7 @@ fi
 </details>
 
 <details>
-    <summary><h3>Creating challenge</h3></summary>
+    <summary><h2>Creating challenge</h2></summary>
 
 <p>
 
