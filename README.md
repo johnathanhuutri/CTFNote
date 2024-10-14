@@ -232,10 +232,10 @@ def GDB():
 </details>
 
 <details>
-<summary><h2>GDB tips</h2></summary>
+<summary><h2>GDB Tips</h2></summary>
 <p>
 
-**Show data when stop**
+**1. Show data when stop**
 
 You can read [this blog](https://www.cse.unsw.edu.au/~learn/debugging/modules/gdb_watch_display/) for example.
 
@@ -261,7 +261,7 @@ You can read [this blog](https://www.cse.unsw.edu.au/~learn/debugging/modules/gd
 (gdb) delete display 1
 ```
 
-**Disable "Type return to continue..."**
+**2. Disable "Type return to continue..."**
 ```
 (gdb) set pagination off
 ```
@@ -269,7 +269,7 @@ You can read [this blog](https://www.cse.unsw.edu.au/~learn/debugging/modules/gd
 References:
 - https://stackoverflow.com/questions/28815621/how-to-disable-type-return-to-continue-or-q-return-to-quit-in-gdb
 
-**Disable "Quit anyway?..."**
+**3. Disable "Quit anyway?..."**
 
 ```
 (gdb) set confirm off
@@ -277,7 +277,7 @@ References:
 References
 - https://stackoverflow.com/questions/4355978/get-rid-of-quit-anyway-prompt-using-gdb-just-kill-the-process-and-quit
 
-**Reload libc symbol**
+**4. Reload libc symbol**
 
 ```gdb
 set solib-search-path <path>
@@ -294,7 +294,7 @@ The symbol will be loaded!
 References
 - http://www.qnx.com/developers/docs/qnxcar2/index.jsp?topic=%2Fcom.qnx.doc.neutrino.prog%2Ftopic%2Fusing_gdb_SharedLibraries.html
 
-**Custom GDB function**
+**5. Custom GDB function**
 
 ```python
 # https://sourceware.org/gdb/current/onlinedocs/gdb.html/CLI-Commands-In-Python.html#CLI-Commands-In-Python
@@ -320,12 +320,12 @@ HelloWorld ()
 Another()
 ```
 
-**GDB algorithm**
+**6. GDB algorithm**
 
 References
 - https://stackoverflow.com/questions/70657261/gdb-defining-a-function-with-multiple-arguments-using-if-else
 
-**Other tips**
+**7. Other tips**
 
 - `r < <()` can input null byte, `r <<<$()` cannot.
 
