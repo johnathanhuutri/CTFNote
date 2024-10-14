@@ -8,7 +8,7 @@
 # Note
 
 <details>
-<summary>genscr</summary>
+<summary><h3>genscr</h3></summary>
 <p>
 
 ```python
@@ -70,10 +70,8 @@ Copy this script and write it into `/usr/local/bin/genscr`, then `chmod +x /usr/
 
 </details>
 
----
-
 <details>
-<summary>Execute @plt on stack (BOF)</summary>
+<summary><h3>Execute @plt on stack (BOF)</h3></summary>
 <p>
 
 - 32 bit:
