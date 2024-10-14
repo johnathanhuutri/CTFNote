@@ -103,6 +103,12 @@ payload += p32(<return address>)
 <summary><h2>Docker installation</h2></summary>
 <p>
 
+**Official Method**
+
+https://docs.docker.com/engine/install/ubuntu/
+
+**Another Method (old)**
+
 Install [docker](https://stackoverflow.com/questions/57025264/installing-docker-on-parrot-os) on parrot:
 
 ```
