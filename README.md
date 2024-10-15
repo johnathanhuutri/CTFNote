@@ -16,24 +16,23 @@
 
 import sys, os, subprocess
 
-program = sys.argv[1]
-if len(sys.argv) > 2: libc = sys.argv[2]
-
 script = f'''#!/usr/bin/python3
 
 from pwn import *
 
-exe = ELF('{program if len(sys.argv) != 1 else ""}', checksec=False)
-{("libc = ELF('" + libc + "', checksec=False)") if len(sys.argv) != 2 else ""}
+exe = ELF('{sys.argv[1] if len(sys.argv) >= 2 else ""}', checksec=False)
+{("libc = ELF('" + sys.argv[2] + "', checksec=False)") if len(sys.argv) == 3 else ""}
 context.binary = exe
 
 info = lambda msg: log.info(msg)
-sla = lambda msg, data: p.sendlineafter(msg, data)
+s = lambda data: p.send(data)
 sa = lambda msg, data: p.sendafter(msg, data)
 sl = lambda data: p.sendline(data)
-s = lambda data: p.send(data)
-sln = lambda msg, num: sla(msg, str(num).encode())
-sn = lambda msg, num: sa(msg, str(num).encode())
+sla = lambda msg, data: p.sendlineafter(msg, data)
+sn = lambda num: p.send(str(num).encode())
+sna = lambda msg, num: p.sendafter(msg, str(num).encode())
+sln = lambda num: p.sendline(str(num).encode())
+slna = lambda msg, num: p.sendlineafter(msg, str(num).encode())
 
 def GDB():
     if not args.REMOTE:
@@ -48,7 +47,7 @@ def GDB():
 if args.REMOTE:
     p = remote('')
 else:
-    p = process(exe.path)
+    p = process([exe.path])
 GDB()
 
 
@@ -59,7 +58,8 @@ p.interactive()
 with open('exploit.py', 'wt') as f:
     f.write(script)
 
-os.system('chmod +x ' + program)
+if len(sys.argv) >= 2:
+    os.system('chmod +x ' + program)
 os.chmod('exploit.py', 0o755)
 os.system('subl exploit.py')
 ```
