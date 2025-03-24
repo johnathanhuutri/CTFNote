@@ -2470,9 +2470,6 @@ Some special assembly code:
 
 ```
 
-**References**
-- https://ctftime.org/writeup/34832
-- https://marcosvalle.github.io/re/exploit/2018/09/02/odd-even-encoder.html
 </p>
 </details>
 
