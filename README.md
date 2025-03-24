@@ -2462,6 +2462,21 @@ c9                      leave
 </details>
 
 <details>
+<summary><h2>Even and Odd shellcode</h2></summary>
+<p>
+
+Some special assembly code:
+```as
+
+```
+
+**References**
+- https://ctftime.org/writeup/34832
+- https://marcosvalle.github.io/re/exploit/2018/09/02/odd-even-encoder.html
+</p>
+</details>
+
+<details>
 <summary><h2>Get opcode from binary</h2></summary>
 <p>
 
