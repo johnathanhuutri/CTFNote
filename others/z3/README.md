@@ -44,6 +44,7 @@ Run the script and it will print the result for us:
 ![](images/system-with-two-linear-equations.png)
 
 :::Full script
+
 ```python
 import z3
 
@@ -55,6 +56,7 @@ z3.solve(
     x - y == 6
 )
 ```
+
 :::
 
 ### Case 2 - System of 3 linear equations using `z3.Solver`
