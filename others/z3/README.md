@@ -285,6 +285,10 @@ When our var is defined with BitVec, we can use `as_long()` to get int value. Ru
 
 ![](images/bitwise-operators.png)
 
+
+<details>
+	<summary>Full script</summary>
+
 ```python
 from z3 import *
 
@@ -322,3 +326,5 @@ if s.check() == sat:
     res = s.model()
     print(f'[x = {res[x]} = "{chr(res[x].as_long())}"]')
 ```
+
+</details>
