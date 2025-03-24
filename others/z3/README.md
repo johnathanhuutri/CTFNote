@@ -238,7 +238,7 @@ Given a = 150, b = 36 and c = 92, find x with these equations:
 ((a >> 7) & 1) NOR  ((b >> 7) & 1) XOR  ((x >> 7) & 1) == ((c >> 7) & 1)
 ```
 
-We know that we will need to work with bit for this case so let's define 4 variables using BitVec (explaned in [case 3](#case-3)):
+We know that we will need to work with bit for this case so let's define 4 variables using BitVec (explaned in [case 3](#case-3---multiple-result)):
 
 ```python
 from z3 import *
