@@ -43,7 +43,8 @@ Run the script and it will print the result for us:
 
 ![](images/system-with-two-linear-equations.png)
 
-:::Full script
+<details>
+	<summary>Full script</summary>
 
 ```python
 import z3
@@ -57,7 +58,7 @@ z3.solve(
 )
 ```
 
-:::
+</details>
 
 ### Case 2 - System of 3 linear equations using `z3.Solver`
 
