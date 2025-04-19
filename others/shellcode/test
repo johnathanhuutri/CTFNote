@@ -1,0 +1,1736 @@
+48 89 c0 - mov rax, rax
+48 89 d8 - mov rax, rbx
+48 89 c8 - mov rax, rcx
+48 89 d0 - mov rax, rdx
+48 89 f8 - mov rax, rdi
+48 89 f0 - mov rax, rsi
+48 89 e0 - mov rax, rsp
+48 89 e8 - mov rax, rbp
+4c 89 c0 - mov rax, r8
+4c 89 c8 - mov rax, r9
+4c 89 d0 - mov rax, r10
+4c 89 d8 - mov rax, r11
+4c 89 e0 - mov rax, r12
+4c 89 e8 - mov rax, r13
+4c 89 f0 - mov rax, r14
+4c 89 f8 - mov rax, r15
+48 89 c3 - mov rbx, rax
+48 89 db - mov rbx, rbx
+48 89 cb - mov rbx, rcx
+48 89 d3 - mov rbx, rdx
+48 89 fb - mov rbx, rdi
+48 89 f3 - mov rbx, rsi
+48 89 e3 - mov rbx, rsp
+48 89 eb - mov rbx, rbp
+4c 89 c3 - mov rbx, r8
+4c 89 cb - mov rbx, r9
+4c 89 d3 - mov rbx, r10
+4c 89 db - mov rbx, r11
+4c 89 e3 - mov rbx, r12
+4c 89 eb - mov rbx, r13
+4c 89 f3 - mov rbx, r14
+4c 89 fb - mov rbx, r15
+48 89 c1 - mov rcx, rax
+48 89 d9 - mov rcx, rbx
+48 89 c9 - mov rcx, rcx
+48 89 d1 - mov rcx, rdx
+48 89 f9 - mov rcx, rdi
+48 89 f1 - mov rcx, rsi
+48 89 e1 - mov rcx, rsp
+48 89 e9 - mov rcx, rbp
+4c 89 c1 - mov rcx, r8
+4c 89 c9 - mov rcx, r9
+4c 89 d1 - mov rcx, r10
+4c 89 d9 - mov rcx, r11
+4c 89 e1 - mov rcx, r12
+4c 89 e9 - mov rcx, r13
+4c 89 f1 - mov rcx, r14
+4c 89 f9 - mov rcx, r15
+48 89 c2 - mov rdx, rax
+48 89 da - mov rdx, rbx
+48 89 ca - mov rdx, rcx
+48 89 d2 - mov rdx, rdx
+48 89 fa - mov rdx, rdi
+48 89 f2 - mov rdx, rsi
+48 89 e2 - mov rdx, rsp
+48 89 ea - mov rdx, rbp
+4c 89 c2 - mov rdx, r8
+4c 89 ca - mov rdx, r9
+4c 89 d2 - mov rdx, r10
+4c 89 da - mov rdx, r11
+4c 89 e2 - mov rdx, r12
+4c 89 ea - mov rdx, r13
+4c 89 f2 - mov rdx, r14
+4c 89 fa - mov rdx, r15
+48 89 c7 - mov rdi, rax
+48 89 df - mov rdi, rbx
+48 89 cf - mov rdi, rcx
+48 89 d7 - mov rdi, rdx
+48 89 ff - mov rdi, rdi
+48 89 f7 - mov rdi, rsi
+48 89 e7 - mov rdi, rsp
+48 89 ef - mov rdi, rbp
+4c 89 c7 - mov rdi, r8
+4c 89 cf - mov rdi, r9
+4c 89 d7 - mov rdi, r10
+4c 89 df - mov rdi, r11
+4c 89 e7 - mov rdi, r12
+4c 89 ef - mov rdi, r13
+4c 89 f7 - mov rdi, r14
+4c 89 ff - mov rdi, r15
+48 89 c6 - mov rsi, rax
+48 89 de - mov rsi, rbx
+48 89 ce - mov rsi, rcx
+48 89 d6 - mov rsi, rdx
+48 89 fe - mov rsi, rdi
+48 89 f6 - mov rsi, rsi
+48 89 e6 - mov rsi, rsp
+48 89 ee - mov rsi, rbp
+4c 89 c6 - mov rsi, r8
+4c 89 ce - mov rsi, r9
+4c 89 d6 - mov rsi, r10
+4c 89 de - mov rsi, r11
+4c 89 e6 - mov rsi, r12
+4c 89 ee - mov rsi, r13
+4c 89 f6 - mov rsi, r14
+4c 89 fe - mov rsi, r15
+48 89 c4 - mov rsp, rax
+48 89 dc - mov rsp, rbx
+48 89 cc - mov rsp, rcx
+48 89 d4 - mov rsp, rdx
+48 89 fc - mov rsp, rdi
+48 89 f4 - mov rsp, rsi
+48 89 e4 - mov rsp, rsp
+48 89 ec - mov rsp, rbp
+4c 89 c4 - mov rsp, r8
+4c 89 cc - mov rsp, r9
+4c 89 d4 - mov rsp, r10
+4c 89 dc - mov rsp, r11
+4c 89 e4 - mov rsp, r12
+4c 89 ec - mov rsp, r13
+4c 89 f4 - mov rsp, r14
+4c 89 fc - mov rsp, r15
+48 89 c5 - mov rbp, rax
+48 89 dd - mov rbp, rbx
+48 89 cd - mov rbp, rcx
+48 89 d5 - mov rbp, rdx
+48 89 fd - mov rbp, rdi
+48 89 f5 - mov rbp, rsi
+48 89 e5 - mov rbp, rsp
+48 89 ed - mov rbp, rbp
+4c 89 c5 - mov rbp, r8
+4c 89 cd - mov rbp, r9
+4c 89 d5 - mov rbp, r10
+4c 89 dd - mov rbp, r11
+4c 89 e5 - mov rbp, r12
+4c 89 ed - mov rbp, r13
+4c 89 f5 - mov rbp, r14
+4c 89 fd - mov rbp, r15
+49 89 c0 - mov r8, rax
+49 89 d8 - mov r8, rbx
+49 89 c8 - mov r8, rcx
+49 89 d0 - mov r8, rdx
+49 89 f8 - mov r8, rdi
+49 89 f0 - mov r8, rsi
+49 89 e0 - mov r8, rsp
+49 89 e8 - mov r8, rbp
+4d 89 c0 - mov r8, r8
+4d 89 c8 - mov r8, r9
+4d 89 d0 - mov r8, r10
+4d 89 d8 - mov r8, r11
+4d 89 e0 - mov r8, r12
+4d 89 e8 - mov r8, r13
+4d 89 f0 - mov r8, r14
+4d 89 f8 - mov r8, r15
+49 89 c1 - mov r9, rax
+49 89 d9 - mov r9, rbx
+49 89 c9 - mov r9, rcx
+49 89 d1 - mov r9, rdx
+49 89 f9 - mov r9, rdi
+49 89 f1 - mov r9, rsi
+49 89 e1 - mov r9, rsp
+49 89 e9 - mov r9, rbp
+4d 89 c1 - mov r9, r8
+4d 89 c9 - mov r9, r9
+4d 89 d1 - mov r9, r10
+4d 89 d9 - mov r9, r11
+4d 89 e1 - mov r9, r12
+4d 89 e9 - mov r9, r13
+4d 89 f1 - mov r9, r14
+4d 89 f9 - mov r9, r15
+49 89 c2 - mov r10, rax
+49 89 da - mov r10, rbx
+49 89 ca - mov r10, rcx
+49 89 d2 - mov r10, rdx
+49 89 fa - mov r10, rdi
+49 89 f2 - mov r10, rsi
+49 89 e2 - mov r10, rsp
+49 89 ea - mov r10, rbp
+4d 89 c2 - mov r10, r8
+4d 89 ca - mov r10, r9
+4d 89 d2 - mov r10, r10
+4d 89 da - mov r10, r11
+4d 89 e2 - mov r10, r12
+4d 89 ea - mov r10, r13
+4d 89 f2 - mov r10, r14
+4d 89 fa - mov r10, r15
+49 89 c3 - mov r11, rax
+49 89 db - mov r11, rbx
+49 89 cb - mov r11, rcx
+49 89 d3 - mov r11, rdx
+49 89 fb - mov r11, rdi
+49 89 f3 - mov r11, rsi
+49 89 e3 - mov r11, rsp
+49 89 eb - mov r11, rbp
+4d 89 c3 - mov r11, r8
+4d 89 cb - mov r11, r9
+4d 89 d3 - mov r11, r10
+4d 89 db - mov r11, r11
+4d 89 e3 - mov r11, r12
+4d 89 eb - mov r11, r13
+4d 89 f3 - mov r11, r14
+4d 89 fb - mov r11, r15
+49 89 c4 - mov r12, rax
+49 89 dc - mov r12, rbx
+49 89 cc - mov r12, rcx
+49 89 d4 - mov r12, rdx
+49 89 fc - mov r12, rdi
+49 89 f4 - mov r12, rsi
+49 89 e4 - mov r12, rsp
+49 89 ec - mov r12, rbp
+4d 89 c4 - mov r12, r8
+4d 89 cc - mov r12, r9
+4d 89 d4 - mov r12, r10
+4d 89 dc - mov r12, r11
+4d 89 e4 - mov r12, r12
+4d 89 ec - mov r12, r13
+4d 89 f4 - mov r12, r14
+4d 89 fc - mov r12, r15
+49 89 c5 - mov r13, rax
+49 89 dd - mov r13, rbx
+49 89 cd - mov r13, rcx
+49 89 d5 - mov r13, rdx
+49 89 fd - mov r13, rdi
+49 89 f5 - mov r13, rsi
+49 89 e5 - mov r13, rsp
+49 89 ed - mov r13, rbp
+4d 89 c5 - mov r13, r8
+4d 89 cd - mov r13, r9
+4d 89 d5 - mov r13, r10
+4d 89 dd - mov r13, r11
+4d 89 e5 - mov r13, r12
+4d 89 ed - mov r13, r13
+4d 89 f5 - mov r13, r14
+4d 89 fd - mov r13, r15
+49 89 c6 - mov r14, rax
+49 89 de - mov r14, rbx
+49 89 ce - mov r14, rcx
+49 89 d6 - mov r14, rdx
+49 89 fe - mov r14, rdi
+49 89 f6 - mov r14, rsi
+49 89 e6 - mov r14, rsp
+49 89 ee - mov r14, rbp
+4d 89 c6 - mov r14, r8
+4d 89 ce - mov r14, r9
+4d 89 d6 - mov r14, r10
+4d 89 de - mov r14, r11
+4d 89 e6 - mov r14, r12
+4d 89 ee - mov r14, r13
+4d 89 f6 - mov r14, r14
+4d 89 fe - mov r14, r15
+49 89 c7 - mov r15, rax
+49 89 df - mov r15, rbx
+49 89 cf - mov r15, rcx
+49 89 d7 - mov r15, rdx
+49 89 ff - mov r15, rdi
+49 89 f7 - mov r15, rsi
+49 89 e7 - mov r15, rsp
+49 89 ef - mov r15, rbp
+4d 89 c7 - mov r15, r8
+4d 89 cf - mov r15, r9
+4d 89 d7 - mov r15, r10
+4d 89 df - mov r15, r11
+4d 89 e7 - mov r15, r12
+4d 89 ef - mov r15, r13
+4d 89 f7 - mov r15, r14
+4d 89 ff - mov r15, r15
+89 c0 - mov eax, eax
+89 d8 - mov eax, ebx
+89 c8 - mov eax, ecx
+89 d0 - mov eax, edx
+89 f8 - mov eax, edi
+89 f0 - mov eax, esi
+89 e0 - mov eax, esp
+89 e8 - mov eax, ebp
+89 c3 - mov ebx, eax
+89 db - mov ebx, ebx
+89 cb - mov ebx, ecx
+89 d3 - mov ebx, edx
+89 fb - mov ebx, edi
+89 f3 - mov ebx, esi
+89 e3 - mov ebx, esp
+89 eb - mov ebx, ebp
+89 c1 - mov ecx, eax
+89 d9 - mov ecx, ebx
+89 c9 - mov ecx, ecx
+89 d1 - mov ecx, edx
+89 f9 - mov ecx, edi
+89 f1 - mov ecx, esi
+89 e1 - mov ecx, esp
+89 e9 - mov ecx, ebp
+89 c2 - mov edx, eax
+89 da - mov edx, ebx
+89 ca - mov edx, ecx
+89 d2 - mov edx, edx
+89 fa - mov edx, edi
+89 f2 - mov edx, esi
+89 e2 - mov edx, esp
+89 ea - mov edx, ebp
+89 c7 - mov edi, eax
+89 df - mov edi, ebx
+89 cf - mov edi, ecx
+89 d7 - mov edi, edx
+89 ff - mov edi, edi
+89 f7 - mov edi, esi
+89 e7 - mov edi, esp
+89 ef - mov edi, ebp
+89 c6 - mov esi, eax
+89 de - mov esi, ebx
+89 ce - mov esi, ecx
+89 d6 - mov esi, edx
+89 fe - mov esi, edi
+89 f6 - mov esi, esi
+89 e6 - mov esi, esp
+89 ee - mov esi, ebp
+89 c4 - mov esp, eax
+89 dc - mov esp, ebx
+89 cc - mov esp, ecx
+89 d4 - mov esp, edx
+89 fc - mov esp, edi
+89 f4 - mov esp, esi
+89 e4 - mov esp, esp
+89 ec - mov esp, ebp
+89 c5 - mov ebp, eax
+89 dd - mov ebp, ebx
+89 cd - mov ebp, ecx
+89 d5 - mov ebp, edx
+89 fd - mov ebp, edi
+89 f5 - mov ebp, esi
+89 e5 - mov ebp, esp
+89 ed - mov ebp, ebp
+66 89 c0 - mov ax, ax
+66 89 d8 - mov ax, bx
+66 89 c8 - mov ax, cx
+66 89 d0 - mov ax, dx
+66 89 e0 - mov ax, sp
+66 89 e8 - mov ax, bp
+66 89 c3 - mov bx, ax
+66 89 db - mov bx, bx
+66 89 cb - mov bx, cx
+66 89 d3 - mov bx, dx
+66 89 e3 - mov bx, sp
+66 89 eb - mov bx, bp
+66 89 c1 - mov cx, ax
+66 89 d9 - mov cx, bx
+66 89 c9 - mov cx, cx
+66 89 d1 - mov cx, dx
+66 89 e1 - mov cx, sp
+66 89 e9 - mov cx, bp
+66 89 c2 - mov dx, ax
+66 89 da - mov dx, bx
+66 89 ca - mov dx, cx
+66 89 d2 - mov dx, dx
+66 89 e2 - mov dx, sp
+66 89 ea - mov dx, bp
+66 89 c4 - mov sp, ax
+66 89 dc - mov sp, bx
+66 89 cc - mov sp, cx
+66 89 d4 - mov sp, dx
+66 89 e4 - mov sp, sp
+66 89 ec - mov sp, bp
+66 89 c5 - mov bp, ax
+66 89 dd - mov bp, bx
+66 89 cd - mov bp, cx
+66 89 d5 - mov bp, dx
+66 89 e5 - mov bp, sp
+66 89 ed - mov bp, bp
+88 c0 - mov al, al
+88 d8 - mov al, bl
+88 c8 - mov al, cl
+88 d0 - mov al, dl
+88 e0 - mov al, ah
+88 f8 - mov al, bh
+88 e8 - mov al, ch
+88 f0 - mov al, dh
+40 88 f8 - mov al, dil
+40 88 f0 - mov al, sil
+88 c3 - mov bl, al
+88 db - mov bl, bl
+88 cb - mov bl, cl
+88 d3 - mov bl, dl
+88 e3 - mov bl, ah
+88 fb - mov bl, bh
+88 eb - mov bl, ch
+88 f3 - mov bl, dh
+40 88 fb - mov bl, dil
+40 88 f3 - mov bl, sil
+88 c1 - mov cl, al
+88 d9 - mov cl, bl
+88 c9 - mov cl, cl
+88 d1 - mov cl, dl
+88 e1 - mov cl, ah
+88 f9 - mov cl, bh
+88 e9 - mov cl, ch
+88 f1 - mov cl, dh
+40 88 f9 - mov cl, dil
+40 88 f1 - mov cl, sil
+88 c2 - mov dl, al
+88 da - mov dl, bl
+88 ca - mov dl, cl
+88 d2 - mov dl, dl
+88 e2 - mov dl, ah
+88 fa - mov dl, bh
+88 ea - mov dl, ch
+88 f2 - mov dl, dh
+40 88 fa - mov dl, dil
+40 88 f2 - mov dl, sil
+88 c4 - mov ah, al
+88 dc - mov ah, bl
+88 cc - mov ah, cl
+88 d4 - mov ah, dl
+88 e4 - mov ah, ah
+88 fc - mov ah, bh
+88 ec - mov ah, ch
+88 f4 - mov ah, dh
+88 c7 - mov bh, al
+88 df - mov bh, bl
+88 cf - mov bh, cl
+88 d7 - mov bh, dl
+88 e7 - mov bh, ah
+88 ff - mov bh, bh
+88 ef - mov bh, ch
+88 f7 - mov bh, dh
+88 c5 - mov ch, al
+88 dd - mov ch, bl
+88 cd - mov ch, cl
+88 d5 - mov ch, dl
+88 e5 - mov ch, ah
+88 fd - mov ch, bh
+88 ed - mov ch, ch
+88 f5 - mov ch, dh
+88 c6 - mov dh, al
+88 de - mov dh, bl
+88 ce - mov dh, cl
+88 d6 - mov dh, dl
+88 e6 - mov dh, ah
+88 fe - mov dh, bh
+88 ee - mov dh, ch
+88 f6 - mov dh, dh
+40 88 c7 - mov dil, al
+40 88 df - mov dil, bl
+40 88 cf - mov dil, cl
+40 88 d7 - mov dil, dl
+40 88 ff - mov dil, dil
+40 88 f7 - mov dil, sil
+40 88 c6 - mov sil, al
+40 88 de - mov sil, bl
+40 88 ce - mov sil, cl
+40 88 d6 - mov sil, dl
+40 88 fe - mov sil, dil
+40 88 f6 - mov sil, sil
+48 c7 c0 7e 00 00 00 - mov rax, 0x7e
+48 c7 c3 7e 00 00 00 - mov rbx, 0x7e
+48 c7 c1 7e 00 00 00 - mov rcx, 0x7e
+48 c7 c2 7e 00 00 00 - mov rdx, 0x7e
+48 c7 c7 7e 00 00 00 - mov rdi, 0x7e
+48 c7 c6 7e 00 00 00 - mov rsi, 0x7e
+48 c7 c4 7e 00 00 00 - mov rsp, 0x7e
+48 c7 c5 7e 00 00 00 - mov rbp, 0x7e
+49 c7 c0 7e 00 00 00 - mov r8, 0x7e
+49 c7 c1 7e 00 00 00 - mov r9, 0x7e
+49 c7 c2 7e 00 00 00 - mov r10, 0x7e
+49 c7 c3 7e 00 00 00 - mov r11, 0x7e
+49 c7 c4 7e 00 00 00 - mov r12, 0x7e
+49 c7 c5 7e 00 00 00 - mov r13, 0x7e
+49 c7 c6 7e 00 00 00 - mov r14, 0x7e
+49 c7 c7 7e 00 00 00 - mov r15, 0x7e
+b8 7e 00 00 00 - mov eax, 0x7e
+bb 7e 00 00 00 - mov ebx, 0x7e
+b9 7e 00 00 00 - mov ecx, 0x7e
+ba 7e 00 00 00 - mov edx, 0x7e
+bf 7e 00 00 00 - mov edi, 0x7e
+be 7e 00 00 00 - mov esi, 0x7e
+bc 7e 00 00 00 - mov esp, 0x7e
+bd 7e 00 00 00 - mov ebp, 0x7e
+66 b8 7e 00 - mov ax, 0x7e
+66 bb 7e 00 - mov bx, 0x7e
+66 b9 7e 00 - mov cx, 0x7e
+66 ba 7e 00 - mov dx, 0x7e
+66 bc 7e 00 - mov sp, 0x7e
+66 bd 7e 00 - mov bp, 0x7e
+b0 7e - mov al, 0x7e
+b3 7e - mov bl, 0x7e
+b1 7e - mov cl, 0x7e
+b2 7e - mov dl, 0x7e
+b4 7e - mov ah, 0x7e
+b7 7e - mov bh, 0x7e
+b5 7e - mov ch, 0x7e
+b6 7e - mov dh, 0x7e
+40 b7 7e - mov dil, 0x7e
+40 b6 7e - mov sil, 0x7e
+48 c7 c0 7f 00 00 00 - mov rax, 0x7f
+48 c7 c3 7f 00 00 00 - mov rbx, 0x7f
+48 c7 c1 7f 00 00 00 - mov rcx, 0x7f
+48 c7 c2 7f 00 00 00 - mov rdx, 0x7f
+48 c7 c7 7f 00 00 00 - mov rdi, 0x7f
+48 c7 c6 7f 00 00 00 - mov rsi, 0x7f
+48 c7 c4 7f 00 00 00 - mov rsp, 0x7f
+48 c7 c5 7f 00 00 00 - mov rbp, 0x7f
+49 c7 c0 7f 00 00 00 - mov r8, 0x7f
+49 c7 c1 7f 00 00 00 - mov r9, 0x7f
+49 c7 c2 7f 00 00 00 - mov r10, 0x7f
+49 c7 c3 7f 00 00 00 - mov r11, 0x7f
+49 c7 c4 7f 00 00 00 - mov r12, 0x7f
+49 c7 c5 7f 00 00 00 - mov r13, 0x7f
+49 c7 c6 7f 00 00 00 - mov r14, 0x7f
+49 c7 c7 7f 00 00 00 - mov r15, 0x7f
+b8 7f 00 00 00 - mov eax, 0x7f
+bb 7f 00 00 00 - mov ebx, 0x7f
+b9 7f 00 00 00 - mov ecx, 0x7f
+ba 7f 00 00 00 - mov edx, 0x7f
+bf 7f 00 00 00 - mov edi, 0x7f
+be 7f 00 00 00 - mov esi, 0x7f
+bc 7f 00 00 00 - mov esp, 0x7f
+bd 7f 00 00 00 - mov ebp, 0x7f
+66 b8 7f 00 - mov ax, 0x7f
+66 bb 7f 00 - mov bx, 0x7f
+66 b9 7f 00 - mov cx, 0x7f
+66 ba 7f 00 - mov dx, 0x7f
+66 bc 7f 00 - mov sp, 0x7f
+66 bd 7f 00 - mov bp, 0x7f
+b0 7f - mov al, 0x7f
+b3 7f - mov bl, 0x7f
+b1 7f - mov cl, 0x7f
+b2 7f - mov dl, 0x7f
+b4 7f - mov ah, 0x7f
+b7 7f - mov bh, 0x7f
+b5 7f - mov ch, 0x7f
+b6 7f - mov dh, 0x7f
+40 b7 7f - mov dil, 0x7f
+40 b6 7f - mov sil, 0x7f
+48 89 00 - mov QWORD PTR [rax], rax
+48 89 18 - mov QWORD PTR [rax], rbx
+48 89 08 - mov QWORD PTR [rax], rcx
+48 89 10 - mov QWORD PTR [rax], rdx
+48 89 38 - mov QWORD PTR [rax], rdi
+48 89 30 - mov QWORD PTR [rax], rsi
+48 89 20 - mov QWORD PTR [rax], rsp
+48 89 28 - mov QWORD PTR [rax], rbp
+4c 89 00 - mov QWORD PTR [rax], r8
+4c 89 08 - mov QWORD PTR [rax], r9
+4c 89 10 - mov QWORD PTR [rax], r10
+4c 89 18 - mov QWORD PTR [rax], r11
+4c 89 20 - mov QWORD PTR [rax], r12
+4c 89 28 - mov QWORD PTR [rax], r13
+4c 89 30 - mov QWORD PTR [rax], r14
+4c 89 38 - mov QWORD PTR [rax], r15
+89 00 - mov DWORD PTR [rax], eax
+89 18 - mov DWORD PTR [rax], ebx
+89 08 - mov DWORD PTR [rax], ecx
+89 10 - mov DWORD PTR [rax], edx
+89 38 - mov DWORD PTR [rax], edi
+89 30 - mov DWORD PTR [rax], esi
+89 20 - mov DWORD PTR [rax], esp
+89 28 - mov DWORD PTR [rax], ebp
+66 89 00 - mov WORD PTR [rax], ax
+66 89 18 - mov WORD PTR [rax], bx
+66 89 08 - mov WORD PTR [rax], cx
+66 89 10 - mov WORD PTR [rax], dx
+66 89 20 - mov WORD PTR [rax], sp
+66 89 28 - mov WORD PTR [rax], bp
+88 00 - mov BYTE PTR [rax], al
+88 18 - mov BYTE PTR [rax], bl
+88 08 - mov BYTE PTR [rax], cl
+88 10 - mov BYTE PTR [rax], dl
+88 20 - mov BYTE PTR [rax], ah
+88 38 - mov BYTE PTR [rax], bh
+88 28 - mov BYTE PTR [rax], ch
+88 30 - mov BYTE PTR [rax], dh
+40 88 38 - mov BYTE PTR [rax], dil
+40 88 30 - mov BYTE PTR [rax], sil
+48 89 03 - mov QWORD PTR [rbx], rax
+48 89 1b - mov QWORD PTR [rbx], rbx
+48 89 0b - mov QWORD PTR [rbx], rcx
+48 89 13 - mov QWORD PTR [rbx], rdx
+48 89 3b - mov QWORD PTR [rbx], rdi
+48 89 33 - mov QWORD PTR [rbx], rsi
+48 89 23 - mov QWORD PTR [rbx], rsp
+48 89 2b - mov QWORD PTR [rbx], rbp
+4c 89 03 - mov QWORD PTR [rbx], r8
+4c 89 0b - mov QWORD PTR [rbx], r9
+4c 89 13 - mov QWORD PTR [rbx], r10
+4c 89 1b - mov QWORD PTR [rbx], r11
+4c 89 23 - mov QWORD PTR [rbx], r12
+4c 89 2b - mov QWORD PTR [rbx], r13
+4c 89 33 - mov QWORD PTR [rbx], r14
+4c 89 3b - mov QWORD PTR [rbx], r15
+89 03 - mov DWORD PTR [rbx], eax
+89 1b - mov DWORD PTR [rbx], ebx
+89 0b - mov DWORD PTR [rbx], ecx
+89 13 - mov DWORD PTR [rbx], edx
+89 3b - mov DWORD PTR [rbx], edi
+89 33 - mov DWORD PTR [rbx], esi
+89 23 - mov DWORD PTR [rbx], esp
+89 2b - mov DWORD PTR [rbx], ebp
+66 89 03 - mov WORD PTR [rbx], ax
+66 89 1b - mov WORD PTR [rbx], bx
+66 89 0b - mov WORD PTR [rbx], cx
+66 89 13 - mov WORD PTR [rbx], dx
+66 89 23 - mov WORD PTR [rbx], sp
+66 89 2b - mov WORD PTR [rbx], bp
+88 03 - mov BYTE PTR [rbx], al
+88 1b - mov BYTE PTR [rbx], bl
+88 0b - mov BYTE PTR [rbx], cl
+88 13 - mov BYTE PTR [rbx], dl
+88 23 - mov BYTE PTR [rbx], ah
+88 3b - mov BYTE PTR [rbx], bh
+88 2b - mov BYTE PTR [rbx], ch
+88 33 - mov BYTE PTR [rbx], dh
+40 88 3b - mov BYTE PTR [rbx], dil
+40 88 33 - mov BYTE PTR [rbx], sil
+48 89 01 - mov QWORD PTR [rcx], rax
+48 89 19 - mov QWORD PTR [rcx], rbx
+48 89 09 - mov QWORD PTR [rcx], rcx
+48 89 11 - mov QWORD PTR [rcx], rdx
+48 89 39 - mov QWORD PTR [rcx], rdi
+48 89 31 - mov QWORD PTR [rcx], rsi
+48 89 21 - mov QWORD PTR [rcx], rsp
+48 89 29 - mov QWORD PTR [rcx], rbp
+4c 89 01 - mov QWORD PTR [rcx], r8
+4c 89 09 - mov QWORD PTR [rcx], r9
+4c 89 11 - mov QWORD PTR [rcx], r10
+4c 89 19 - mov QWORD PTR [rcx], r11
+4c 89 21 - mov QWORD PTR [rcx], r12
+4c 89 29 - mov QWORD PTR [rcx], r13
+4c 89 31 - mov QWORD PTR [rcx], r14
+4c 89 39 - mov QWORD PTR [rcx], r15
+89 01 - mov DWORD PTR [rcx], eax
+89 19 - mov DWORD PTR [rcx], ebx
+89 09 - mov DWORD PTR [rcx], ecx
+89 11 - mov DWORD PTR [rcx], edx
+89 39 - mov DWORD PTR [rcx], edi
+89 31 - mov DWORD PTR [rcx], esi
+89 21 - mov DWORD PTR [rcx], esp
+89 29 - mov DWORD PTR [rcx], ebp
+66 89 01 - mov WORD PTR [rcx], ax
+66 89 19 - mov WORD PTR [rcx], bx
+66 89 09 - mov WORD PTR [rcx], cx
+66 89 11 - mov WORD PTR [rcx], dx
+66 89 21 - mov WORD PTR [rcx], sp
+66 89 29 - mov WORD PTR [rcx], bp
+88 01 - mov BYTE PTR [rcx], al
+88 19 - mov BYTE PTR [rcx], bl
+88 09 - mov BYTE PTR [rcx], cl
+88 11 - mov BYTE PTR [rcx], dl
+88 21 - mov BYTE PTR [rcx], ah
+88 39 - mov BYTE PTR [rcx], bh
+88 29 - mov BYTE PTR [rcx], ch
+88 31 - mov BYTE PTR [rcx], dh
+40 88 39 - mov BYTE PTR [rcx], dil
+40 88 31 - mov BYTE PTR [rcx], sil
+48 89 02 - mov QWORD PTR [rdx], rax
+48 89 1a - mov QWORD PTR [rdx], rbx
+48 89 0a - mov QWORD PTR [rdx], rcx
+48 89 12 - mov QWORD PTR [rdx], rdx
+48 89 3a - mov QWORD PTR [rdx], rdi
+48 89 32 - mov QWORD PTR [rdx], rsi
+48 89 22 - mov QWORD PTR [rdx], rsp
+48 89 2a - mov QWORD PTR [rdx], rbp
+4c 89 02 - mov QWORD PTR [rdx], r8
+4c 89 0a - mov QWORD PTR [rdx], r9
+4c 89 12 - mov QWORD PTR [rdx], r10
+4c 89 1a - mov QWORD PTR [rdx], r11
+4c 89 22 - mov QWORD PTR [rdx], r12
+4c 89 2a - mov QWORD PTR [rdx], r13
+4c 89 32 - mov QWORD PTR [rdx], r14
+4c 89 3a - mov QWORD PTR [rdx], r15
+89 02 - mov DWORD PTR [rdx], eax
+89 1a - mov DWORD PTR [rdx], ebx
+89 0a - mov DWORD PTR [rdx], ecx
+89 12 - mov DWORD PTR [rdx], edx
+89 3a - mov DWORD PTR [rdx], edi
+89 32 - mov DWORD PTR [rdx], esi
+89 22 - mov DWORD PTR [rdx], esp
+89 2a - mov DWORD PTR [rdx], ebp
+66 89 02 - mov WORD PTR [rdx], ax
+66 89 1a - mov WORD PTR [rdx], bx
+66 89 0a - mov WORD PTR [rdx], cx
+66 89 12 - mov WORD PTR [rdx], dx
+66 89 22 - mov WORD PTR [rdx], sp
+66 89 2a - mov WORD PTR [rdx], bp
+88 02 - mov BYTE PTR [rdx], al
+88 1a - mov BYTE PTR [rdx], bl
+88 0a - mov BYTE PTR [rdx], cl
+88 12 - mov BYTE PTR [rdx], dl
+88 22 - mov BYTE PTR [rdx], ah
+88 3a - mov BYTE PTR [rdx], bh
+88 2a - mov BYTE PTR [rdx], ch
+88 32 - mov BYTE PTR [rdx], dh
+40 88 3a - mov BYTE PTR [rdx], dil
+40 88 32 - mov BYTE PTR [rdx], sil
+48 89 07 - mov QWORD PTR [rdi], rax
+48 89 1f - mov QWORD PTR [rdi], rbx
+48 89 0f - mov QWORD PTR [rdi], rcx
+48 89 17 - mov QWORD PTR [rdi], rdx
+48 89 3f - mov QWORD PTR [rdi], rdi
+48 89 37 - mov QWORD PTR [rdi], rsi
+48 89 27 - mov QWORD PTR [rdi], rsp
+48 89 2f - mov QWORD PTR [rdi], rbp
+4c 89 07 - mov QWORD PTR [rdi], r8
+4c 89 0f - mov QWORD PTR [rdi], r9
+4c 89 17 - mov QWORD PTR [rdi], r10
+4c 89 1f - mov QWORD PTR [rdi], r11
+4c 89 27 - mov QWORD PTR [rdi], r12
+4c 89 2f - mov QWORD PTR [rdi], r13
+4c 89 37 - mov QWORD PTR [rdi], r14
+4c 89 3f - mov QWORD PTR [rdi], r15
+89 07 - mov DWORD PTR [rdi], eax
+89 1f - mov DWORD PTR [rdi], ebx
+89 0f - mov DWORD PTR [rdi], ecx
+89 17 - mov DWORD PTR [rdi], edx
+89 3f - mov DWORD PTR [rdi], edi
+89 37 - mov DWORD PTR [rdi], esi
+89 27 - mov DWORD PTR [rdi], esp
+89 2f - mov DWORD PTR [rdi], ebp
+66 89 07 - mov WORD PTR [rdi], ax
+66 89 1f - mov WORD PTR [rdi], bx
+66 89 0f - mov WORD PTR [rdi], cx
+66 89 17 - mov WORD PTR [rdi], dx
+66 89 27 - mov WORD PTR [rdi], sp
+66 89 2f - mov WORD PTR [rdi], bp
+88 07 - mov BYTE PTR [rdi], al
+88 1f - mov BYTE PTR [rdi], bl
+88 0f - mov BYTE PTR [rdi], cl
+88 17 - mov BYTE PTR [rdi], dl
+88 27 - mov BYTE PTR [rdi], ah
+88 3f - mov BYTE PTR [rdi], bh
+88 2f - mov BYTE PTR [rdi], ch
+88 37 - mov BYTE PTR [rdi], dh
+40 88 3f - mov BYTE PTR [rdi], dil
+40 88 37 - mov BYTE PTR [rdi], sil
+48 89 06 - mov QWORD PTR [rsi], rax
+48 89 1e - mov QWORD PTR [rsi], rbx
+48 89 0e - mov QWORD PTR [rsi], rcx
+48 89 16 - mov QWORD PTR [rsi], rdx
+48 89 3e - mov QWORD PTR [rsi], rdi
+48 89 36 - mov QWORD PTR [rsi], rsi
+48 89 26 - mov QWORD PTR [rsi], rsp
+48 89 2e - mov QWORD PTR [rsi], rbp
+4c 89 06 - mov QWORD PTR [rsi], r8
+4c 89 0e - mov QWORD PTR [rsi], r9
+4c 89 16 - mov QWORD PTR [rsi], r10
+4c 89 1e - mov QWORD PTR [rsi], r11
+4c 89 26 - mov QWORD PTR [rsi], r12
+4c 89 2e - mov QWORD PTR [rsi], r13
+4c 89 36 - mov QWORD PTR [rsi], r14
+4c 89 3e - mov QWORD PTR [rsi], r15
+89 06 - mov DWORD PTR [rsi], eax
+89 1e - mov DWORD PTR [rsi], ebx
+89 0e - mov DWORD PTR [rsi], ecx
+89 16 - mov DWORD PTR [rsi], edx
+89 3e - mov DWORD PTR [rsi], edi
+89 36 - mov DWORD PTR [rsi], esi
+89 26 - mov DWORD PTR [rsi], esp
+89 2e - mov DWORD PTR [rsi], ebp
+66 89 06 - mov WORD PTR [rsi], ax
+66 89 1e - mov WORD PTR [rsi], bx
+66 89 0e - mov WORD PTR [rsi], cx
+66 89 16 - mov WORD PTR [rsi], dx
+66 89 26 - mov WORD PTR [rsi], sp
+66 89 2e - mov WORD PTR [rsi], bp
+88 06 - mov BYTE PTR [rsi], al
+88 1e - mov BYTE PTR [rsi], bl
+88 0e - mov BYTE PTR [rsi], cl
+88 16 - mov BYTE PTR [rsi], dl
+88 26 - mov BYTE PTR [rsi], ah
+88 3e - mov BYTE PTR [rsi], bh
+88 2e - mov BYTE PTR [rsi], ch
+88 36 - mov BYTE PTR [rsi], dh
+40 88 3e - mov BYTE PTR [rsi], dil
+40 88 36 - mov BYTE PTR [rsi], sil
+48 89 04 24 - mov QWORD PTR [rsp], rax
+48 89 1c 24 - mov QWORD PTR [rsp], rbx
+48 89 0c 24 - mov QWORD PTR [rsp], rcx
+48 89 14 24 - mov QWORD PTR [rsp], rdx
+48 89 3c 24 - mov QWORD PTR [rsp], rdi
+48 89 34 24 - mov QWORD PTR [rsp], rsi
+48 89 24 24 - mov QWORD PTR [rsp], rsp
+48 89 2c 24 - mov QWORD PTR [rsp], rbp
+4c 89 04 24 - mov QWORD PTR [rsp], r8
+4c 89 0c 24 - mov QWORD PTR [rsp], r9
+4c 89 14 24 - mov QWORD PTR [rsp], r10
+4c 89 1c 24 - mov QWORD PTR [rsp], r11
+4c 89 24 24 - mov QWORD PTR [rsp], r12
+4c 89 2c 24 - mov QWORD PTR [rsp], r13
+4c 89 34 24 - mov QWORD PTR [rsp], r14
+4c 89 3c 24 - mov QWORD PTR [rsp], r15
+89 04 24 - mov DWORD PTR [rsp], eax
+89 1c 24 - mov DWORD PTR [rsp], ebx
+89 0c 24 - mov DWORD PTR [rsp], ecx
+89 14 24 - mov DWORD PTR [rsp], edx
+89 3c 24 - mov DWORD PTR [rsp], edi
+89 34 24 - mov DWORD PTR [rsp], esi
+89 24 24 - mov DWORD PTR [rsp], esp
+89 2c 24 - mov DWORD PTR [rsp], ebp
+66 89 04 24 - mov WORD PTR [rsp], ax
+66 89 1c 24 - mov WORD PTR [rsp], bx
+66 89 0c 24 - mov WORD PTR [rsp], cx
+66 89 14 24 - mov WORD PTR [rsp], dx
+66 89 24 24 - mov WORD PTR [rsp], sp
+66 89 2c 24 - mov WORD PTR [rsp], bp
+88 04 24 - mov BYTE PTR [rsp], al
+88 1c 24 - mov BYTE PTR [rsp], bl
+88 0c 24 - mov BYTE PTR [rsp], cl
+88 14 24 - mov BYTE PTR [rsp], dl
+88 24 24 - mov BYTE PTR [rsp], ah
+88 3c 24 - mov BYTE PTR [rsp], bh
+88 2c 24 - mov BYTE PTR [rsp], ch
+88 34 24 - mov BYTE PTR [rsp], dh
+40 88 3c 24 - mov BYTE PTR [rsp], dil
+40 88 34 24 - mov BYTE PTR [rsp], sil
+48 89 45 00 - mov QWORD PTR [rbp+0x0], rax
+48 89 5d 00 - mov QWORD PTR [rbp+0x0], rbx
+48 89 4d 00 - mov QWORD PTR [rbp+0x0], rcx
+48 89 55 00 - mov QWORD PTR [rbp+0x0], rdx
+48 89 7d 00 - mov QWORD PTR [rbp+0x0], rdi
+48 89 75 00 - mov QWORD PTR [rbp+0x0], rsi
+48 89 65 00 - mov QWORD PTR [rbp+0x0], rsp
+48 89 6d 00 - mov QWORD PTR [rbp+0x0], rbp
+4c 89 45 00 - mov QWORD PTR [rbp+0x0], r8
+4c 89 4d 00 - mov QWORD PTR [rbp+0x0], r9
+4c 89 55 00 - mov QWORD PTR [rbp+0x0], r10
+4c 89 5d 00 - mov QWORD PTR [rbp+0x0], r11
+4c 89 65 00 - mov QWORD PTR [rbp+0x0], r12
+4c 89 6d 00 - mov QWORD PTR [rbp+0x0], r13
+4c 89 75 00 - mov QWORD PTR [rbp+0x0], r14
+4c 89 7d 00 - mov QWORD PTR [rbp+0x0], r15
+89 45 00 - mov DWORD PTR [rbp+0x0], eax
+89 5d 00 - mov DWORD PTR [rbp+0x0], ebx
+89 4d 00 - mov DWORD PTR [rbp+0x0], ecx
+89 55 00 - mov DWORD PTR [rbp+0x0], edx
+89 7d 00 - mov DWORD PTR [rbp+0x0], edi
+89 75 00 - mov DWORD PTR [rbp+0x0], esi
+89 65 00 - mov DWORD PTR [rbp+0x0], esp
+89 6d 00 - mov DWORD PTR [rbp+0x0], ebp
+66 89 45 00 - mov WORD PTR [rbp+0x0], ax
+66 89 5d 00 - mov WORD PTR [rbp+0x0], bx
+66 89 4d 00 - mov WORD PTR [rbp+0x0], cx
+66 89 55 00 - mov WORD PTR [rbp+0x0], dx
+66 89 65 00 - mov WORD PTR [rbp+0x0], sp
+66 89 6d 00 - mov WORD PTR [rbp+0x0], bp
+88 45 00 - mov BYTE PTR [rbp+0x0], al
+88 5d 00 - mov BYTE PTR [rbp+0x0], bl
+88 4d 00 - mov BYTE PTR [rbp+0x0], cl
+88 55 00 - mov BYTE PTR [rbp+0x0], dl
+88 65 00 - mov BYTE PTR [rbp+0x0], ah
+88 7d 00 - mov BYTE PTR [rbp+0x0], bh
+88 6d 00 - mov BYTE PTR [rbp+0x0], ch
+88 75 00 - mov BYTE PTR [rbp+0x0], dh
+40 88 7d 00 - mov BYTE PTR [rbp+0x0], dil
+40 88 75 00 - mov BYTE PTR [rbp+0x0], sil
+49 89 00 - mov QWORD PTR [r8], rax
+49 89 18 - mov QWORD PTR [r8], rbx
+49 89 08 - mov QWORD PTR [r8], rcx
+49 89 10 - mov QWORD PTR [r8], rdx
+49 89 38 - mov QWORD PTR [r8], rdi
+49 89 30 - mov QWORD PTR [r8], rsi
+49 89 20 - mov QWORD PTR [r8], rsp
+49 89 28 - mov QWORD PTR [r8], rbp
+4d 89 00 - mov QWORD PTR [r8], r8
+4d 89 08 - mov QWORD PTR [r8], r9
+4d 89 10 - mov QWORD PTR [r8], r10
+4d 89 18 - mov QWORD PTR [r8], r11
+4d 89 20 - mov QWORD PTR [r8], r12
+4d 89 28 - mov QWORD PTR [r8], r13
+4d 89 30 - mov QWORD PTR [r8], r14
+4d 89 38 - mov QWORD PTR [r8], r15
+41 89 00 - mov DWORD PTR [r8], eax
+41 89 18 - mov DWORD PTR [r8], ebx
+41 89 08 - mov DWORD PTR [r8], ecx
+41 89 10 - mov DWORD PTR [r8], edx
+41 89 38 - mov DWORD PTR [r8], edi
+41 89 30 - mov DWORD PTR [r8], esi
+41 89 20 - mov DWORD PTR [r8], esp
+41 89 28 - mov DWORD PTR [r8], ebp
+66 41 89 00 - mov WORD PTR [r8], ax
+66 41 89 18 - mov WORD PTR [r8], bx
+66 41 89 08 - mov WORD PTR [r8], cx
+66 41 89 10 - mov WORD PTR [r8], dx
+66 41 89 20 - mov WORD PTR [r8], sp
+66 41 89 28 - mov WORD PTR [r8], bp
+41 88 00 - mov BYTE PTR [r8], al
+41 88 18 - mov BYTE PTR [r8], bl
+41 88 08 - mov BYTE PTR [r8], cl
+41 88 10 - mov BYTE PTR [r8], dl
+41 88 38 - mov BYTE PTR [r8], dil
+41 88 30 - mov BYTE PTR [r8], sil
+49 89 01 - mov QWORD PTR [r9], rax
+49 89 19 - mov QWORD PTR [r9], rbx
+49 89 09 - mov QWORD PTR [r9], rcx
+49 89 11 - mov QWORD PTR [r9], rdx
+49 89 39 - mov QWORD PTR [r9], rdi
+49 89 31 - mov QWORD PTR [r9], rsi
+49 89 21 - mov QWORD PTR [r9], rsp
+49 89 29 - mov QWORD PTR [r9], rbp
+4d 89 01 - mov QWORD PTR [r9], r8
+4d 89 09 - mov QWORD PTR [r9], r9
+4d 89 11 - mov QWORD PTR [r9], r10
+4d 89 19 - mov QWORD PTR [r9], r11
+4d 89 21 - mov QWORD PTR [r9], r12
+4d 89 29 - mov QWORD PTR [r9], r13
+4d 89 31 - mov QWORD PTR [r9], r14
+4d 89 39 - mov QWORD PTR [r9], r15
+41 89 01 - mov DWORD PTR [r9], eax
+41 89 19 - mov DWORD PTR [r9], ebx
+41 89 09 - mov DWORD PTR [r9], ecx
+41 89 11 - mov DWORD PTR [r9], edx
+41 89 39 - mov DWORD PTR [r9], edi
+41 89 31 - mov DWORD PTR [r9], esi
+41 89 21 - mov DWORD PTR [r9], esp
+41 89 29 - mov DWORD PTR [r9], ebp
+66 41 89 01 - mov WORD PTR [r9], ax
+66 41 89 19 - mov WORD PTR [r9], bx
+66 41 89 09 - mov WORD PTR [r9], cx
+66 41 89 11 - mov WORD PTR [r9], dx
+66 41 89 21 - mov WORD PTR [r9], sp
+66 41 89 29 - mov WORD PTR [r9], bp
+41 88 01 - mov BYTE PTR [r9], al
+41 88 19 - mov BYTE PTR [r9], bl
+41 88 09 - mov BYTE PTR [r9], cl
+41 88 11 - mov BYTE PTR [r9], dl
+41 88 39 - mov BYTE PTR [r9], dil
+41 88 31 - mov BYTE PTR [r9], sil
+49 89 02 - mov QWORD PTR [r10], rax
+49 89 1a - mov QWORD PTR [r10], rbx
+49 89 0a - mov QWORD PTR [r10], rcx
+49 89 12 - mov QWORD PTR [r10], rdx
+49 89 3a - mov QWORD PTR [r10], rdi
+49 89 32 - mov QWORD PTR [r10], rsi
+49 89 22 - mov QWORD PTR [r10], rsp
+49 89 2a - mov QWORD PTR [r10], rbp
+4d 89 02 - mov QWORD PTR [r10], r8
+4d 89 0a - mov QWORD PTR [r10], r9
+4d 89 12 - mov QWORD PTR [r10], r10
+4d 89 1a - mov QWORD PTR [r10], r11
+4d 89 22 - mov QWORD PTR [r10], r12
+4d 89 2a - mov QWORD PTR [r10], r13
+4d 89 32 - mov QWORD PTR [r10], r14
+4d 89 3a - mov QWORD PTR [r10], r15
+41 89 02 - mov DWORD PTR [r10], eax
+41 89 1a - mov DWORD PTR [r10], ebx
+41 89 0a - mov DWORD PTR [r10], ecx
+41 89 12 - mov DWORD PTR [r10], edx
+41 89 3a - mov DWORD PTR [r10], edi
+41 89 32 - mov DWORD PTR [r10], esi
+41 89 22 - mov DWORD PTR [r10], esp
+41 89 2a - mov DWORD PTR [r10], ebp
+66 41 89 02 - mov WORD PTR [r10], ax
+66 41 89 1a - mov WORD PTR [r10], bx
+66 41 89 0a - mov WORD PTR [r10], cx
+66 41 89 12 - mov WORD PTR [r10], dx
+66 41 89 22 - mov WORD PTR [r10], sp
+66 41 89 2a - mov WORD PTR [r10], bp
+41 88 02 - mov BYTE PTR [r10], al
+41 88 1a - mov BYTE PTR [r10], bl
+41 88 0a - mov BYTE PTR [r10], cl
+41 88 12 - mov BYTE PTR [r10], dl
+41 88 3a - mov BYTE PTR [r10], dil
+41 88 32 - mov BYTE PTR [r10], sil
+49 89 03 - mov QWORD PTR [r11], rax
+49 89 1b - mov QWORD PTR [r11], rbx
+49 89 0b - mov QWORD PTR [r11], rcx
+49 89 13 - mov QWORD PTR [r11], rdx
+49 89 3b - mov QWORD PTR [r11], rdi
+49 89 33 - mov QWORD PTR [r11], rsi
+49 89 23 - mov QWORD PTR [r11], rsp
+49 89 2b - mov QWORD PTR [r11], rbp
+4d 89 03 - mov QWORD PTR [r11], r8
+4d 89 0b - mov QWORD PTR [r11], r9
+4d 89 13 - mov QWORD PTR [r11], r10
+4d 89 1b - mov QWORD PTR [r11], r11
+4d 89 23 - mov QWORD PTR [r11], r12
+4d 89 2b - mov QWORD PTR [r11], r13
+4d 89 33 - mov QWORD PTR [r11], r14
+4d 89 3b - mov QWORD PTR [r11], r15
+41 89 03 - mov DWORD PTR [r11], eax
+41 89 1b - mov DWORD PTR [r11], ebx
+41 89 0b - mov DWORD PTR [r11], ecx
+41 89 13 - mov DWORD PTR [r11], edx
+41 89 3b - mov DWORD PTR [r11], edi
+41 89 33 - mov DWORD PTR [r11], esi
+41 89 23 - mov DWORD PTR [r11], esp
+41 89 2b - mov DWORD PTR [r11], ebp
+66 41 89 03 - mov WORD PTR [r11], ax
+66 41 89 1b - mov WORD PTR [r11], bx
+66 41 89 0b - mov WORD PTR [r11], cx
+66 41 89 13 - mov WORD PTR [r11], dx
+66 41 89 23 - mov WORD PTR [r11], sp
+66 41 89 2b - mov WORD PTR [r11], bp
+41 88 03 - mov BYTE PTR [r11], al
+41 88 1b - mov BYTE PTR [r11], bl
+41 88 0b - mov BYTE PTR [r11], cl
+41 88 13 - mov BYTE PTR [r11], dl
+41 88 3b - mov BYTE PTR [r11], dil
+41 88 33 - mov BYTE PTR [r11], sil
+49 89 04 24 - mov QWORD PTR [r12], rax
+49 89 1c 24 - mov QWORD PTR [r12], rbx
+49 89 0c 24 - mov QWORD PTR [r12], rcx
+49 89 14 24 - mov QWORD PTR [r12], rdx
+49 89 3c 24 - mov QWORD PTR [r12], rdi
+49 89 34 24 - mov QWORD PTR [r12], rsi
+49 89 24 24 - mov QWORD PTR [r12], rsp
+49 89 2c 24 - mov QWORD PTR [r12], rbp
+4d 89 04 24 - mov QWORD PTR [r12], r8
+4d 89 0c 24 - mov QWORD PTR [r12], r9
+4d 89 14 24 - mov QWORD PTR [r12], r10
+4d 89 1c 24 - mov QWORD PTR [r12], r11
+4d 89 24 24 - mov QWORD PTR [r12], r12
+4d 89 2c 24 - mov QWORD PTR [r12], r13
+4d 89 34 24 - mov QWORD PTR [r12], r14
+4d 89 3c 24 - mov QWORD PTR [r12], r15
+41 89 04 24 - mov DWORD PTR [r12], eax
+41 89 1c 24 - mov DWORD PTR [r12], ebx
+41 89 0c 24 - mov DWORD PTR [r12], ecx
+41 89 14 24 - mov DWORD PTR [r12], edx
+41 89 3c 24 - mov DWORD PTR [r12], edi
+41 89 34 24 - mov DWORD PTR [r12], esi
+41 89 24 24 - mov DWORD PTR [r12], esp
+41 89 2c 24 - mov DWORD PTR [r12], ebp
+66 41 89 04 24 - mov WORD PTR [r12], ax
+66 41 89 1c 24 - mov WORD PTR [r12], bx
+66 41 89 0c 24 - mov WORD PTR [r12], cx
+66 41 89 14 24 - mov WORD PTR [r12], dx
+66 41 89 24 24 - mov WORD PTR [r12], sp
+66 41 89 2c 24 - mov WORD PTR [r12], bp
+41 88 04 24 - mov BYTE PTR [r12], al
+41 88 1c 24 - mov BYTE PTR [r12], bl
+41 88 0c 24 - mov BYTE PTR [r12], cl
+41 88 14 24 - mov BYTE PTR [r12], dl
+41 88 3c 24 - mov BYTE PTR [r12], dil
+41 88 34 24 - mov BYTE PTR [r12], sil
+49 89 45 00 - mov QWORD PTR [r13+0x0], rax
+49 89 5d 00 - mov QWORD PTR [r13+0x0], rbx
+49 89 4d 00 - mov QWORD PTR [r13+0x0], rcx
+49 89 55 00 - mov QWORD PTR [r13+0x0], rdx
+49 89 7d 00 - mov QWORD PTR [r13+0x0], rdi
+49 89 75 00 - mov QWORD PTR [r13+0x0], rsi
+49 89 65 00 - mov QWORD PTR [r13+0x0], rsp
+49 89 6d 00 - mov QWORD PTR [r13+0x0], rbp
+4d 89 45 00 - mov QWORD PTR [r13+0x0], r8
+4d 89 4d 00 - mov QWORD PTR [r13+0x0], r9
+4d 89 55 00 - mov QWORD PTR [r13+0x0], r10
+4d 89 5d 00 - mov QWORD PTR [r13+0x0], r11
+4d 89 65 00 - mov QWORD PTR [r13+0x0], r12
+4d 89 6d 00 - mov QWORD PTR [r13+0x0], r13
+4d 89 75 00 - mov QWORD PTR [r13+0x0], r14
+4d 89 7d 00 - mov QWORD PTR [r13+0x0], r15
+41 89 45 00 - mov DWORD PTR [r13+0x0], eax
+41 89 5d 00 - mov DWORD PTR [r13+0x0], ebx
+41 89 4d 00 - mov DWORD PTR [r13+0x0], ecx
+41 89 55 00 - mov DWORD PTR [r13+0x0], edx
+41 89 7d 00 - mov DWORD PTR [r13+0x0], edi
+41 89 75 00 - mov DWORD PTR [r13+0x0], esi
+41 89 65 00 - mov DWORD PTR [r13+0x0], esp
+41 89 6d 00 - mov DWORD PTR [r13+0x0], ebp
+66 41 89 45 00 - mov WORD PTR [r13+0x0], ax
+66 41 89 5d 00 - mov WORD PTR [r13+0x0], bx
+66 41 89 4d 00 - mov WORD PTR [r13+0x0], cx
+66 41 89 55 00 - mov WORD PTR [r13+0x0], dx
+66 41 89 65 00 - mov WORD PTR [r13+0x0], sp
+66 41 89 6d 00 - mov WORD PTR [r13+0x0], bp
+41 88 45 00 - mov BYTE PTR [r13+0x0], al
+41 88 5d 00 - mov BYTE PTR [r13+0x0], bl
+41 88 4d 00 - mov BYTE PTR [r13+0x0], cl
+41 88 55 00 - mov BYTE PTR [r13+0x0], dl
+41 88 7d 00 - mov BYTE PTR [r13+0x0], dil
+41 88 75 00 - mov BYTE PTR [r13+0x0], sil
+49 89 06 - mov QWORD PTR [r14], rax
+49 89 1e - mov QWORD PTR [r14], rbx
+49 89 0e - mov QWORD PTR [r14], rcx
+49 89 16 - mov QWORD PTR [r14], rdx
+49 89 3e - mov QWORD PTR [r14], rdi
+49 89 36 - mov QWORD PTR [r14], rsi
+49 89 26 - mov QWORD PTR [r14], rsp
+49 89 2e - mov QWORD PTR [r14], rbp
+4d 89 06 - mov QWORD PTR [r14], r8
+4d 89 0e - mov QWORD PTR [r14], r9
+4d 89 16 - mov QWORD PTR [r14], r10
+4d 89 1e - mov QWORD PTR [r14], r11
+4d 89 26 - mov QWORD PTR [r14], r12
+4d 89 2e - mov QWORD PTR [r14], r13
+4d 89 36 - mov QWORD PTR [r14], r14
+4d 89 3e - mov QWORD PTR [r14], r15
+41 89 06 - mov DWORD PTR [r14], eax
+41 89 1e - mov DWORD PTR [r14], ebx
+41 89 0e - mov DWORD PTR [r14], ecx
+41 89 16 - mov DWORD PTR [r14], edx
+41 89 3e - mov DWORD PTR [r14], edi
+41 89 36 - mov DWORD PTR [r14], esi
+41 89 26 - mov DWORD PTR [r14], esp
+41 89 2e - mov DWORD PTR [r14], ebp
+66 41 89 06 - mov WORD PTR [r14], ax
+66 41 89 1e - mov WORD PTR [r14], bx
+66 41 89 0e - mov WORD PTR [r14], cx
+66 41 89 16 - mov WORD PTR [r14], dx
+66 41 89 26 - mov WORD PTR [r14], sp
+66 41 89 2e - mov WORD PTR [r14], bp
+41 88 06 - mov BYTE PTR [r14], al
+41 88 1e - mov BYTE PTR [r14], bl
+41 88 0e - mov BYTE PTR [r14], cl
+41 88 16 - mov BYTE PTR [r14], dl
+41 88 3e - mov BYTE PTR [r14], dil
+41 88 36 - mov BYTE PTR [r14], sil
+49 89 07 - mov QWORD PTR [r15], rax
+49 89 1f - mov QWORD PTR [r15], rbx
+49 89 0f - mov QWORD PTR [r15], rcx
+49 89 17 - mov QWORD PTR [r15], rdx
+49 89 3f - mov QWORD PTR [r15], rdi
+49 89 37 - mov QWORD PTR [r15], rsi
+49 89 27 - mov QWORD PTR [r15], rsp
+49 89 2f - mov QWORD PTR [r15], rbp
+4d 89 07 - mov QWORD PTR [r15], r8
+4d 89 0f - mov QWORD PTR [r15], r9
+4d 89 17 - mov QWORD PTR [r15], r10
+4d 89 1f - mov QWORD PTR [r15], r11
+4d 89 27 - mov QWORD PTR [r15], r12
+4d 89 2f - mov QWORD PTR [r15], r13
+4d 89 37 - mov QWORD PTR [r15], r14
+4d 89 3f - mov QWORD PTR [r15], r15
+41 89 07 - mov DWORD PTR [r15], eax
+41 89 1f - mov DWORD PTR [r15], ebx
+41 89 0f - mov DWORD PTR [r15], ecx
+41 89 17 - mov DWORD PTR [r15], edx
+41 89 3f - mov DWORD PTR [r15], edi
+41 89 37 - mov DWORD PTR [r15], esi
+41 89 27 - mov DWORD PTR [r15], esp
+41 89 2f - mov DWORD PTR [r15], ebp
+66 41 89 07 - mov WORD PTR [r15], ax
+66 41 89 1f - mov WORD PTR [r15], bx
+66 41 89 0f - mov WORD PTR [r15], cx
+66 41 89 17 - mov WORD PTR [r15], dx
+66 41 89 27 - mov WORD PTR [r15], sp
+66 41 89 2f - mov WORD PTR [r15], bp
+41 88 07 - mov BYTE PTR [r15], al
+41 88 1f - mov BYTE PTR [r15], bl
+41 88 0f - mov BYTE PTR [r15], cl
+41 88 17 - mov BYTE PTR [r15], dl
+41 88 3f - mov BYTE PTR [r15], dil
+41 88 37 - mov BYTE PTR [r15], sil
+48 8b 00 - mov rax, QWORD PTR [rax]
+48 8b 18 - mov rbx, QWORD PTR [rax]
+48 8b 08 - mov rcx, QWORD PTR [rax]
+48 8b 10 - mov rdx, QWORD PTR [rax]
+48 8b 38 - mov rdi, QWORD PTR [rax]
+48 8b 30 - mov rsi, QWORD PTR [rax]
+48 8b 20 - mov rsp, QWORD PTR [rax]
+48 8b 28 - mov rbp, QWORD PTR [rax]
+4c 8b 00 - mov r8, QWORD PTR [rax]
+4c 8b 08 - mov r9, QWORD PTR [rax]
+4c 8b 10 - mov r10, QWORD PTR [rax]
+4c 8b 18 - mov r11, QWORD PTR [rax]
+4c 8b 20 - mov r12, QWORD PTR [rax]
+4c 8b 28 - mov r13, QWORD PTR [rax]
+4c 8b 30 - mov r14, QWORD PTR [rax]
+4c 8b 38 - mov r15, QWORD PTR [rax]
+8b 00 - mov eax, DWORD PTR [rax]
+8b 18 - mov ebx, DWORD PTR [rax]
+8b 08 - mov ecx, DWORD PTR [rax]
+8b 10 - mov edx, DWORD PTR [rax]
+8b 38 - mov edi, DWORD PTR [rax]
+8b 30 - mov esi, DWORD PTR [rax]
+8b 20 - mov esp, DWORD PTR [rax]
+8b 28 - mov ebp, DWORD PTR [rax]
+66 8b 00 - mov ax, WORD PTR [rax]
+66 8b 18 - mov bx, WORD PTR [rax]
+66 8b 08 - mov cx, WORD PTR [rax]
+66 8b 10 - mov dx, WORD PTR [rax]
+66 8b 20 - mov sp, WORD PTR [rax]
+66 8b 28 - mov bp, WORD PTR [rax]
+8a 00 - mov al, BYTE PTR [rax]
+8a 18 - mov bl, BYTE PTR [rax]
+8a 08 - mov cl, BYTE PTR [rax]
+8a 10 - mov dl, BYTE PTR [rax]
+8a 20 - mov ah, BYTE PTR [rax]
+8a 38 - mov bh, BYTE PTR [rax]
+8a 28 - mov ch, BYTE PTR [rax]
+8a 30 - mov dh, BYTE PTR [rax]
+40 8a 38 - mov dil, BYTE PTR [rax]
+40 8a 30 - mov sil, BYTE PTR [rax]
+48 8b 03 - mov rax, QWORD PTR [rbx]
+48 8b 1b - mov rbx, QWORD PTR [rbx]
+48 8b 0b - mov rcx, QWORD PTR [rbx]
+48 8b 13 - mov rdx, QWORD PTR [rbx]
+48 8b 3b - mov rdi, QWORD PTR [rbx]
+48 8b 33 - mov rsi, QWORD PTR [rbx]
+48 8b 23 - mov rsp, QWORD PTR [rbx]
+48 8b 2b - mov rbp, QWORD PTR [rbx]
+4c 8b 03 - mov r8, QWORD PTR [rbx]
+4c 8b 0b - mov r9, QWORD PTR [rbx]
+4c 8b 13 - mov r10, QWORD PTR [rbx]
+4c 8b 1b - mov r11, QWORD PTR [rbx]
+4c 8b 23 - mov r12, QWORD PTR [rbx]
+4c 8b 2b - mov r13, QWORD PTR [rbx]
+4c 8b 33 - mov r14, QWORD PTR [rbx]
+4c 8b 3b - mov r15, QWORD PTR [rbx]
+8b 03 - mov eax, DWORD PTR [rbx]
+8b 1b - mov ebx, DWORD PTR [rbx]
+8b 0b - mov ecx, DWORD PTR [rbx]
+8b 13 - mov edx, DWORD PTR [rbx]
+8b 3b - mov edi, DWORD PTR [rbx]
+8b 33 - mov esi, DWORD PTR [rbx]
+8b 23 - mov esp, DWORD PTR [rbx]
+8b 2b - mov ebp, DWORD PTR [rbx]
+66 8b 03 - mov ax, WORD PTR [rbx]
+66 8b 1b - mov bx, WORD PTR [rbx]
+66 8b 0b - mov cx, WORD PTR [rbx]
+66 8b 13 - mov dx, WORD PTR [rbx]
+66 8b 23 - mov sp, WORD PTR [rbx]
+66 8b 2b - mov bp, WORD PTR [rbx]
+8a 03 - mov al, BYTE PTR [rbx]
+8a 1b - mov bl, BYTE PTR [rbx]
+8a 0b - mov cl, BYTE PTR [rbx]
+8a 13 - mov dl, BYTE PTR [rbx]
+8a 23 - mov ah, BYTE PTR [rbx]
+8a 3b - mov bh, BYTE PTR [rbx]
+8a 2b - mov ch, BYTE PTR [rbx]
+8a 33 - mov dh, BYTE PTR [rbx]
+40 8a 3b - mov dil, BYTE PTR [rbx]
+40 8a 33 - mov sil, BYTE PTR [rbx]
+48 8b 01 - mov rax, QWORD PTR [rcx]
+48 8b 19 - mov rbx, QWORD PTR [rcx]
+48 8b 09 - mov rcx, QWORD PTR [rcx]
+48 8b 11 - mov rdx, QWORD PTR [rcx]
+48 8b 39 - mov rdi, QWORD PTR [rcx]
+48 8b 31 - mov rsi, QWORD PTR [rcx]
+48 8b 21 - mov rsp, QWORD PTR [rcx]
+48 8b 29 - mov rbp, QWORD PTR [rcx]
+4c 8b 01 - mov r8, QWORD PTR [rcx]
+4c 8b 09 - mov r9, QWORD PTR [rcx]
+4c 8b 11 - mov r10, QWORD PTR [rcx]
+4c 8b 19 - mov r11, QWORD PTR [rcx]
+4c 8b 21 - mov r12, QWORD PTR [rcx]
+4c 8b 29 - mov r13, QWORD PTR [rcx]
+4c 8b 31 - mov r14, QWORD PTR [rcx]
+4c 8b 39 - mov r15, QWORD PTR [rcx]
+8b 01 - mov eax, DWORD PTR [rcx]
+8b 19 - mov ebx, DWORD PTR [rcx]
+8b 09 - mov ecx, DWORD PTR [rcx]
+8b 11 - mov edx, DWORD PTR [rcx]
+8b 39 - mov edi, DWORD PTR [rcx]
+8b 31 - mov esi, DWORD PTR [rcx]
+8b 21 - mov esp, DWORD PTR [rcx]
+8b 29 - mov ebp, DWORD PTR [rcx]
+66 8b 01 - mov ax, WORD PTR [rcx]
+66 8b 19 - mov bx, WORD PTR [rcx]
+66 8b 09 - mov cx, WORD PTR [rcx]
+66 8b 11 - mov dx, WORD PTR [rcx]
+66 8b 21 - mov sp, WORD PTR [rcx]
+66 8b 29 - mov bp, WORD PTR [rcx]
+8a 01 - mov al, BYTE PTR [rcx]
+8a 19 - mov bl, BYTE PTR [rcx]
+8a 09 - mov cl, BYTE PTR [rcx]
+8a 11 - mov dl, BYTE PTR [rcx]
+8a 21 - mov ah, BYTE PTR [rcx]
+8a 39 - mov bh, BYTE PTR [rcx]
+8a 29 - mov ch, BYTE PTR [rcx]
+8a 31 - mov dh, BYTE PTR [rcx]
+40 8a 39 - mov dil, BYTE PTR [rcx]
+40 8a 31 - mov sil, BYTE PTR [rcx]
+48 8b 02 - mov rax, QWORD PTR [rdx]
+48 8b 1a - mov rbx, QWORD PTR [rdx]
+48 8b 0a - mov rcx, QWORD PTR [rdx]
+48 8b 12 - mov rdx, QWORD PTR [rdx]
+48 8b 3a - mov rdi, QWORD PTR [rdx]
+48 8b 32 - mov rsi, QWORD PTR [rdx]
+48 8b 22 - mov rsp, QWORD PTR [rdx]
+48 8b 2a - mov rbp, QWORD PTR [rdx]
+4c 8b 02 - mov r8, QWORD PTR [rdx]
+4c 8b 0a - mov r9, QWORD PTR [rdx]
+4c 8b 12 - mov r10, QWORD PTR [rdx]
+4c 8b 1a - mov r11, QWORD PTR [rdx]
+4c 8b 22 - mov r12, QWORD PTR [rdx]
+4c 8b 2a - mov r13, QWORD PTR [rdx]
+4c 8b 32 - mov r14, QWORD PTR [rdx]
+4c 8b 3a - mov r15, QWORD PTR [rdx]
+8b 02 - mov eax, DWORD PTR [rdx]
+8b 1a - mov ebx, DWORD PTR [rdx]
+8b 0a - mov ecx, DWORD PTR [rdx]
+8b 12 - mov edx, DWORD PTR [rdx]
+8b 3a - mov edi, DWORD PTR [rdx]
+8b 32 - mov esi, DWORD PTR [rdx]
+8b 22 - mov esp, DWORD PTR [rdx]
+8b 2a - mov ebp, DWORD PTR [rdx]
+66 8b 02 - mov ax, WORD PTR [rdx]
+66 8b 1a - mov bx, WORD PTR [rdx]
+66 8b 0a - mov cx, WORD PTR [rdx]
+66 8b 12 - mov dx, WORD PTR [rdx]
+66 8b 22 - mov sp, WORD PTR [rdx]
+66 8b 2a - mov bp, WORD PTR [rdx]
+8a 02 - mov al, BYTE PTR [rdx]
+8a 1a - mov bl, BYTE PTR [rdx]
+8a 0a - mov cl, BYTE PTR [rdx]
+8a 12 - mov dl, BYTE PTR [rdx]
+8a 22 - mov ah, BYTE PTR [rdx]
+8a 3a - mov bh, BYTE PTR [rdx]
+8a 2a - mov ch, BYTE PTR [rdx]
+8a 32 - mov dh, BYTE PTR [rdx]
+40 8a 3a - mov dil, BYTE PTR [rdx]
+40 8a 32 - mov sil, BYTE PTR [rdx]
+48 8b 07 - mov rax, QWORD PTR [rdi]
+48 8b 1f - mov rbx, QWORD PTR [rdi]
+48 8b 0f - mov rcx, QWORD PTR [rdi]
+48 8b 17 - mov rdx, QWORD PTR [rdi]
+48 8b 3f - mov rdi, QWORD PTR [rdi]
+48 8b 37 - mov rsi, QWORD PTR [rdi]
+48 8b 27 - mov rsp, QWORD PTR [rdi]
+48 8b 2f - mov rbp, QWORD PTR [rdi]
+4c 8b 07 - mov r8, QWORD PTR [rdi]
+4c 8b 0f - mov r9, QWORD PTR [rdi]
+4c 8b 17 - mov r10, QWORD PTR [rdi]
+4c 8b 1f - mov r11, QWORD PTR [rdi]
+4c 8b 27 - mov r12, QWORD PTR [rdi]
+4c 8b 2f - mov r13, QWORD PTR [rdi]
+4c 8b 37 - mov r14, QWORD PTR [rdi]
+4c 8b 3f - mov r15, QWORD PTR [rdi]
+8b 07 - mov eax, DWORD PTR [rdi]
+8b 1f - mov ebx, DWORD PTR [rdi]
+8b 0f - mov ecx, DWORD PTR [rdi]
+8b 17 - mov edx, DWORD PTR [rdi]
+8b 3f - mov edi, DWORD PTR [rdi]
+8b 37 - mov esi, DWORD PTR [rdi]
+8b 27 - mov esp, DWORD PTR [rdi]
+8b 2f - mov ebp, DWORD PTR [rdi]
+66 8b 07 - mov ax, WORD PTR [rdi]
+66 8b 1f - mov bx, WORD PTR [rdi]
+66 8b 0f - mov cx, WORD PTR [rdi]
+66 8b 17 - mov dx, WORD PTR [rdi]
+66 8b 27 - mov sp, WORD PTR [rdi]
+66 8b 2f - mov bp, WORD PTR [rdi]
+8a 07 - mov al, BYTE PTR [rdi]
+8a 1f - mov bl, BYTE PTR [rdi]
+8a 0f - mov cl, BYTE PTR [rdi]
+8a 17 - mov dl, BYTE PTR [rdi]
+8a 27 - mov ah, BYTE PTR [rdi]
+8a 3f - mov bh, BYTE PTR [rdi]
+8a 2f - mov ch, BYTE PTR [rdi]
+8a 37 - mov dh, BYTE PTR [rdi]
+40 8a 3f - mov dil, BYTE PTR [rdi]
+40 8a 37 - mov sil, BYTE PTR [rdi]
+48 8b 06 - mov rax, QWORD PTR [rsi]
+48 8b 1e - mov rbx, QWORD PTR [rsi]
+48 8b 0e - mov rcx, QWORD PTR [rsi]
+48 8b 16 - mov rdx, QWORD PTR [rsi]
+48 8b 3e - mov rdi, QWORD PTR [rsi]
+48 8b 36 - mov rsi, QWORD PTR [rsi]
+48 8b 26 - mov rsp, QWORD PTR [rsi]
+48 8b 2e - mov rbp, QWORD PTR [rsi]
+4c 8b 06 - mov r8, QWORD PTR [rsi]
+4c 8b 0e - mov r9, QWORD PTR [rsi]
+4c 8b 16 - mov r10, QWORD PTR [rsi]
+4c 8b 1e - mov r11, QWORD PTR [rsi]
+4c 8b 26 - mov r12, QWORD PTR [rsi]
+4c 8b 2e - mov r13, QWORD PTR [rsi]
+4c 8b 36 - mov r14, QWORD PTR [rsi]
+4c 8b 3e - mov r15, QWORD PTR [rsi]
+8b 06 - mov eax, DWORD PTR [rsi]
+8b 1e - mov ebx, DWORD PTR [rsi]
+8b 0e - mov ecx, DWORD PTR [rsi]
+8b 16 - mov edx, DWORD PTR [rsi]
+8b 3e - mov edi, DWORD PTR [rsi]
+8b 36 - mov esi, DWORD PTR [rsi]
+8b 26 - mov esp, DWORD PTR [rsi]
+8b 2e - mov ebp, DWORD PTR [rsi]
+66 8b 06 - mov ax, WORD PTR [rsi]
+66 8b 1e - mov bx, WORD PTR [rsi]
+66 8b 0e - mov cx, WORD PTR [rsi]
+66 8b 16 - mov dx, WORD PTR [rsi]
+66 8b 26 - mov sp, WORD PTR [rsi]
+66 8b 2e - mov bp, WORD PTR [rsi]
+8a 06 - mov al, BYTE PTR [rsi]
+8a 1e - mov bl, BYTE PTR [rsi]
+8a 0e - mov cl, BYTE PTR [rsi]
+8a 16 - mov dl, BYTE PTR [rsi]
+8a 26 - mov ah, BYTE PTR [rsi]
+8a 3e - mov bh, BYTE PTR [rsi]
+8a 2e - mov ch, BYTE PTR [rsi]
+8a 36 - mov dh, BYTE PTR [rsi]
+40 8a 3e - mov dil, BYTE PTR [rsi]
+40 8a 36 - mov sil, BYTE PTR [rsi]
+48 8b 04 24 - mov rax, QWORD PTR [rsp]
+48 8b 1c 24 - mov rbx, QWORD PTR [rsp]
+48 8b 0c 24 - mov rcx, QWORD PTR [rsp]
+48 8b 14 24 - mov rdx, QWORD PTR [rsp]
+48 8b 3c 24 - mov rdi, QWORD PTR [rsp]
+48 8b 34 24 - mov rsi, QWORD PTR [rsp]
+48 8b 24 24 - mov rsp, QWORD PTR [rsp]
+48 8b 2c 24 - mov rbp, QWORD PTR [rsp]
+4c 8b 04 24 - mov r8, QWORD PTR [rsp]
+4c 8b 0c 24 - mov r9, QWORD PTR [rsp]
+4c 8b 14 24 - mov r10, QWORD PTR [rsp]
+4c 8b 1c 24 - mov r11, QWORD PTR [rsp]
+4c 8b 24 24 - mov r12, QWORD PTR [rsp]
+4c 8b 2c 24 - mov r13, QWORD PTR [rsp]
+4c 8b 34 24 - mov r14, QWORD PTR [rsp]
+4c 8b 3c 24 - mov r15, QWORD PTR [rsp]
+8b 04 24 - mov eax, DWORD PTR [rsp]
+8b 1c 24 - mov ebx, DWORD PTR [rsp]
+8b 0c 24 - mov ecx, DWORD PTR [rsp]
+8b 14 24 - mov edx, DWORD PTR [rsp]
+8b 3c 24 - mov edi, DWORD PTR [rsp]
+8b 34 24 - mov esi, DWORD PTR [rsp]
+8b 24 24 - mov esp, DWORD PTR [rsp]
+8b 2c 24 - mov ebp, DWORD PTR [rsp]
+66 8b 04 24 - mov ax, WORD PTR [rsp]
+66 8b 1c 24 - mov bx, WORD PTR [rsp]
+66 8b 0c 24 - mov cx, WORD PTR [rsp]
+66 8b 14 24 - mov dx, WORD PTR [rsp]
+66 8b 24 24 - mov sp, WORD PTR [rsp]
+66 8b 2c 24 - mov bp, WORD PTR [rsp]
+8a 04 24 - mov al, BYTE PTR [rsp]
+8a 1c 24 - mov bl, BYTE PTR [rsp]
+8a 0c 24 - mov cl, BYTE PTR [rsp]
+8a 14 24 - mov dl, BYTE PTR [rsp]
+8a 24 24 - mov ah, BYTE PTR [rsp]
+8a 3c 24 - mov bh, BYTE PTR [rsp]
+8a 2c 24 - mov ch, BYTE PTR [rsp]
+8a 34 24 - mov dh, BYTE PTR [rsp]
+40 8a 3c 24 - mov dil, BYTE PTR [rsp]
+40 8a 34 24 - mov sil, BYTE PTR [rsp]
+48 8b 45 00 - mov rax, QWORD PTR [rbp+0x0]
+48 8b 5d 00 - mov rbx, QWORD PTR [rbp+0x0]
+48 8b 4d 00 - mov rcx, QWORD PTR [rbp+0x0]
+48 8b 55 00 - mov rdx, QWORD PTR [rbp+0x0]
+48 8b 7d 00 - mov rdi, QWORD PTR [rbp+0x0]
+48 8b 75 00 - mov rsi, QWORD PTR [rbp+0x0]
+48 8b 65 00 - mov rsp, QWORD PTR [rbp+0x0]
+48 8b 6d 00 - mov rbp, QWORD PTR [rbp+0x0]
+4c 8b 45 00 - mov r8, QWORD PTR [rbp+0x0]
+4c 8b 4d 00 - mov r9, QWORD PTR [rbp+0x0]
+4c 8b 55 00 - mov r10, QWORD PTR [rbp+0x0]
+4c 8b 5d 00 - mov r11, QWORD PTR [rbp+0x0]
+4c 8b 65 00 - mov r12, QWORD PTR [rbp+0x0]
+4c 8b 6d 00 - mov r13, QWORD PTR [rbp+0x0]
+4c 8b 75 00 - mov r14, QWORD PTR [rbp+0x0]
+4c 8b 7d 00 - mov r15, QWORD PTR [rbp+0x0]
+8b 45 00 - mov eax, DWORD PTR [rbp+0x0]
+8b 5d 00 - mov ebx, DWORD PTR [rbp+0x0]
+8b 4d 00 - mov ecx, DWORD PTR [rbp+0x0]
+8b 55 00 - mov edx, DWORD PTR [rbp+0x0]
+8b 7d 00 - mov edi, DWORD PTR [rbp+0x0]
+8b 75 00 - mov esi, DWORD PTR [rbp+0x0]
+8b 65 00 - mov esp, DWORD PTR [rbp+0x0]
+8b 6d 00 - mov ebp, DWORD PTR [rbp+0x0]
+66 8b 45 00 - mov ax, WORD PTR [rbp+0x0]
+66 8b 5d 00 - mov bx, WORD PTR [rbp+0x0]
+66 8b 4d 00 - mov cx, WORD PTR [rbp+0x0]
+66 8b 55 00 - mov dx, WORD PTR [rbp+0x0]
+66 8b 65 00 - mov sp, WORD PTR [rbp+0x0]
+66 8b 6d 00 - mov bp, WORD PTR [rbp+0x0]
+8a 45 00 - mov al, BYTE PTR [rbp+0x0]
+8a 5d 00 - mov bl, BYTE PTR [rbp+0x0]
+8a 4d 00 - mov cl, BYTE PTR [rbp+0x0]
+8a 55 00 - mov dl, BYTE PTR [rbp+0x0]
+8a 65 00 - mov ah, BYTE PTR [rbp+0x0]
+8a 7d 00 - mov bh, BYTE PTR [rbp+0x0]
+8a 6d 00 - mov ch, BYTE PTR [rbp+0x0]
+8a 75 00 - mov dh, BYTE PTR [rbp+0x0]
+40 8a 7d 00 - mov dil, BYTE PTR [rbp+0x0]
+40 8a 75 00 - mov sil, BYTE PTR [rbp+0x0]
+49 8b 00 - mov rax, QWORD PTR [r8]
+49 8b 18 - mov rbx, QWORD PTR [r8]
+49 8b 08 - mov rcx, QWORD PTR [r8]
+49 8b 10 - mov rdx, QWORD PTR [r8]
+49 8b 38 - mov rdi, QWORD PTR [r8]
+49 8b 30 - mov rsi, QWORD PTR [r8]
+49 8b 20 - mov rsp, QWORD PTR [r8]
+49 8b 28 - mov rbp, QWORD PTR [r8]
+4d 8b 00 - mov r8, QWORD PTR [r8]
+4d 8b 08 - mov r9, QWORD PTR [r8]
+4d 8b 10 - mov r10, QWORD PTR [r8]
+4d 8b 18 - mov r11, QWORD PTR [r8]
+4d 8b 20 - mov r12, QWORD PTR [r8]
+4d 8b 28 - mov r13, QWORD PTR [r8]
+4d 8b 30 - mov r14, QWORD PTR [r8]
+4d 8b 38 - mov r15, QWORD PTR [r8]
+41 8b 00 - mov eax, DWORD PTR [r8]
+41 8b 18 - mov ebx, DWORD PTR [r8]
+41 8b 08 - mov ecx, DWORD PTR [r8]
+41 8b 10 - mov edx, DWORD PTR [r8]
+41 8b 38 - mov edi, DWORD PTR [r8]
+41 8b 30 - mov esi, DWORD PTR [r8]
+41 8b 20 - mov esp, DWORD PTR [r8]
+41 8b 28 - mov ebp, DWORD PTR [r8]
+66 41 8b 00 - mov ax, WORD PTR [r8]
+66 41 8b 18 - mov bx, WORD PTR [r8]
+66 41 8b 08 - mov cx, WORD PTR [r8]
+66 41 8b 10 - mov dx, WORD PTR [r8]
+66 41 8b 20 - mov sp, WORD PTR [r8]
+66 41 8b 28 - mov bp, WORD PTR [r8]
+41 8a 00 - mov al, BYTE PTR [r8]
+41 8a 18 - mov bl, BYTE PTR [r8]
+41 8a 08 - mov cl, BYTE PTR [r8]
+41 8a 10 - mov dl, BYTE PTR [r8]
+41 8a 38 - mov dil, BYTE PTR [r8]
+41 8a 30 - mov sil, BYTE PTR [r8]
+49 8b 01 - mov rax, QWORD PTR [r9]
+49 8b 19 - mov rbx, QWORD PTR [r9]
+49 8b 09 - mov rcx, QWORD PTR [r9]
+49 8b 11 - mov rdx, QWORD PTR [r9]
+49 8b 39 - mov rdi, QWORD PTR [r9]
+49 8b 31 - mov rsi, QWORD PTR [r9]
+49 8b 21 - mov rsp, QWORD PTR [r9]
+49 8b 29 - mov rbp, QWORD PTR [r9]
+4d 8b 01 - mov r8, QWORD PTR [r9]
+4d 8b 09 - mov r9, QWORD PTR [r9]
+4d 8b 11 - mov r10, QWORD PTR [r9]
+4d 8b 19 - mov r11, QWORD PTR [r9]
+4d 8b 21 - mov r12, QWORD PTR [r9]
+4d 8b 29 - mov r13, QWORD PTR [r9]
+4d 8b 31 - mov r14, QWORD PTR [r9]
+4d 8b 39 - mov r15, QWORD PTR [r9]
+41 8b 01 - mov eax, DWORD PTR [r9]
+41 8b 19 - mov ebx, DWORD PTR [r9]
+41 8b 09 - mov ecx, DWORD PTR [r9]
+41 8b 11 - mov edx, DWORD PTR [r9]
+41 8b 39 - mov edi, DWORD PTR [r9]
+41 8b 31 - mov esi, DWORD PTR [r9]
+41 8b 21 - mov esp, DWORD PTR [r9]
+41 8b 29 - mov ebp, DWORD PTR [r9]
+66 41 8b 01 - mov ax, WORD PTR [r9]
+66 41 8b 19 - mov bx, WORD PTR [r9]
+66 41 8b 09 - mov cx, WORD PTR [r9]
+66 41 8b 11 - mov dx, WORD PTR [r9]
+66 41 8b 21 - mov sp, WORD PTR [r9]
+66 41 8b 29 - mov bp, WORD PTR [r9]
+41 8a 01 - mov al, BYTE PTR [r9]
+41 8a 19 - mov bl, BYTE PTR [r9]
+41 8a 09 - mov cl, BYTE PTR [r9]
+41 8a 11 - mov dl, BYTE PTR [r9]
+41 8a 39 - mov dil, BYTE PTR [r9]
+41 8a 31 - mov sil, BYTE PTR [r9]
+49 8b 02 - mov rax, QWORD PTR [r10]
+49 8b 1a - mov rbx, QWORD PTR [r10]
+49 8b 0a - mov rcx, QWORD PTR [r10]
+49 8b 12 - mov rdx, QWORD PTR [r10]
+49 8b 3a - mov rdi, QWORD PTR [r10]
+49 8b 32 - mov rsi, QWORD PTR [r10]
+49 8b 22 - mov rsp, QWORD PTR [r10]
+49 8b 2a - mov rbp, QWORD PTR [r10]
+4d 8b 02 - mov r8, QWORD PTR [r10]
+4d 8b 0a - mov r9, QWORD PTR [r10]
+4d 8b 12 - mov r10, QWORD PTR [r10]
+4d 8b 1a - mov r11, QWORD PTR [r10]
+4d 8b 22 - mov r12, QWORD PTR [r10]
+4d 8b 2a - mov r13, QWORD PTR [r10]
+4d 8b 32 - mov r14, QWORD PTR [r10]
+4d 8b 3a - mov r15, QWORD PTR [r10]
+41 8b 02 - mov eax, DWORD PTR [r10]
+41 8b 1a - mov ebx, DWORD PTR [r10]
+41 8b 0a - mov ecx, DWORD PTR [r10]
+41 8b 12 - mov edx, DWORD PTR [r10]
+41 8b 3a - mov edi, DWORD PTR [r10]
+41 8b 32 - mov esi, DWORD PTR [r10]
+41 8b 22 - mov esp, DWORD PTR [r10]
+41 8b 2a - mov ebp, DWORD PTR [r10]
+66 41 8b 02 - mov ax, WORD PTR [r10]
+66 41 8b 1a - mov bx, WORD PTR [r10]
+66 41 8b 0a - mov cx, WORD PTR [r10]
+66 41 8b 12 - mov dx, WORD PTR [r10]
+66 41 8b 22 - mov sp, WORD PTR [r10]
+66 41 8b 2a - mov bp, WORD PTR [r10]
+41 8a 02 - mov al, BYTE PTR [r10]
+41 8a 1a - mov bl, BYTE PTR [r10]
+41 8a 0a - mov cl, BYTE PTR [r10]
+41 8a 12 - mov dl, BYTE PTR [r10]
+41 8a 3a - mov dil, BYTE PTR [r10]
+41 8a 32 - mov sil, BYTE PTR [r10]
+49 8b 03 - mov rax, QWORD PTR [r11]
+49 8b 1b - mov rbx, QWORD PTR [r11]
+49 8b 0b - mov rcx, QWORD PTR [r11]
+49 8b 13 - mov rdx, QWORD PTR [r11]
+49 8b 3b - mov rdi, QWORD PTR [r11]
+49 8b 33 - mov rsi, QWORD PTR [r11]
+49 8b 23 - mov rsp, QWORD PTR [r11]
+49 8b 2b - mov rbp, QWORD PTR [r11]
+4d 8b 03 - mov r8, QWORD PTR [r11]
+4d 8b 0b - mov r9, QWORD PTR [r11]
+4d 8b 13 - mov r10, QWORD PTR [r11]
+4d 8b 1b - mov r11, QWORD PTR [r11]
+4d 8b 23 - mov r12, QWORD PTR [r11]
+4d 8b 2b - mov r13, QWORD PTR [r11]
+4d 8b 33 - mov r14, QWORD PTR [r11]
+4d 8b 3b - mov r15, QWORD PTR [r11]
+41 8b 03 - mov eax, DWORD PTR [r11]
+41 8b 1b - mov ebx, DWORD PTR [r11]
+41 8b 0b - mov ecx, DWORD PTR [r11]
+41 8b 13 - mov edx, DWORD PTR [r11]
+41 8b 3b - mov edi, DWORD PTR [r11]
+41 8b 33 - mov esi, DWORD PTR [r11]
+41 8b 23 - mov esp, DWORD PTR [r11]
+41 8b 2b - mov ebp, DWORD PTR [r11]
+66 41 8b 03 - mov ax, WORD PTR [r11]
+66 41 8b 1b - mov bx, WORD PTR [r11]
+66 41 8b 0b - mov cx, WORD PTR [r11]
+66 41 8b 13 - mov dx, WORD PTR [r11]
+66 41 8b 23 - mov sp, WORD PTR [r11]
+66 41 8b 2b - mov bp, WORD PTR [r11]
+41 8a 03 - mov al, BYTE PTR [r11]
+41 8a 1b - mov bl, BYTE PTR [r11]
+41 8a 0b - mov cl, BYTE PTR [r11]
+41 8a 13 - mov dl, BYTE PTR [r11]
+41 8a 3b - mov dil, BYTE PTR [r11]
+41 8a 33 - mov sil, BYTE PTR [r11]
+49 8b 04 24 - mov rax, QWORD PTR [r12]
+49 8b 1c 24 - mov rbx, QWORD PTR [r12]
+49 8b 0c 24 - mov rcx, QWORD PTR [r12]
+49 8b 14 24 - mov rdx, QWORD PTR [r12]
+49 8b 3c 24 - mov rdi, QWORD PTR [r12]
+49 8b 34 24 - mov rsi, QWORD PTR [r12]
+49 8b 24 24 - mov rsp, QWORD PTR [r12]
+49 8b 2c 24 - mov rbp, QWORD PTR [r12]
+4d 8b 04 24 - mov r8, QWORD PTR [r12]
+4d 8b 0c 24 - mov r9, QWORD PTR [r12]
+4d 8b 14 24 - mov r10, QWORD PTR [r12]
+4d 8b 1c 24 - mov r11, QWORD PTR [r12]
+4d 8b 24 24 - mov r12, QWORD PTR [r12]
+4d 8b 2c 24 - mov r13, QWORD PTR [r12]
+4d 8b 34 24 - mov r14, QWORD PTR [r12]
+4d 8b 3c 24 - mov r15, QWORD PTR [r12]
+41 8b 04 24 - mov eax, DWORD PTR [r12]
+41 8b 1c 24 - mov ebx, DWORD PTR [r12]
+41 8b 0c 24 - mov ecx, DWORD PTR [r12]
+41 8b 14 24 - mov edx, DWORD PTR [r12]
+41 8b 3c 24 - mov edi, DWORD PTR [r12]
+41 8b 34 24 - mov esi, DWORD PTR [r12]
+41 8b 24 24 - mov esp, DWORD PTR [r12]
+41 8b 2c 24 - mov ebp, DWORD PTR [r12]
+66 41 8b 04 24 - mov ax, WORD PTR [r12]
+66 41 8b 1c 24 - mov bx, WORD PTR [r12]
+66 41 8b 0c 24 - mov cx, WORD PTR [r12]
+66 41 8b 14 24 - mov dx, WORD PTR [r12]
+66 41 8b 24 24 - mov sp, WORD PTR [r12]
+66 41 8b 2c 24 - mov bp, WORD PTR [r12]
+41 8a 04 24 - mov al, BYTE PTR [r12]
+41 8a 1c 24 - mov bl, BYTE PTR [r12]
+41 8a 0c 24 - mov cl, BYTE PTR [r12]
+41 8a 14 24 - mov dl, BYTE PTR [r12]
+41 8a 3c 24 - mov dil, BYTE PTR [r12]
+41 8a 34 24 - mov sil, BYTE PTR [r12]
+49 8b 45 00 - mov rax, QWORD PTR [r13+0x0]
+49 8b 5d 00 - mov rbx, QWORD PTR [r13+0x0]
+49 8b 4d 00 - mov rcx, QWORD PTR [r13+0x0]
+49 8b 55 00 - mov rdx, QWORD PTR [r13+0x0]
+49 8b 7d 00 - mov rdi, QWORD PTR [r13+0x0]
+49 8b 75 00 - mov rsi, QWORD PTR [r13+0x0]
+49 8b 65 00 - mov rsp, QWORD PTR [r13+0x0]
+49 8b 6d 00 - mov rbp, QWORD PTR [r13+0x0]
+4d 8b 45 00 - mov r8, QWORD PTR [r13+0x0]
+4d 8b 4d 00 - mov r9, QWORD PTR [r13+0x0]
+4d 8b 55 00 - mov r10, QWORD PTR [r13+0x0]
+4d 8b 5d 00 - mov r11, QWORD PTR [r13+0x0]
+4d 8b 65 00 - mov r12, QWORD PTR [r13+0x0]
+4d 8b 6d 00 - mov r13, QWORD PTR [r13+0x0]
+4d 8b 75 00 - mov r14, QWORD PTR [r13+0x0]
+4d 8b 7d 00 - mov r15, QWORD PTR [r13+0x0]
+41 8b 45 00 - mov eax, DWORD PTR [r13+0x0]
+41 8b 5d 00 - mov ebx, DWORD PTR [r13+0x0]
+41 8b 4d 00 - mov ecx, DWORD PTR [r13+0x0]
+41 8b 55 00 - mov edx, DWORD PTR [r13+0x0]
+41 8b 7d 00 - mov edi, DWORD PTR [r13+0x0]
+41 8b 75 00 - mov esi, DWORD PTR [r13+0x0]
+41 8b 65 00 - mov esp, DWORD PTR [r13+0x0]
+41 8b 6d 00 - mov ebp, DWORD PTR [r13+0x0]
+66 41 8b 45 00 - mov ax, WORD PTR [r13+0x0]
+66 41 8b 5d 00 - mov bx, WORD PTR [r13+0x0]
+66 41 8b 4d 00 - mov cx, WORD PTR [r13+0x0]
+66 41 8b 55 00 - mov dx, WORD PTR [r13+0x0]
+66 41 8b 65 00 - mov sp, WORD PTR [r13+0x0]
+66 41 8b 6d 00 - mov bp, WORD PTR [r13+0x0]
+41 8a 45 00 - mov al, BYTE PTR [r13+0x0]
+41 8a 5d 00 - mov bl, BYTE PTR [r13+0x0]
+41 8a 4d 00 - mov cl, BYTE PTR [r13+0x0]
+41 8a 55 00 - mov dl, BYTE PTR [r13+0x0]
+41 8a 7d 00 - mov dil, BYTE PTR [r13+0x0]
+41 8a 75 00 - mov sil, BYTE PTR [r13+0x0]
+49 8b 06 - mov rax, QWORD PTR [r14]
+49 8b 1e - mov rbx, QWORD PTR [r14]
+49 8b 0e - mov rcx, QWORD PTR [r14]
+49 8b 16 - mov rdx, QWORD PTR [r14]
+49 8b 3e - mov rdi, QWORD PTR [r14]
+49 8b 36 - mov rsi, QWORD PTR [r14]
+49 8b 26 - mov rsp, QWORD PTR [r14]
+49 8b 2e - mov rbp, QWORD PTR [r14]
+4d 8b 06 - mov r8, QWORD PTR [r14]
+4d 8b 0e - mov r9, QWORD PTR [r14]
+4d 8b 16 - mov r10, QWORD PTR [r14]
+4d 8b 1e - mov r11, QWORD PTR [r14]
+4d 8b 26 - mov r12, QWORD PTR [r14]
+4d 8b 2e - mov r13, QWORD PTR [r14]
+4d 8b 36 - mov r14, QWORD PTR [r14]
+4d 8b 3e - mov r15, QWORD PTR [r14]
+41 8b 06 - mov eax, DWORD PTR [r14]
+41 8b 1e - mov ebx, DWORD PTR [r14]
+41 8b 0e - mov ecx, DWORD PTR [r14]
+41 8b 16 - mov edx, DWORD PTR [r14]
+41 8b 3e - mov edi, DWORD PTR [r14]
+41 8b 36 - mov esi, DWORD PTR [r14]
+41 8b 26 - mov esp, DWORD PTR [r14]
+41 8b 2e - mov ebp, DWORD PTR [r14]
+66 41 8b 06 - mov ax, WORD PTR [r14]
+66 41 8b 1e - mov bx, WORD PTR [r14]
+66 41 8b 0e - mov cx, WORD PTR [r14]
+66 41 8b 16 - mov dx, WORD PTR [r14]
+66 41 8b 26 - mov sp, WORD PTR [r14]
+66 41 8b 2e - mov bp, WORD PTR [r14]
+41 8a 06 - mov al, BYTE PTR [r14]
+41 8a 1e - mov bl, BYTE PTR [r14]
+41 8a 0e - mov cl, BYTE PTR [r14]
+41 8a 16 - mov dl, BYTE PTR [r14]
+41 8a 3e - mov dil, BYTE PTR [r14]
+41 8a 36 - mov sil, BYTE PTR [r14]
+49 8b 07 - mov rax, QWORD PTR [r15]
+49 8b 1f - mov rbx, QWORD PTR [r15]
+49 8b 0f - mov rcx, QWORD PTR [r15]
+49 8b 17 - mov rdx, QWORD PTR [r15]
+49 8b 3f - mov rdi, QWORD PTR [r15]
+49 8b 37 - mov rsi, QWORD PTR [r15]
+49 8b 27 - mov rsp, QWORD PTR [r15]
+49 8b 2f - mov rbp, QWORD PTR [r15]
+4d 8b 07 - mov r8, QWORD PTR [r15]
+4d 8b 0f - mov r9, QWORD PTR [r15]
+4d 8b 17 - mov r10, QWORD PTR [r15]
+4d 8b 1f - mov r11, QWORD PTR [r15]
+4d 8b 27 - mov r12, QWORD PTR [r15]
+4d 8b 2f - mov r13, QWORD PTR [r15]
+4d 8b 37 - mov r14, QWORD PTR [r15]
+4d 8b 3f - mov r15, QWORD PTR [r15]
+41 8b 07 - mov eax, DWORD PTR [r15]
+41 8b 1f - mov ebx, DWORD PTR [r15]
+41 8b 0f - mov ecx, DWORD PTR [r15]
+41 8b 17 - mov edx, DWORD PTR [r15]
+41 8b 3f - mov edi, DWORD PTR [r15]
+41 8b 37 - mov esi, DWORD PTR [r15]
+41 8b 27 - mov esp, DWORD PTR [r15]
+41 8b 2f - mov ebp, DWORD PTR [r15]
+66 41 8b 07 - mov ax, WORD PTR [r15]
+66 41 8b 1f - mov bx, WORD PTR [r15]
+66 41 8b 0f - mov cx, WORD PTR [r15]
+66 41 8b 17 - mov dx, WORD PTR [r15]
+66 41 8b 27 - mov sp, WORD PTR [r15]
+66 41 8b 2f - mov bp, WORD PTR [r15]
+41 8a 07 - mov al, BYTE PTR [r15]
+41 8a 1f - mov bl, BYTE PTR [r15]
+41 8a 0f - mov cl, BYTE PTR [r15]
+41 8a 17 - mov dl, BYTE PTR [r15]
+41 8a 3f - mov dil, BYTE PTR [r15]
+41 8a 37 - mov sil, BYTE PTR [r15]
