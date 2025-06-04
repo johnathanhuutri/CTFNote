@@ -54,7 +54,13 @@ To filter for even and odd alternative:
 
 ### Output
 
-To export 
+To export to file, run with param `-o`:
+
+```
+./generate.py -i mov -o mov.asm
+./generate.py -i add -m e -o add.asm
+./generate.py -i sub -m o --nocolor -o add.asm
+```
 
 ## Sample
 
