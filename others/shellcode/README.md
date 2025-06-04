@@ -10,7 +10,7 @@ To get all available shellcode, run:
 ./generate.py -i all
 ```
 
-To be more specific, to get all available shellcode and opcode for `mov` or other available instruction, run:
+To be more specific, to get shellcode and opcode for `mov` or other available instruction, run:
 
 ```
 ./generate.py -i mov
@@ -34,22 +34,20 @@ Don't want to use color? Just add `--nocolor`:
 
 ### Mode
 
-To filter for even opcode:
+Available modes:
+- `e`: Get instruction whose all bytes are even
+- `o`: Get instruction whose all bytes are odd
+- `a`: Get instruction whose all bytes are ascii printable
+- `eo`: Get instruction whose all bytes are even and odd continuously
+- `oe`: Get instruction whose all bytes are odd and even continuously
+
+
+Example:
 
 ```
 ./generate.py -i mov -m e
-```
-
-To filter for odd opcode:
-
-```
-./generate.py -i mov -m o
-```
-
-To filter for even and odd alternative:
-
-```
-./generate.py -i mov -m a
+./generate.py -i xor -m od
+./generate.py -i sub -m a
 ```
 
 ### Output
