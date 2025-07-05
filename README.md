@@ -756,3 +756,21 @@ Write seccomp rule: https://blog.yadutaf.fr/2014/05/29/introduction-to-seccomp-b
 
 </p>
 </details>
+
+<details>
+    <summary><h2>Sublime Text</h2></summary>
+
+<p>
+
+To compile using shortcut `Ctrl + B`, select `Tools` -> `Build System` -> `New Build System...` and paste following code:
+
+```
+{
+    "cmd": ["wsl", "-d", "Ubuntu-22.04", "--cd", "${file_path}", "make"],
+}
+```
+
+You can change the DistroName `-d` and command `make` as you wish!
+
+</p>
+</details>
