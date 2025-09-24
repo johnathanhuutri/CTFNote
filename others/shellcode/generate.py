@@ -247,10 +247,7 @@ def gen_push_pop(ins):
     sc = ''
 
     for r in x64:
-        sc += f'{ins} {r}\n'        # shl, shr only works with cl
-
-    for r in x64:
-        sc += f'{ins} {r}\n'        # shl, shr only works with 1 bytes
+        sc += f'{ins} {r}\n'
 
     if ins=='push':
         sc += 'push 0x80\n'
