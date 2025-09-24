@@ -4,6 +4,7 @@ import os
 import re
 from pwn import *
 import argparse
+import importlib.util
 
 x64 = ['rax', 'rbx', 'rcx', 'rdx', 'rdi', 'rsi', 'rsp', 'rbp', 'r8', 'r9', 'r10', 'r11', 'r12', 'r13', 'r14', 'r15']
 x32 = ['eax', 'ebx', 'ecx', 'edx', 'edi', 'esi', 'esp', 'ebp']
@@ -31,26 +32,27 @@ def parse_line(line):
 
     mode = ''
     opcodes = re.findall(r'\b[0-9a-fA-F]{2}\b', line)
+    opcodes = [int(op, 16) for op in opcodes]
     opcodes_len = len(opcodes)
-    if all([ int(opcodes[i], 16)%2==0 for i in range(len(opcodes)) ]):                                          # If even opcode
+    if all([ opcodes[i]%2==0 for i in range(len(opcodes)) ]):                                          # If even opcode
         mode += 'e'
-    elif all([ int(opcodes[i], 16)%2!=0 for i in range(len(opcodes)) ]):                                        # If odd opcode
+    elif all([ opcodes[i]%2!=0 for i in range(len(opcodes)) ]):                                        # If odd opcode
         mode += 'o'
-    elif all([ (0x20<=int(opcodes[i], 16) and int(opcodes[i], 16)<=0x7e ) for i in range(len(opcodes)) ]):      # If ascii shellcode
+    elif all([ (0x20<=opcodes[i] and opcodes[i]<=0x7e ) for i in range(len(opcodes)) ]):      # If ascii shellcode
         mode += 'a'
     else:
         tmp_mode = ''
         for i in range(0, (opcodes_len//2)*2, 2):
-            if int(opcodes[i], 16)%2==0 and int(opcodes[i+1], 16)%2!=0 and not tmp_mode:
+            if opcodes[i]%2==0 and opcodes[i+1]%2!=0 and not tmp_mode:
                 tmp_mode = 'eo'
-            elif int(opcodes[i], 16)%2!=0 and int(opcodes[i+1], 16)%2==0 and not tmp_mode:
+            elif opcodes[i]%2!=0 and opcodes[i+1]%2==0 and not tmp_mode:
                 tmp_mode = 'oe'
             else:
                 tmp_mode = ''
                 break
         if tmp_mode:
             if opcodes_len%2!=0:
-                if (int(opcodes[-1], 16)%2==0 and tmp_mode[0]=='e') or (int(opcodes[-1], 16)%2!=0 and tmp_mode[0]=='o'):
+                if (opcodes[-1]%2==0 and tmp_mode[0]=='e') or (opcodes[-1]%2!=0 and tmp_mode[0]=='o'):
                     mode += tmp_mode
             else:
                 mode += tmp_mode
@@ -59,19 +61,23 @@ def parse_line(line):
     line = re.sub(r'\s{2,}', ' ', line, count=1)
     line = re.sub(r'\b[0-9a-fA-F]{2}\b', lambda m: color_byte(m.group()), line)
 
-    return line, mode
+    return line, opcodes, mode
 
 def parse_shellcode(sc):
     sc = asm(sc, arch='amd64')
     sc = disasm(sc, arch='amd64')
     output = ''
     for line in sc.split('\n'):
-        line, mode = parse_line(line)
-        if args.mode:
+        line, opcodes, mode = parse_line(line)
+        if args.filter:
+            if custom_filter.filter_shellcode(opcodes):
+                output += line + '\n'
+        elif args.mode:
             if args.mode == mode:
                 output += line + '\n'
         else:
             output += line + '\n'
+
     return output
 
 def gen_add_sub(ins):
@@ -272,6 +278,7 @@ if __name__=='__main__':
     parser.add_argument('-m', '--mode', type=str, help='Filter opcode with selected mode\n"e" even bytes\n"o" odd bytes\n"a" ascii bytes\n"eo" even and odd bytes continuously\n"oe" odd and even bytes continuously')
     parser.add_argument('-o', '--output', type=str, help='Save selected instruction to file OUTPUT')
     parser.add_argument('--nocolor', action='store_true', help='Don\'t print with color')
+    parser.add_argument('--filter', type=str, help='Custom python filter path. Example: "./custom_filter/parity.py"')
 
     # Parse arguments
     args = parser.parse_args()
@@ -279,6 +286,11 @@ if __name__=='__main__':
     if not (args.asm or args.ins):
         parser.print_help()
         exit(0)
+
+    if args.filter:
+        spec = importlib.util.spec_from_file_location("plugin_module", args.filter)
+        custom_filter = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(custom_filter)
 
     if args.asm and args.ins:
         print("[-] Cannot use --ins and --asm at the same time!")
