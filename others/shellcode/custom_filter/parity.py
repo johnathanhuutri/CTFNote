@@ -4,9 +4,8 @@ def filter_shellcode(opcodes):
 		if op > 0x7f:
 			return False
 		if parity==-1:
-			p = bin(op).count("1") & 1
-		elif p==(bin(op).count("1") & 1):
+			parity = bin(op).count("1") & 1
+		elif parity!=(bin(op).count("1") & 1):
 			return False
-		p = bin(op).count("1") & 1
-		# print(op, p)
+		parity = (parity + 1) % 2
 	return True

@@ -284,73 +284,74 @@ if __name__=='__main__':
         parser.print_help()
         exit(0)
 
+    if args.asm and args.ins:
+        print("[-] Cannot use --ins and --asm at the same time!")
+        exit(0)
+
     if args.filter:
         spec = importlib.util.spec_from_file_location("plugin_module", args.filter)
         custom_filter = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(custom_filter)
 
-    if args.asm and args.ins:
-        print("[-] Cannot use --ins and --asm at the same time!")
-        exit(0)
-
     if args.asm:
         sc = args.asm.replace('\\n', '\n')
-        print(f'[*] Generating shellcode for assembly:\n{sc}')
+        print(f'[*] Generating shellcode for assembly:\n{disasm(asm(sc, arch="amd64"))}')
         print(parse_shellcode(sc))
-        exit(0)
 
-    sc = ''
-    for ins in args.ins:
-        match ins:
-            case 'all':
-                sc += gen_add_sub('add')
-                sc += gen_add_sub('sub')
-                sc += gen_mov()
-                sc += gen_lea()
-                sc += gen_xchg()
-                sc += gen_or_xor_and('or')
-                sc += gen_or_xor_and('xor')
-                sc += gen_or_xor_and('and')
-                sc += gen_shift_rotate('shl')
-                sc += gen_shift_rotate('shr')
-                sc += gen_shift_rotate('ror')
-                sc += gen_shift_rotate('rol')
-                sc += gen_push_pop('push')
-                sc += gen_push_pop('pop')
-                sc += gen_inc_dec('inc')
-                sc += gen_inc_dec('dec')
-            case 'add':
-                sc += gen_add_sub(ins)
-            case 'sub':
-                sc += gen_add_sub(ins)
-            case 'mov':
-                sc += gen_mov()
-            case 'lea':
-                sc += gen_lea()
-            case 'xchg':
-                sc += gen_xchg()
-            case 'or':
-                sc += gen_or_xor_and(ins)
-            case 'xor':
-                sc += gen_or_xor_and(ins)
-            case 'and':
-                sc += gen_or_xor_and(ins)
-            case 'shl':
-                sc += gen_shift_rotate(ins)
-            case 'shr':
-                sc += gen_shift_rotate(ins)
-            case 'ror':
-                sc += gen_shift_rotate(ins)
-            case 'rol':
-                sc += gen_shift_rotate(ins)
-            case 'push':
-                sc += gen_push_pop(ins)
-            case 'pop':
-                sc += gen_push_pop(ins)
-            case 'inc':
-                sc += gen_inc_dec(ins)
-            case 'dec':
-                sc += gen_inc_dec(ins)
+    if args.ins:
+        sc = ''
+        for ins in args.ins:
+            match ins:
+                case 'all':
+                    sc += gen_add_sub('add')
+                    sc += gen_add_sub('sub')
+                    sc += gen_mov()
+                    sc += gen_lea()
+                    sc += gen_xchg()
+                    sc += gen_or_xor_and('or')
+                    sc += gen_or_xor_and('xor')
+                    sc += gen_or_xor_and('and')
+                    sc += gen_shift_rotate('shl')
+                    sc += gen_shift_rotate('shr')
+                    sc += gen_shift_rotate('ror')
+                    sc += gen_shift_rotate('rol')
+                    sc += gen_push_pop('push')
+                    sc += gen_push_pop('pop')
+                    sc += gen_inc_dec('inc')
+                    sc += gen_inc_dec('dec')
+                case 'add':
+                    sc += gen_add_sub(ins)
+                case 'sub':
+                    sc += gen_add_sub(ins)
+                case 'mov':
+                    sc += gen_mov()
+                case 'lea':
+                    sc += gen_lea()
+                case 'xchg':
+                    sc += gen_xchg()
+                case 'or':
+                    sc += gen_or_xor_and(ins)
+                case 'xor':
+                    sc += gen_or_xor_and(ins)
+                case 'and':
+                    sc += gen_or_xor_and(ins)
+                case 'shl':
+                    sc += gen_shift_rotate(ins)
+                case 'shr':
+                    sc += gen_shift_rotate(ins)
+                case 'ror':
+                    sc += gen_shift_rotate(ins)
+                case 'rol':
+                    sc += gen_shift_rotate(ins)
+                case 'push':
+                    sc += gen_push_pop(ins)
+                case 'pop':
+                    sc += gen_push_pop(ins)
+                case 'inc':
+                    sc += gen_inc_dec(ins)
+                case 'dec':
+                    sc += gen_inc_dec(ins)
+
     if args.output:
         open(args.output, 'w').write(sc)
         print(f'[+] Saved to file "{args.output}"!')
