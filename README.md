@@ -411,6 +411,14 @@ References:
 
 **6. GDB expressions**
 
+Operator expression:
+
+```python
+pwndbg> set $i=1
+pwndbg> set $i++
+pwndbg> set $i+=4
+```
+
 If else expression with custom variable:
 
 ```python
